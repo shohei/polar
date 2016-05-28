@@ -1,0 +1,26 @@
+\documentclass{article}
+\title{極座標系のメモ}
+\author{青木翔平}
+\begin{document}
+\maketitle
+
+\begin{eqnarray}
+v &=& \sqrt{\dot{x}^2 + \dot{y}^2} \nonumber \\
+  &=& \sqrt{ \left(\frac{d}{dt} r cos\theta \right) ^2 + \left(\frac{d}{dt}r sin\theta\right) ^2} \nonumber \\
+  &=& \sqrt{ \dot{r}^2+ r^2 \theta^2 } 
+\end{eqnarray}	
+	
+$v=const$（線速度一定）とすると、$\dot{v} = 0$より、
+	
+\begin{eqnarray}
+	\frac{d}{dt} \left(\sqrt{ \dot{r}^2+ r^2 \theta^2 } \right) &=& 0 \nonumber \\
+\frac{1}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} \cdot \frac{d}{dt}\left( \dot{r}^2+r^2 \theta^2 \right) &=& 0 \nonumber \\ 
+\frac{2\dot{r}\ddot{r} + 2r\dot{r}\dot{\theta}^2 + 2r^2\dot{\theta}\ddot{\theta}}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} &=& 0 \nonumber \\
+\dot{r}\ddot{r} + r\dot{r}\dot{\theta}^2 + r^2\dot{\theta}\ddot{\theta} &=& 0  
+\end{eqnarray}
+	
+以上を満たすように$r$と$\theta$を制御する必要がある。
+	
+	
+	
+\end{document}
