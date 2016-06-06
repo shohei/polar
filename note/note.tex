@@ -21,6 +21,36 @@ $v=const$（線速度一定）とすると、$\dot{v} = 0$より、
 	
 以上を満たすように$r$と$\theta$を制御する必要がある。
 	
-	
-	
+(2)式をさらに計算する。
+$r=\omega$とおいて、
+\begin{eqnarray}
+  \dot{r}\ddot{r}+r\omega(\dot{r}\omega+r\dot{\omega})&=&0 \nonumber \\
+  \dot{r}\ddot{r} &=& -r\omega\frac{d}{dt}(r\omega) 
+\end{eqnarray}
+$\dot{r}=x, r\omega=y$とおくと、
+\begin{eqnarray}
+  x\frac{dx}{dt} &=& -y\frac{dy}{dt} \nonumber \\
+  xdx + ydy &=& 0	
+\end{eqnarray}
+
+(4)式は完全微分形の微分方程式である。(4)を解くと、
+\begin{eqnarray}
+  x^2+y^2 &=& C  \nonumber \\
+  \dot{r}^2 + (r\omega)^2 &=& C \nonumber \\
+  \dot{r}^2 &=& -(r\omega)^2 + C 	
+\end{eqnarray}
+初期条件$t=0, r=a, \dot{r}=0, \omega=\omega_0$とすると、
+\begin{eqnarray*}
+  C=a^2\omega_0^2	
+\end{eqnarray*}
+したがって、
+\begin{eqnarray}
+\frac{dr}{dt} = \pm \sqrt{\left( a^2 {\omega_0}^2 - r^2 \omega^2 \right)}	
+\end{eqnarray}
+
+
+
+
+
+
 \end{document}
