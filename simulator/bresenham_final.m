@@ -206,8 +206,88 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 pause(0.01);
             end            
         end
-       
-    end
+        
+        %case5
+        if(deltaX>deltaY&&dX>0&&grad<0)
+            D =  (-deltaY) + deltaX / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextX ~= x2)
+                if (D < 0)
+                    nextY = nextY - 1;
+                    D = D + deltaX;
+                end
+                nextX = nextX + 1;
+                D = D + (-deltaY);
+                
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.01);
+            end            
+        end
 
+        %case6
+        if(deltaX>deltaY&&dX<0&&grad<0)
+            D =  -(-deltaY) - deltaX / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextX ~= x2)
+                if (D >= 0)
+                    nextY = nextY + 1;
+                    D = D - deltaX;
+                end
+                nextX = nextX - 1;
+                D = D - (-deltaY);
+                
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.01);
+            end            
+        end
+     
+        %case7
+        if(deltaX<deltaY&&dX>0&&grad<0)
+            D =  (-deltaX) + deltaY / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextY ~= y2)
+                if (D < 0)
+                    nextX = nextX + 1;
+                    D = D + deltaY;
+                end
+                nextY = nextY - 1;
+                D = D + (-deltaX);
+                
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.01);
+            end            
+        end
+
+        %case8
+        if(deltaX<deltaY&&dX<0&&grad<0)
+            D =  -(-deltaX) - deltaY / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextY ~= y2)
+                if (D >= 0)
+                    nextX = nextX - 1;
+                    D = D - deltaY;
+                end
+                nextY = nextY + 1;
+                D = D - (-deltaX);
+                
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.01);
+            end            
+        end
+                                
+           
+    end%function end
 
 end
