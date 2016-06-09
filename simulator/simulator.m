@@ -97,66 +97,100 @@ end
 
 
     function bresenhamStep(x1,x2,y1,y2)
-%         dX=x2-x1;
-%         dY=y2-y1;
-%         deltaX=abs(dX*2);
-%         deltaY=abs(dY*2);
-%         
-%         subplot(3,3,[1 4]);
-%         plot(x1,y1,'ro');
-%         plot(x2,y2,'ro');
-%         plot([x1,x2],[y1,y2],'b-');
-%         drawnow();
-%         
-%         if(deltaX>deltaY)
-%             subplot(3,3,[1 4]);
-% 
-%             D = deltaY - deltaX / 2; %initial value
-%             nextX=x1;
-%             nextY=y1;
-%             while (nextX ~= x2)
-%                 if (D >= 0)
-%                     nextY = nextY + 1;
-%                     D = D - deltaX;
-%                 end
-%                 if(dX>0)
-%                   nextX = nextX + 1;                    
-%                   plot(nextX, nextY,'r*');
-%                 elseif(dX<0)
-%                   nextX = nextX - 1;       
-%                   plot(nextX, nextY,'r*');
-%                 end
-%                 
-%                 D = D + deltaY;
-%                 
-%                 drawnow();
-%                 pause(0.1);
-%             end
-% 
-%         elseif(deltaX<deltaY)
-%             D = deltaY - deltaX / 2; %initial value
-%             nextX=x1;
-%             nextY=y1;
-%             while (nextY ~= y2)
-%                 subplot(3,3,[1 4]);
-% 
-%                 if (D >= 0)
-%                     nextX = nextX + 1;
-%                     D = D - deltaY;
-%                 end
-%                 if(dY>0)
-%                   nextY = nextY + 1;                    
-%                   plot(nextY, nextX,'r*');
-%                 elseif(dY<0)
-%                   nextY = nextY - 1;                                        
-%                   plot(nextY, nextX,'r*');
-%                 end
-%                 D = D + deltaY;
-%                 
-%                 drawnow();
-%                 pause(0.1);
-%             end                    
-%         end                                       
+        dX=x2-x1
+        dY=y2-y1
+        deltaX=abs(dX*2);
+        deltaY=abs(dY*2);
+        
+        plot(x1,y1,'ro');
+        plot(x2,y2,'ro');
+        plot([x1,x2],[y1,y2],'b-');
+        drawnow();
+                    
+        %case1
+        if(deltaX>deltaY&&dX>0)
+            disp 'case1'
+            D = deltaY - deltaX / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextX ~= x2)
+                if (D >= 0)
+                    nextY = nextY + 1;
+                    D = D - deltaX;
+                end
+                nextX = nextX + 1;
+                D = D + deltaY;
+                
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.01);
+            end            
+        end
+        
+        %case2
+        if(deltaX<deltaY&&dX>0)
+            disp 'case2'
+            D = deltaX - deltaY / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextY ~= y2)
+                if (D >= 0)
+                    nextX = nextX + 1;
+                    D = D - deltaY;
+                end
+                nextY = nextY + 1;
+                D = D + deltaX;
+                
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.01);
+            end            
+        end
+        
+        %case3
+        if(deltaX>deltaY&&dX<0)
+            disp 'case3'
+            D = -deltaY + deltaX / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextX ~= x2)
+                if (D < 0)
+                    nextY = nextY - 1;
+                    D = D + deltaX;
+                end
+                nextX = nextX - 1;
+                D = D - deltaY;
+                
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.01);
+            end            
+        end
+        
+        %case4
+        if(deltaX<deltaY&&dX<0)
+            disp 'case4'
+            D = -deltaX + deltaY / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextY ~= y2)
+                if (D < 0)
+                    nextX = nextX - 1;
+                    D = D + deltaY;
+                end
+                nextY = nextY - 1;
+                D = D - deltaX;
+                
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.01);
+            end            
+        end
+       
     end
 
 
