@@ -28,6 +28,9 @@ gy = [30,3];
 hx = [25,5];
 hy = [3,30];
 
+writerObj = VideoWriter('newfile.avi');
+open(writerObj);
+
 
 FigHandle = figure;
 set(FigHandle, 'Position', [100, 100, 1000, 700]);
@@ -121,12 +124,12 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
         deltaX=abs(dX*2);
         deltaY=abs(dY*2);
         grad = dY/dX;
-                
+        
         plot(x1,y1,'ro');
         plot(x2,y2,'ro');
         plot([x1,x2],[y1,y2],'b-');
         drawnow();
-                    
+        
         %case1
         if(deltaX>deltaY&&dX>0&&grad>0)
             D = deltaY - deltaX / 2; %initial value
@@ -142,9 +145,9 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 
                 plot(nextX, nextY,'r*');
                 drawnow();
-                                
+                
                 pause(0.01);
-            end            
+            end
         end
         
         %case2
@@ -162,9 +165,9 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 
                 plot(nextX, nextY,'r*');
                 drawnow();
-                                
+                
                 pause(0.01);
-            end            
+            end
         end
         
         %case3
@@ -182,10 +185,10 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 
                 plot(nextX, nextY,'r*');
                 drawnow();
-                                
+                
                 pause(0.01);
-            end            
-        end        
+            end
+        end
         
         %case4
         if(deltaX<deltaY&&dX<0&&grad>0)
@@ -202,9 +205,9 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 
                 plot(nextX, nextY,'r*');
                 drawnow();
-                                
+                
                 pause(0.01);
-            end            
+            end
         end
         
         %case5
@@ -222,11 +225,11 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 
                 plot(nextX, nextY,'r*');
                 drawnow();
-                                
+                
                 pause(0.01);
-            end            
+            end
         end
-
+        
         %case6
         if(deltaX>deltaY&&dX<0&&grad<0)
             D =  -(-deltaY) - deltaX / 2; %initial value
@@ -242,11 +245,11 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 
                 plot(nextX, nextY,'r*');
                 drawnow();
-                                
+                
                 pause(0.01);
-            end            
+            end
         end
-     
+        
         %case7
         if(deltaX<deltaY&&dX>0&&grad<0)
             D =  (-deltaX) + deltaY / 2; %initial value
@@ -262,11 +265,11 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 
                 plot(nextX, nextY,'r*');
                 drawnow();
-                                
+                
                 pause(0.01);
-            end            
+            end
         end
-
+        
         %case8
         if(deltaX<deltaY&&dX<0&&grad<0)
             D =  -(-deltaX) - deltaY / 2; %initial value
@@ -282,12 +285,12 @@ bresenhamStep(hx(1),hx(2),hy(1),hy(2));
                 
                 plot(nextX, nextY,'r*');
                 drawnow();
-                                
+                
                 pause(0.01);
-            end            
+            end
         end
-                                
-           
+        
+        
     end%function end
 
 end
