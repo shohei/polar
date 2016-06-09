@@ -7,11 +7,6 @@ x = [5,30];
 y = [5,20];
 sample = length(x);
 
-deltaX=x(2)-x(1);
-deltaY=y(2)-y(1);
-deltaX=abs(deltaX*2);
-deltaY=abs(deltaY*2);
-
 FigHandle = figure;
 set(FigHandle, 'Position', [100, 100, 600, 600]);
 
@@ -24,45 +19,40 @@ hold on;
 grid on;
 grid minor;
 
-% writerObj = VideoWriter('newfile.avi');
-% open(writerObj);
+bresenhamStep(x(1),x(2),y(1),y(2));
 
-for idx=1:sample
-    subplot(1,1,1);
-    plot(x(idx),y(idx),'ro');
-    plot(x(1:idx),y(1:idx),'b-');
- 
-    drawnow();
+    function bresenhamStep(x1,x2,y1,y2)
+        deltaX=x2-x1;
+        deltaY=y2-y1;
+        deltaX=abs(deltaX*2);
+        deltaY=abs(deltaY*2);
+        
+        subplot(1,1,1);
+        plot(x1,y1,'ro');
+        plot(x2,y2,'ro');
+        plot([x1,x2],[y1,y2],'b-');
+        drawnow();
+                    
+        if(deltaX>deltaY)
+            D = deltaY - deltaX / 2; %initial value
+            nextX=x1;
+            nextY=y1;
+            while (nextX ~= x2)
+                if (D >= 0)
+                    nextY = nextY + 1;
+                    D = D - deltaX;
+                end
+                nextX = nextX + 1;
+                D = D + deltaY;
+                
+                subplot(1,1,1);
+                plot(nextX, nextY,'r*');
+                drawnow();
+                                
+                pause(0.1);
+            end            
+        end
+    end
 
-%     frame = getframe(gcf);
-%     writeVideo(writerObj, frame);
 
-end
-
-
-if(deltaX>deltaY)
- D = deltaY - deltaX / 2; %initial value
- nextX=x(1);
- nextY=y(1);
- while (nextX ~= x(2)) 
-            if (D >= 0) 
-                nextY = nextY + 1;      
-                D = D - deltaX;  
-            end
-            nextX = nextX + 1; 
-            D = D + deltaY;  
-
-            subplot(1,1,1);
-            plot(nextX, nextY,'r*');
-            drawnow();
-
-%             frame = getframe(gcf);
-%             writeVideo(writerObj, frame);
-
-            pause(0.1);
- end
-
-% close(writerObj);
-
- 
 end
