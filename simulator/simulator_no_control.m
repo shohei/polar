@@ -43,7 +43,7 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 sample = length(px);
-dt = 0.1;
+dt = 0.01;
 r = sqrt(px.^2+py.^2);
 theta = atan2(py,px);
 theta(end) = theta(end-1);%hack for error
@@ -54,17 +54,15 @@ thetamax = max(theta);
 thetamin = min(theta);
 thetadegmax = max(thetadeg);
 thetadegmin = min(thetadeg);
-
-rdot = 1*ones(size(r));% independent parameter
-
-
-dr_stepcount = 
-thetadot = rdot./r;
-thetadot(~isfinite(thetadot))=0; %hack for replace Inf as zero
-
-rdotmax = max(rdot);%1
-rdotmin = 0;
+rdot(1) = 0;
+thetadot(1) = 0;
+for idx=2:sample
+    rdot(idx) = (r(idx)-r(idx-1))/dt;
+    thetadot(idx) = (theta(idx)-theta(idx-1))/dt;
+end
+rdotmax = max(rdot);
 thetadotmax = max(thetadot);
+rdotmin = min(rdot);
 thetadotmin = min(thetadot);
 
 v = sqrt(rdot.^2+r.^2+thetadot.^2);
