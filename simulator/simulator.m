@@ -1,9 +1,9 @@
 function draw
 clear all;
 close all;
+% writerObj = VideoWriter('newfile.avi');
+% open(writerObj);
 
-% x = [0,10,8,8,0];
-% y = [0,2,10,10,0];
 x = [0,100,80,80,0];
 y = [0,20,100,100,0];
 
@@ -129,9 +129,16 @@ for idx=1:sample
     subplot(339);
     plot(v(1:idx),'b-','LineWidth',1);
     
+
     drawnow();
+%     frame = getframe(gcf);
+%     writeVideo(writerObj, frame);
     pause(dt);
+
+
 end
 
+
+% close(writerObj);
 
 end
