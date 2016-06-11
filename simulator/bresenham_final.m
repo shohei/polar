@@ -28,10 +28,6 @@ gy = [30,3];
 hx = [25,5];
 hy = [3,30];
 
-writerObj = VideoWriter('newfile.avi');
-open(writerObj);
-
-
 FigHandle = figure;
 set(FigHandle, 'Position', [100, 100, 1000, 700]);
 
