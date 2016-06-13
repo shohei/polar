@@ -1,6 +1,6 @@
 \documentclass{article}
-\title{極座標系のメモ}
-\author{青木翔平}
+\title{線速度問題の解決}
+\author{青木翔平 \thanks{慶應義塾大学 $<$saoki@sfc.keio.ac.jp$>$}}
 
 \usepackage[usenames]{color} %used for font color
 \usepackage{amssymb} %maths
@@ -10,62 +10,65 @@
 \usepackage[utf8]{inputenc} %useful to type directly diacritic characters
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\usepackage{capt-of}
+
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+ \pagestyle{fancy}
+\lhead{線速度問題の解決}
+\rhead{[\ \scshape\oldstylenums{\thepage}\ / %
+    \scshape\oldstylenums{\pageref{LastPage}}\ ]}
+
 
 \begin{document}
 \maketitle
 
+デカルト座標系での線速度$v$は極座標で以下のように表される。
 \begin{eqnarray}
 v &=& \sqrt{\dot{x}^2 + \dot{y}^2} \nonumber \\
   &=& \sqrt{ \left(\frac{d}{dt} r cos\theta \right) ^2 + \left(\frac{d}{dt}r sin\theta\right) ^2} \nonumber \\
   &=& \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } 
 \end{eqnarray}	
 	
-$v=const$（線速度一定）とすると、$\dot{v} = 0$より、
-	
-\begin{eqnarray}
-	\frac{d}{dt} \left(\sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } \right) &=& 0 \nonumber \\
-\frac{1}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} \cdot \frac{d}{dt}\left( \dot{r}^2+r^2 \dot{\theta}^2 \right) &=& 0 \nonumber \\ 
-\frac{2\dot{r}\ddot{r} + 2r\dot{r}\dot{\theta}^2 + 2r^2\dot{\theta}\ddot{\theta}}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} &=& 0 \nonumber \\
-\dot{r}\ddot{r} + r\dot{r}\dot{\theta}^2 + r^2\dot{\theta}\ddot{\theta} &=& 0  
-\end{eqnarray}
-	
-以上を満たすように$r$と$\theta$を制御する必要がある。
-	
-(2)式をさらに計算する。
-$\dot{\theta}=\omega$とおいて、
-\begin{eqnarray}
-  \dot{r}\ddot{r}+r\omega(\dot{r}\omega+r\dot{\omega})&=&0 \nonumber \\
-  \dot{r}\ddot{r} &=& -r\omega\frac{d}{dt}(r\omega) 
-\end{eqnarray}
-$\dot{r}=x, r\omega=y$とおくと、
-\begin{eqnarray}
-  x\frac{dx}{dt} &=& -y\frac{dy}{dt} \nonumber \\
-  xdx + ydy &=& 0	
-\end{eqnarray}
-
-(4)式は完全微分形の微分方程式である。(4)を解くと、
-\begin{eqnarray}
-  x^2+y^2 &=& C  \nonumber \\
-  \dot{r}^2 + (r\omega)^2 &=& C \nonumber \\
-  \dot{r}^2 &=& -(r\omega)^2 + C 	
-\end{eqnarray}
-初期条件$t=0, r=a, \dot{r}=0, \omega=\omega_0$とすると、
+いま、角速度と半径方向の速度を制御して線速度一定にすることを考える。
+$v=k$（線速度一定）とすると、
 \begin{eqnarray*}
-  C=a^2\omega_0^2	
+  \dot{r}^2+ r^2 \dot{\theta}^2 &=& k^2 \\
+  \dot{r}^2 &=&  k^2 - r^2 \dot{\theta}^2 
 \end{eqnarray*}
-したがって、
+微小区間で考えると
+
 \begin{eqnarray}
-  \dot{r}^2 &=& a^2 \omega_0^2 - r^2 \omega^2 \nonumber \\
-  \dot{r}^2 - a^2 \omega_0^2 &=& r^2 \omega^2 \nonumber \\
-  \omega^2 &=& \frac{1}{r^2} \left\{ \dot{r}^2 - a^2 {\omega_0}^2  \right\} \nonumber \\
-  \omega &=& \frac{1}{r} \sqrt{ \dot{r}^2 - a^2 {\omega_0}^2 }  
+	\left( \frac{\Delta r}{\Delta t}\right)^2 &=&  k^2 - r^2 \left( \frac{\Delta \theta}{\Delta t}\right)^2 \nonumber \\
+\Delta r &=& \sqrt{(k \Delta t)^2 - (r \Delta \theta)^2}
 \end{eqnarray}
 
+いっぽう、NCコードにおいて直線移動命令G1が与えられたとき、CNCコントローラではブレゼンハムのアルゴリズム[Figure 1]にしたがって補完位置$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$が計算される。
+また、計算された$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$は以下の関係式を用いて$\{r_1,r_2,...,r_n\},\{\theta_1,\theta_2,...,\theta_n\}$へと座標変換される。　
+\begin{eqnarray*}
+\left\{
+  \begin{array}{ll}
+r = \sqrt{x^2+y^2} \\	
+\theta = tan^{-1}\frac{y}{x}
+  \end{array}
+  \right.
+\end{eqnarray*}
+すなわち、差分形式とすれば
+\begin{eqnarray}
+\left\{
+  \begin{array}{ll}
+\Delta r = \sqrt{(\Delta x)^2+(\Delta y)^2} \\	
+\Delta \theta = tan^{-1} (\Delta y / \Delta x)
+  \end{array}
+  \right. 
+\end{eqnarray}
 
-\begin{algorithm}                      
-\caption{Bresenham's algorithm}
-\label{alg1}                          
+一般に、(3)で指定される$\Delta r, \Delta \theta$が(2)式を満たすとは限らないため、目的地の座標が指定されたときに線速度を一定にすることはできない。
+
+\begin{algorithm}                  
+%\captionof{algorithm}{Bresenham's algorithm}
 \begin{algorithmic}                  
+\label{alg1}                          
 \STATE $dx \Leftarrow x1-x0$
 \STATE $dy \Leftarrow y1-y0$
 \STATE $D \Leftarrow 2*dy - dx$
@@ -83,23 +86,67 @@ $\dot{r}=x, r\omega=y$とおくと、
 \ENDFOR
 \end{algorithmic}
 \end{algorithm}
+\captionof{figure}{Bresenham's algorithm}
 
-
-
-後退差分表示
+\vspace{0.2in} 
+さて、ステージの変位と射出量の関係について考える。
+極座標におけるステージの線速度を$F(t)$とすれば、微分を後退差分表示することで、以下の式を得る。
 \begin{eqnarray*}
 F(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
 &=& \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tn} \\
 &=& \sqrt{\left( \frac{r_n - r_{n-1}}{\Delta t} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \frac{\theta_n - \theta_{n-1} }{\Delta t} \right)^2}	
 \end{eqnarray*}
 
-ステージの変位とスクリューの変位は比例するので
-\begin{eqnarray*}
-\int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F(t) dt \\
-SNW\big|_{t=t_n} &=& \alpha F(t_n)  \\
-&=& \frac{\alpha}{\Delta t} \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \theta_n - \theta_{n-1} \right)^2} \\
+いま、ステージの変位とスクリューの変位は比例するので
+\begin{eqnarray}
+\int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F(t) dt \nonumber \\
+SNW\big|_{t=t_n} &=& \alpha F(t_n)  \nonumber \\
+&=& \frac{\alpha}{\Delta t} \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \theta_n - \theta_{n-1} \right)^2} \nonumber \\
 &=& \alpha^\prime \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2}
-\end{eqnarray*}
+\end{eqnarray}
+
+(4)式にしたがってスクリュー回転数を制御することで、線速度が変化する状況においても射出量（射出線密度$\rho = \Delta E / \Delta S$）を位置によらず一定とすることができる。（おわり）
+
+
+%$\dot{v} = 0$より、
+%\begin{eqnarray}
+%	\frac{d}{dt} \left(\sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } \right) &=& 0 \nonumber \\
+%\frac{1}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} \cdot \frac{d}{dt}\left( \dot{r}^2+r^2 \dot{\theta}^2 \right) &=& 0 \nonumber \\ 
+%\frac{2\dot{r}\ddot{r} + 2r\dot{r}\dot{\theta}^2 + 2r^2\dot{\theta}\ddot{\theta}}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} &=& 0 \nonumber \\
+%\dot{r}\ddot{r} + r\dot{r}\dot{\theta}^2 + r^2\dot{\theta}\ddot{\theta} &=& 0  
+%\end{eqnarray}
+%	
+%以上を満たすように$r$と$\theta$を制御する必要がある。
+%	
+%(2)式をさらに計算する。
+%$\dot{\theta}=\omega$とおいて、
+%\begin{eqnarray}
+%  \dot{r}\ddot{r}+r\omega(\dot{r}\omega+r\dot{\omega})&=&0 \nonumber \\
+%  \dot{r}\ddot{r} &=& -r\omega\frac{d}{dt}(r\omega) 
+%\end{eqnarray}
+%$\dot{r}=x, r\omega=y$とおくと、
+%\begin{eqnarray}
+%  x\frac{dx}{dt} &=& -y\frac{dy}{dt} \nonumber \\
+%  xdx + ydy &=& 0	
+%\end{eqnarray}
+%
+%(4)式は完全微分形の微分方程式である。(4)を解くと、
+%\begin{eqnarray}
+%  x^2+y^2 &=& C  \nonumber \\
+%  \dot{r}^2 + (r\omega)^2 &=& C \nonumber \\
+%  \dot{r}^2 &=& -(r\omega)^2 + C 	
+%\end{eqnarray}
+%初期条件$t=0, r=a, \dot{r}=0, \omega=\omega_0$とすると、
+%\begin{eqnarray*}
+%  C=a^2\omega_0^2	
+%\end{eqnarray*}
+%したがって、
+%\begin{eqnarray}
+%  \dot{r}^2 &=& a^2 \omega_0^2 - r^2 \omega^2 \nonumber \\
+%  \dot{r}^2 - a^2 \omega_0^2 &=& r^2 \omega^2 \nonumber \\
+%  \omega^2 &=& \frac{1}{r^2} \left\{ \dot{r}^2 - a^2 {\omega_0}^2  \right\} \nonumber \\
+%  \omega &=& \frac{1}{r} \sqrt{ \dot{r}^2 - a^2 {\omega_0}^2 }  
+%\end{eqnarray}
 
 
 
