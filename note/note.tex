@@ -85,4 +85,22 @@ $\dot{r}=x, r\omega=y$とおくと、
 \end{algorithm}
 
 
+
+後退差分表示
+\begin{eqnarray*}
+F(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
+&=& \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tn} \\
+&=& \sqrt{\left( \frac{r_n - r_{n-1}}{\Delta t} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \frac{\theta_n - \theta_{n-1} }{\Delta t} \right)^2}	
+\end{eqnarray*}
+
+ステージの変位とスクリューの変位は比例するので
+\begin{eqnarray*}
+\int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F(t) dt \\
+SNW\big|_{t=t_n} &=& \alpha F(t_n)  \\
+&=& \frac{\alpha}{\Delta t} \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \theta_n - \theta_{n-1} \right)^2} \\
+&=& \alpha^\prime \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2}
+\end{eqnarray*}
+
+
+
 \end{document}
