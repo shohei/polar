@@ -33,7 +33,7 @@
 \section{線速度について}
 デカルト座標系での線速度$v$は極座標で以下のように表される．
 \begin{eqnarray}
-v &=& \sqrt{\dot{x}^2 + \dot{y}^2} \nonumber \\
+|v| &=& \sqrt{\dot{x}^2 + \dot{y}^2} \nonumber \\
   &=& \sqrt{ \left(\frac{d}{dt} r cos\theta \right) ^2 + \left(\frac{d}{dt}r sin\theta\right) ^2} \nonumber \\
   &=& \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } 
 \end{eqnarray}	
@@ -48,7 +48,7 @@ $v=k$（線速度一定）とすると，
 
 \begin{eqnarray}
 	\left( \frac{\Delta r}{\Delta t}\right)^2 &=&  k^2 - r^2 \left( \frac{\Delta \theta}{\Delta t}\right)^2 \nonumber \\
-\Delta r &=& \sqrt{(k \Delta t)^2 - (r \Delta \theta)^2}
+|\Delta r| &=& \sqrt{(k \Delta t)^2 - (r \Delta \theta)^2}
 \end{eqnarray}
 
 いっぽう，NCコードにおいて直線移動命令G1が与えられたとき，CNCコントローラではブレゼンハムのアルゴリズム[Figure 1]にしたがって補完位置$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$が計算される．
@@ -71,7 +71,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
   \right. 
 \end{eqnarray}
 
-一般に，(3)で指定される$\Delta r, \Delta \theta$が(2)式を満たすとは限らないため\footnote{$r$の自由度が残る．}，目的地の座標が指定されたときに線速度を一定にすることはできない．
+一般に，(3)で指定される$\Delta r, \Delta \theta$が(2)式を満たすとは限らないため\footnote{$r$の自由度が残る．}，任意の目的地の座標が指定されたときに線速度を一定にすることはできない．
 \newpage
 
 \begin{algorithm}                  
