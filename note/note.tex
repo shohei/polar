@@ -1,6 +1,6 @@
-\documentclass{article}
+\documentclass[oneside,a4paper]{article}
 \title{極座標ステージとエクストルーダの\\同期に関する考察}
-\author{青木翔平 \thanks{慶應義塾大学 $<$saoki@sfc.keio.ac.jp$>$}}
+\author{青木 翔平}
 
 \usepackage[usenames]{color} %used for font color
 \usepackage{amssymb} %maths
@@ -21,6 +21,11 @@
 \lhead{\leftmark}
 \rhead{[\ \scshape\oldstylenums{\thepage}\ / %
     \scshape\oldstylenums{\pageref{LastPage}}\ ]}
+ \rfoot{\copyright \hspace{0.001in} 2016. Keio University}
+ 
+\setlength{\oddsidemargin}{1cm}
+\setlength{\evensidemargin}{1cm}
+\setlength{\textwidth}{40zw}
 
 \begin{document}
 \maketitle
@@ -67,6 +72,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 \end{eqnarray}
 
 一般に，(3)で指定される$\Delta r, \Delta \theta$が(2)式を満たすとは限らないため\footnote{$r$の自由度が残る．}，目的地の座標が指定されたときに線速度を一定にすることはできない．
+\newpage
 
 \begin{algorithm}                  
 %\captionof{algorithm}{Bresenham's algorithm}
