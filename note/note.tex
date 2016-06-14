@@ -100,28 +100,34 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 \section{エクストルーダの制御について}
 %\vspace{0.2in} 
 ステージの変位と射出量の関係について考える．
-極座標におけるステージの線速度を$F(t)$とすれば，微分を後退差分表示することで以下の式を得る．
+
+デカルト座標系において、移動時間$\Delta t$と線速度$F$[mm/min]の関係は、以下のように表される。
+
 \begin{eqnarray*}
-F(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
+	\Delta t = \frac{F}{\sqrt{(\Delta x)^2+(\Delta y)^2}}\cdot \frac{1}{60}\cdot\frac{1}{1000}
+\end{eqnarray*}
+
+一方、　極座標におけるステージの線速度を$F_{polar}(t)$とすれば，微分を後退差分表示することで以下の式を得る．
+\begin{eqnarray*}
+F_{polar}(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
 &=& \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tn} \\
 &=& \sqrt{\left( \frac{r_n - r_{n-1}}{\Delta t} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \frac{\theta_n - \theta_{n-1} }{\Delta t} \right)^2}	
 \end{eqnarray*}
 
 ステージの変位とスクリューの変位は比例するので
 \begin{eqnarray}
-\int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F(t) dt \nonumber \\
-\therefore SNW\big|_{t=t_n} &=& \alpha F(t_n)  \nonumber \\
+\int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F_{polar}(t) dt \nonumber \\
+\therefore SNW\big|_{t=t_n} &=& \alpha F_{polar}(t_n)  \nonumber \\
 &=& \frac{\alpha}{\Delta t} \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \theta_n - \theta_{n-1} \right)^2} \nonumber \\
-&=& \alpha^\prime \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2} \nonumber \\
+&=&\frac{\alpha}{60\cdot1000} \cdot \frac{F}{\sqrt{(\Delta x)^2+(\Delta y)^2}} \cdot \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2} \nonumber \\
+&=&\alpha^\prime F \sqrt{\frac{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2}{(r_n \cos\theta_n - r_{n-1} \cos\theta_{n-1})^2+(r_n \sin\theta_n - r_{n-1} \sin\theta_{n-1})^2}} \nonumber \\
 \end{eqnarray}
 
 (4)式にしたがってスクリュー回転数を制御することで，線速度が変化する状況においても射出量（射出線密度$\rho = \Delta E / \Delta S$）を位置によらず一定とすることができる．
 
 \section{予想される問題点}
 \subsection{半径の近似精度} 
-(4)式に表される$r_i$の計算において，$r_i$と$r_{i-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．例えばヒトデ型や螺旋形状を高速に造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
-\subsection{時間の刻み}
-(4)式の導出の際に$\Delta t$が一定であると仮定してくくりだしている．現実装では$\Delta t$がG-codeの行ごとの経過時間がほぼ一定である（差の絶対値が小さい）ことを仮定しているが\footnote{G-codeが到着したタイミングで移動変位$\Delta r, \Delta \theta$を計算している．}，これはスライサに依存している．したがって精度が悪い場合は再検討が必要である．
+(4)式に表される$r_i$の計算において，$r_i$と$r_{i-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
 
 %$\dot{v} = 0$より，
 %\begin{eqnarray}
