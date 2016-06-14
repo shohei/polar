@@ -109,26 +109,26 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 
 極座標におけるステージの線速度を$F_{polar}(t)$とすれば，微分を後退差分表示することで以下の式を得る．
 \begin{eqnarray*}
-F_{polar}(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
-&=& \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tn} \\
-&=& \sqrt{\left( \frac{r_n - r_{n-1}}{\Delta t} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \frac{\theta_n - \theta_{n-1} }{\Delta t} \right)^2}	
+F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
+&=& \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tk} \\
+&=& \sqrt{\left( \frac{r_k - r_{k-1}}{\Delta t} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2 \left( \frac{\theta_k - \theta_{k-1} }{\Delta t} \right)^2}	
 \end{eqnarray*}
 
 ステージの変位とスクリューの変位は比例するので
 \begin{eqnarray}
 \int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F_{polar}(t) dt \nonumber \\
-\therefore SNW\big|_{t=t_n} &=& \alpha F_{polar}(t_n)  \nonumber \\
-&=& \frac{\alpha}{\Delta t} \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \theta_n - \theta_{n-1} \right)^2} \nonumber \\
-&=& \frac{\alpha \cdot 60\cdot1000 \cdot \sqrt{(\Delta x)^2+(\Delta y)^2}}{F} \cdot \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2} \nonumber \\
-&=& \frac{\alpha^\prime}{F} \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2 }  \nonumber \\
-&\quad& \cdot \sqrt{ (r_n \cos\theta_n - r_{n-1} \cos\theta_{n-1})^2+(r_n \sin\theta_n - r_{n-1} \sin\theta_{n-1})^2 }
+\therefore SNW\big|_{t=t_k} &=& \alpha F_{polar}(t_k)  \nonumber \\
+&=& \frac{\alpha}{\Delta t} \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2 \left( \theta_k - \theta_{k-1} \right)^2} \nonumber \\
+&=& \frac{\alpha \cdot 60\cdot1000 \cdot \sqrt{(\Delta x)^2+(\Delta y)^2}}{F} \cdot \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2  \left( \theta_k - \theta_{k-1} \right)^2} \nonumber \\
+&=& \frac{\alpha^\prime}{F} \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2  \left( \theta_k - \theta_{k-1} \right)^2 }  \nonumber \\
+&\quad& \cdot \sqrt{ (r_k \cos\theta_k - r_{k-1} \cos\theta_{k-1})^2+(r_k \sin\theta_k - r_{k-1} \sin\theta_{k-1})^2 }
 \end{eqnarray}
 
 (4)式にしたがってスクリュー回転数を制御することで，線速度が変化する状況においても射出量（射出線密度$\rho = \Delta E / \Delta S$）を位置によらず一定とすることができる．
 
 \section{予想される問題点}
 \subsection{半径の近似精度} 
-(4)式に表される$r_i$の計算において，$r_i$と$r_{i-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
+(4)式に表される$r_k$の計算において，$r_k$と$r_{k-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
 
 %$\dot{v} = 0$より，
 %\begin{eqnarray}
