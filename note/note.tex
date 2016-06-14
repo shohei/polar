@@ -26,15 +26,15 @@
 \maketitle
 
 \section{線速度について}
-デカルト座標系での線速度$v$は極座標で以下のように表される。
+デカルト座標系での線速度$v$は極座標で以下のように表される．
 \begin{eqnarray}
 v &=& \sqrt{\dot{x}^2 + \dot{y}^2} \nonumber \\
   &=& \sqrt{ \left(\frac{d}{dt} r cos\theta \right) ^2 + \left(\frac{d}{dt}r sin\theta\right) ^2} \nonumber \\
   &=& \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } 
 \end{eqnarray}	
 	
-いま、角速度と半径方向の速度を制御して線速度一定にすることを考える。
-$v=k$（線速度一定）とすると、
+いま，角速度と半径方向の速度を制御して線速度一定にすることを考える．
+$v=k$（線速度一定）とすると，
 \begin{eqnarray*}
   \dot{r}^2+ r^2 \dot{\theta}^2 &=& k^2 \\
   \dot{r}^2 &=&  k^2 - r^2 \dot{\theta}^2 
@@ -46,8 +46,8 @@ $v=k$（線速度一定）とすると、
 \Delta r &=& \sqrt{(k \Delta t)^2 - (r \Delta \theta)^2}
 \end{eqnarray}
 
-いっぽう、NCコードにおいて直線移動命令G1が与えられたとき、CNCコントローラではブレゼンハムのアルゴリズム[Figure 1]にしたがって補完位置$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$が計算される。
-また、計算された$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$は以下の関係式を用いて$\{r_1,r_2,...,r_n\},\{\theta_1,\theta_2,...,\theta_n\}$へと座標変換される。　
+いっぽう，NCコードにおいて直線移動命令G1が与えられたとき，CNCコントローラではブレゼンハムのアルゴリズム[Figure 1]にしたがって補完位置$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$が計算される．
+また，計算された$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$は以下の関係式を用いて$\{r_1,r_2,...,r_n\},\{\theta_1,\theta_2,...,\theta_n\}$へと座標変換される．　
 \begin{eqnarray*}
 \left\{
   \begin{array}{ll}
@@ -56,7 +56,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
   \end{array}
   \right.
 \end{eqnarray*}
-すなわち、差分形式とすれば
+すなわち，差分形式とすれば
 \begin{eqnarray}
 \left\{
   \begin{array}{ll}
@@ -66,7 +66,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
   \right. 
 \end{eqnarray}
 
-一般に、(3)で指定される$\Delta r, \Delta \theta$が(2)式を満たすとは限らないため、目的地の座標が指定されたときに線速度を一定にすることはできない。
+一般に，(3)で指定される$\Delta r, \Delta \theta$が(2)式を満たすとは限らないため\footnote{$r$の自由度が残る．}，目的地の座標が指定されたときに線速度を一定にすることはできない．
 
 \begin{algorithm}                  
 %\captionof{algorithm}{Bresenham's algorithm}
@@ -93,15 +93,15 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 
 \section{エクストルーダの制御について}
 %\vspace{0.2in} 
-さて、ステージの変位と射出量の関係について考える。
-極座標におけるステージの線速度を$F(t)$とすれば、微分を後退差分表示することで、以下の式を得る。
+ステージの変位と射出量の関係について考える．
+極座標におけるステージの線速度を$F(t)$とすれば，微分を後退差分表示することで以下の式を得る．
 \begin{eqnarray*}
 F(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
 &=& \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tn} \\
 &=& \sqrt{\left( \frac{r_n - r_{n-1}}{\Delta t} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \frac{\theta_n - \theta_{n-1} }{\Delta t} \right)^2}	
 \end{eqnarray*}
 
-いま、ステージの変位とスクリューの変位は比例するので
+ステージの変位とスクリューの変位は比例するので
 \begin{eqnarray}
 \int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F(t) dt \nonumber \\
 \therefore SNW\big|_{t=t_n} &=& \alpha F(t_n)  \nonumber \\
@@ -109,10 +109,10 @@ F(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
 &=& \alpha^\prime \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2}
 \end{eqnarray}
 
-(4)式にしたがってスクリュー回転数を制御することで、線速度が変化する状況においても射出量（射出線密度$\rho = \Delta E / \Delta S$）を位置によらず一定とすることができる。（おわり）
+(4)式にしたがってスクリュー回転数を制御することで，線速度が変化する状況においても射出量（射出線密度$\rho = \Delta E / \Delta S$）を位置によらず一定とすることができる．（おわり）
 
 
-%$\dot{v} = 0$より、
+%$\dot{v} = 0$より，
 %\begin{eqnarray}
 %	\frac{d}{dt} \left(\sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } \right) &=& 0 \nonumber \\
 %\frac{1}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} \cdot \frac{d}{dt}\left( \dot{r}^2+r^2 \dot{\theta}^2 \right) &=& 0 \nonumber \\ 
@@ -120,31 +120,31 @@ F(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
 %\dot{r}\ddot{r} + r\dot{r}\dot{\theta}^2 + r^2\dot{\theta}\ddot{\theta} &=& 0  
 %\end{eqnarray}
 %	
-%以上を満たすように$r$と$\theta$を制御する必要がある。
+%以上を満たすように$r$と$\theta$を制御する必要がある．
 %	
-%(2)式をさらに計算する。
-%$\dot{\theta}=\omega$とおいて、
+%(2)式をさらに計算する．
+%$\dot{\theta}=\omega$とおいて，
 %\begin{eqnarray}
 %  \dot{r}\ddot{r}+r\omega(\dot{r}\omega+r\dot{\omega})&=&0 \nonumber \\
 %  \dot{r}\ddot{r} &=& -r\omega\frac{d}{dt}(r\omega) 
 %\end{eqnarray}
-%$\dot{r}=x, r\omega=y$とおくと、
+%$\dot{r}=x, r\omega=y$とおくと，
 %\begin{eqnarray}
 %  x\frac{dx}{dt} &=& -y\frac{dy}{dt} \nonumber \\
 %  xdx + ydy &=& 0	
 %\end{eqnarray}
 %
-%(4)式は完全微分形の微分方程式である。(4)を解くと、
+%(4)式は完全微分形の微分方程式である．(4)を解くと，
 %\begin{eqnarray}
 %  x^2+y^2 &=& C  \nonumber \\
 %  \dot{r}^2 + (r\omega)^2 &=& C \nonumber \\
 %  \dot{r}^2 &=& -(r\omega)^2 + C 	
 %\end{eqnarray}
-%初期条件$t=0, r=a, \dot{r}=0, \omega=\omega_0$とすると、
+%初期条件$t=0, r=a, \dot{r}=0, \omega=\omega_0$とすると，
 %\begin{eqnarray*}
 %  C=a^2\omega_0^2	
 %\end{eqnarray*}
-%したがって、
+%したがって，
 %\begin{eqnarray}
 %  \dot{r}^2 &=& a^2 \omega_0^2 - r^2 \omega^2 \nonumber \\
 %  \dot{r}^2 - a^2 \omega_0^2 &=& r^2 \omega^2 \nonumber \\

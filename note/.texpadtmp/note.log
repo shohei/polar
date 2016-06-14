@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  14 JUN 2016 09:24
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  14 JUN 2016 09:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -410,7 +410,7 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 28.
 
 Overfull \hbox (48.4877pt too wide) in paragraph at lines 49--51
-\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; x[]; :::; x[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 y[]; y[]; :::; y[]\OMS/cmsy/m/n/10 g$ \JY1/mc/m/n/10 が計算される 。 また 、 計算された $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; x[]; :::; x[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 y[]; y[]; :::; y[]\OMS/cmsy/m/n/10 g$
+\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; x[]; :::; x[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 y[]; y[]; :::; y[]\OMS/cmsy/m/n/10 g$ \JY1/mc/m/n/10 が計算される ． また ， 計算された $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; x[]; :::; x[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 y[]; y[]; :::; y[]\OMS/cmsy/m/n/10 g$
  []
 
 [1
@@ -451,4 +451,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  33i,13n,43p,254b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (3 pages, 9260 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (3 pages, 9396 bytes).
