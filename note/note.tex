@@ -130,8 +130,29 @@ F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
 \subsection{半径の近似精度} 
 (4)式に表される$r_k$の計算において，$r_k$と$r_{k-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
 
+
+
+\clearpage
+\section{Jerkについて}
+前章で述べたように，極座標系において一般に線速度は一定にすることができない．$\dot{r}$と$\dot{\theta}$の振る舞いはファームウェア内で加速度を設定することで操作できるが，この際の加速度の立ち上がり（加加速度$\dot{a}$）を{\bf Jerk}と呼んでいる．
+
+いま，極座標で加速度制御を行ったときに線速度のプロファイルがどのような様子を描くかに興味がある．極座標系での線速度は以下の式(5)から計算できる．半径方向の速度$\dot{r}$と角速度$\dot{\theta}$を適当な台形プロファイルで仮定して数値計算した結果をFigure \ref{fig:jerk}に示す．緑色の実線で示されるのが極座標系における線速度である．
+\begin{eqnarray}
+	|v| = \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } 
+\end{eqnarray}
+
+\begin{figure}[htbp]
+%    \includegraphics[bb=0 0 432 216]{accel.pdf}
+    \includegraphics[bb=0 0 432 216,width=9cm]{accel.pdf}
+    \caption{Velocity profile}
+    \label{fig:jerk}
+\end{figure}
+
+Figure \ref{fig:jerk}から，$\dot{r}$と$\dot{\theta}$を台形型の速度プロファイルで制御したとしても，線速度は台形型とならないことがわかる．これはデカルト座標系との違いである．
+
 %$\dot{v} = 0$より，
 %\begin{eqnarray}
+%    
 %	\frac{d}{dt} \left(\sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } \right) &=& 0 \nonumber \\
 %\frac{1}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} \cdot \frac{d}{dt}\left( \dot{r}^2+r^2 \dot{\theta}^2 \right) &=& 0 \nonumber \\ 
 %\frac{2\dot{r}\ddot{r} + 2r\dot{r}\dot{\theta}^2 + 2r^2\dot{\theta}\ddot{\theta}}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} &=& 0 \nonumber \\
