@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  14 JUN 2016 19:05
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  14 JUN 2016 19:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -446,7 +446,13 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 ]
 File: accel.pdf Graphic file (type eps)
  <accel.pdf>
-Overfull \hbox (20.52075pt too wide) in paragraph at lines 146--147
+Overfull \hbox (20.52075pt too wide) in paragraph at lines 145--146
+[][] 
+ []
+
+File: displacement.pdf Graphic file (type eps)
+<displacement.pdf>
+Overfull \hbox (20.52075pt too wide) in paragraph at lines 155--156
 [][] 
  []
 
@@ -461,12 +467,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 2425 strings out of 493777
- 30081 string characters out of 6151334
+ 2428 strings out of 493777
+ 30131 string characters out of 6151334
  97905 words of memory out of 5000000
- 5864 multiletter control sequences out of 15000+600000
+ 5866 multiletter control sequences out of 15000+600000
  18003 words of font info for 73 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  32i,15n,43p,344b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (3 pages, 13560 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (3 pages, 13912 bytes).
