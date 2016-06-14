@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  13 JUN 2016 17:55
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  14 JUN 2016 09:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -369,80 +369,86 @@ Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 ) (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 \openout1 = `note.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 23.
-LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+(lastpage)             ! on input line 25.
+LaTeX Font Info:    Try loading font information for U+msa on input line 26.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 24.
+LaTeX Font Info:    Try loading font information for U+msb on input line 26.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 24.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 26.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 28.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 28.
 
-Overfull \hbox (48.4877pt too wide) in paragraph at lines 46--48
+Overfull \hbox (48.4877pt too wide) in paragraph at lines 49--51
 \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; x[]; :::; x[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 y[]; y[]; :::; y[]\OMS/cmsy/m/n/10 g$ \JY1/mc/m/n/10 が計算される 。 また 、 計算された $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; x[]; :::; x[]\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 y[]; y[]; :::; y[]\OMS/cmsy/m/n/10 g$
  []
 
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 77.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 77.
 [1
 
-] 
-AED: lastpage setting LastPage
+]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 80.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 80.
+
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 153.
+(Font)              using `JT1/mc/m/n' instead on input line 110.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 153.
+(Font)              using `JY1/mc/m/n' instead on input line 110.
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 153.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 110.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 153.
- [2] (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 110.
+ [2] 
+AED: lastpage setting LastPage
+[3] (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 2406 strings out of 493777
- 29852 string characters out of 6151334
- 93880 words of memory out of 5000000
- 5848 multiletter control sequences out of 15000+600000
- 16163 words of font info for 66 fonts, out of 8000000 for 9000
+ 2417 strings out of 493777
+ 29997 string characters out of 6151334
+ 93906 words of memory out of 5000000
+ 5858 multiletter control sequences out of 15000+600000
+ 17696 words of font info for 72 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 35i,12n,43p,254b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,13n,43p,254b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (2 pages, 8656 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (3 pages, 9260 bytes).

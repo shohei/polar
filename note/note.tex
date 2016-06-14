@@ -1,5 +1,5 @@
 \documentclass{article}
-\title{線速度問題の解決}
+\title{極座標ステージとエクストルーダの\\同期に関する考察}
 \author{青木翔平 \thanks{慶應義塾大学 $<$saoki@sfc.keio.ac.jp$>$}}
 
 \usepackage[usenames]{color} %used for font color
@@ -12,17 +12,20 @@
 \usepackage{algorithmic}
 \usepackage{capt-of}
 
+\renewcommand{\sectionmark}[1]{\markleft{\thesection\ #1}}
+
 \usepackage{lastpage}
 \usepackage{fancyhdr}
  \pagestyle{fancy}
-\lhead{線速度問題の解決}
+%\lhead{線速度問題の解決}
+\lhead{\leftmark}
 \rhead{[\ \scshape\oldstylenums{\thepage}\ / %
     \scshape\oldstylenums{\pageref{LastPage}}\ ]}
-
 
 \begin{document}
 \maketitle
 
+\section{線速度について}
 デカルト座標系での線速度$v$は極座標で以下のように表される。
 \begin{eqnarray}
 v &=& \sqrt{\dot{x}^2 + \dot{y}^2} \nonumber \\
@@ -48,8 +51,8 @@ $v=k$（線速度一定）とすると、
 \begin{eqnarray*}
 \left\{
   \begin{array}{ll}
-r = \sqrt{x^2+y^2} \\	
-\theta = tan^{-1}\frac{y}{x}
+r_i = \sqrt{{x_i}^2+{y_i}^2} \\	
+\theta_i = tan^{-1} (y_i / x_i)
   \end{array}
   \right.
 \end{eqnarray*}
@@ -88,7 +91,8 @@ r = \sqrt{x^2+y^2} \\
 \end{algorithm}
 \captionof{figure}{Bresenham's algorithm}
 
-\vspace{0.2in} 
+\section{エクストルーダの制御について}
+%\vspace{0.2in} 
 さて、ステージの変位と射出量の関係について考える。
 極座標におけるステージの線速度を$F(t)$とすれば、微分を後退差分表示することで、以下の式を得る。
 \begin{eqnarray*}
@@ -100,7 +104,7 @@ F(t_n) &=& \frac{d S}{d t}\Bigg|_{t=tn} \\
 いま、ステージの変位とスクリューの変位は比例するので
 \begin{eqnarray}
 \int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F(t) dt \nonumber \\
-SNW\big|_{t=t_n} &=& \alpha F(t_n)  \nonumber \\
+\therefore SNW\big|_{t=t_n} &=& \alpha F(t_n)  \nonumber \\
 &=& \frac{\alpha}{\Delta t} \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2 \left( \theta_n - \theta_{n-1} \right)^2} \nonumber \\
 &=& \alpha^\prime \sqrt{\left( r_n - r_{n-1} \right)^2 + \left(\frac{r_n+r_{n-1}}{2} \right)^2  \left( \theta_n - \theta_{n-1} \right)^2}
 \end{eqnarray}
