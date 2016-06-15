@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  15 JUN 2016 10:13
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  15 JUN 2016 10:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -444,16 +444,12 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 140.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 140.
+File: accel2.pdf Graphic file (type eps)
+ <accel2.pdf>
 File: accel.pdf Graphic file (type eps)
- <accel.pdf>
-Overfull \hbox (20.52075pt too wide) in paragraph at lines 152--153
-[][] 
- []
-
-
+ <accel.pdf> 
 AED: lastpage setting LastPage
 [3
-
 
 ] (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 
@@ -461,12 +457,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 2429 strings out of 493777
- 30122 string characters out of 6151334
+ 2433 strings out of 493777
+ 30166 string characters out of 6151334
  99905 words of memory out of 5000000
- 5868 multiletter control sequences out of 15000+600000
+ 5871 multiletter control sequences out of 15000+600000
  18003 words of font info for 73 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  32i,15n,43p,355b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (3 pages, 14904 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (3 pages, 15576 bytes).
