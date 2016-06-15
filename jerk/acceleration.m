@@ -21,6 +21,9 @@ for idx=1:length(t)-1
   s(idx+1) = s(idx) + v(idx)*(t(idx+1)-t(idx));
 end
 
+% polar(r,r);
+% return
+
 subplot(121);
 plot(t,r,'r');
 title('r','interpreter','latex');

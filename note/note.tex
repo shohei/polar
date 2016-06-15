@@ -46,7 +46,7 @@ $v=k$（線速度一定）とすると，
 \end{eqnarray*}
 微小区間で考えると
 
-\begin{eqnarray}
+\begin{eqnarray}\label{eq:deltar}
 	\left( \frac{\Delta r}{\Delta t}\right)^2 &=&  k^2 - r^2 \left( \frac{\Delta \theta}{\Delta t}\right)^2 \nonumber \\
 |\Delta r| &=& \sqrt{(k \Delta t)^2 - (r \Delta \theta)^2}
 \end{eqnarray}
@@ -62,7 +62,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
   \right.
 \end{eqnarray*}
 すなわち，差分形式とすれば
-\begin{eqnarray}
+\begin{eqnarray}\label{eq:diff}
 \left\{
   \begin{array}{ll}
 \Delta r = \sqrt{(\Delta x)^2+(\Delta y)^2} \\	
@@ -71,7 +71,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
   \right. 
 \end{eqnarray}
 
-一般に，(3)で指定される$\Delta r, \Delta \theta$が(2)式を満たすとは限らないため\footnote{$r$の自由度が残る．}，任意の目的地の座標が指定されたときに線速度を一定にすることはできない．
+一般に，(\ref{eq:diff})で指定される$\Delta r, \Delta \theta$が(\ref{eq:deltar})式を満たすとは限らないため\footnote{$r$の自由度が残る．}，任意の目的地の座標が指定されたときに線速度を一定にすることはできない．
 %\newpage
 
 \begin{algorithm}                  
@@ -103,9 +103,17 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 
 デカルト座標系において，移動時間$\Delta t$と線速度$F$[mm/min]の関係は，以下のように表される．
 
-\begin{eqnarray*}
+\begin{eqnarray}
 	\Delta t = \frac{\sqrt{(\Delta x)^2+(\Delta y)^2}}{F}\cdot 60\cdot1000
-\end{eqnarray*}
+\end{eqnarray}
+
+エクストルーダ（スクリュー）の射出量を$\Delta E_{screw}$，スクリューの回転数を$SNW$[rad/s]とおけば，以下の式が成り立つ．
+\begin{eqnarray}
+	\Delta E_{screw} &=& \beta \cdot (SNW) \cdot \Delta t \nonumber \\
+	\therefore SNW &=& \frac{1}{\beta} \frac{\Delta E_{screw}}{\Delta t} = \beta^\prime \frac{F\cdot \Delta E_{screw}}{\sqrt{(\Delta x)^2+(\Delta y)^2}} \nonumber \\
+\end{eqnarray}
+
+前回，スライサーからの$\Delta E=E_2-E_1$を$\Delta E_{screw}$と等しいとみなして計算を行ったが，これは誤りである．なぜならば，スライサーが出力した$E$には極座標の位置による速度変化が考慮されていないからである．したがって，スライサーからのエクストルーダの値は無視する．
 
 極座標におけるステージの線速度を$F_{polar}(t)$とすれば，微分を後退差分表示することで以下の式を得る．
 \begin{eqnarray*}
@@ -115,7 +123,7 @@ F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
 \end{eqnarray*}
 
 ステージの変位とスクリューの変位は比例するので
-\begin{eqnarray}
+\begin{eqnarray}\label{eq:controller}
 \int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F_{polar}(t) dt \nonumber \\
 \therefore SNW\big|_{t=t_k} &=& \alpha F_{polar}(t_k)  \nonumber \\
 &=& \frac{\alpha}{\Delta t} \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2 \left( \theta_k - \theta_{k-1} \right)^2} \nonumber \\
@@ -124,20 +132,19 @@ F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
 &\quad& \cdot \sqrt{ (r_k \cos\theta_k - r_{k-1} \cos\theta_{k-1})^2+(r_k \sin\theta_k - r_{k-1} \sin\theta_{k-1})^2 }
 \end{eqnarray}
 
-(4)式にしたがってスクリュー回転数を制御することで，線速度が変化する状況においても射出量（射出線密度$\rho = \Delta E / \Delta S$）を位置によらず一定とすることができる．
+(\ref{eq:controller})式にしたがってスクリュー回転数を制御することで，線速度が変化する状況においてもスクリューの射出量を線速度に追従させることができる．
+
+\clearpage
 
 \section{予想される問題点}
 \subsection{半径の近似精度} 
-(4)式に表される$r_k$の計算において，$r_k$と$r_{k-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
+(\ref{eq:controller})式に表される$r_k$の計算において，$r_k$と$r_{k-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
 
-
-
-\clearpage
 \section{極座標におけるJerkについて}
 前章で述べたように，極座標系において一般に線速度は一定にすることができない．$\dot{r}$と$\dot{\theta}$の振る舞いはファームウェア内で加速度を設定することで操作できるが，この際の加速度の立ち上がり（加加速度$\dot{a}$）を{\bf Jerk}と呼んでいる．
 
-いま，極座標で加速度制御を行ったときに線速度のプロファイルがどのような様子を描くかに興味がある．極座標系での線速度は以下の式(5)から計算できる．半径方向の速度$\dot{r}$と角速度$\dot{\theta}$を適当な台形プロファイルで仮定して数値計算した結果をFigure \ref{fig:jerk}に示す．図中の右で示される$v$が極座標系における線速度である．
-\begin{eqnarray}
+いま，極座標で加速度制御を行ったときに線速度のプロファイルがどのような様子を描くかに興味がある．極座標系での線速度は以下の式(\ref{eq:v})から計算できる．半径方向の速度$\dot{r}$と角速度$\dot{\theta}$を適当な台形プロファイルで仮定して数値計算した結果をFigure \ref{fig:jerk}に示す．図中の右で示される$v$が極座標系における線速度である．
+\begin{eqnarray}\label{eq:v}
 	|v| = \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } 
 \end{eqnarray}
 
@@ -149,13 +156,12 @@ F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
 
 Figure \ref{fig:jerk}から，$\dot{r}$と$\dot{\theta}$を台形型の速度プロファイルで制御したとしても，線速度は台形型とならないことがわかる．これはデカルト座標系との違いである．
 
-またこのとき，極座標系での移動変位はFigure \ref{fig:displacement}に示すように遷移している．
-
-\begin{figure}[htbp]
-    \includegraphics[bb=0 0 432 216,width=9cm]{displacement.pdf}
-    \caption{Travel distance}
-    \label{fig:displacement}
-\end{figure}
+%またこのとき，極座標系での移動変位はFigure \ref{fig:displacement}に示すように遷移している．
+%\begin{figure}[htbp]
+%    \includegraphics[bb=0 0 432 216,width=9cm]{displacement.pdf}
+%    \caption{Travel distance}
+%    \label{fig:displacement}
+%\end{figure}
 
 %$\dot{v} = 0$より，
 %\begin{eqnarray}
