@@ -35,7 +35,7 @@
 デカルト座標系での線速度$v$は極座標で以下のように表される．
 \begin{eqnarray}
 |v| &=& \sqrt{\dot{x}^2 + \dot{y}^2} \nonumber \\
-  &=& \sqrt{ \left(\frac{d}{dt} r cos\theta \right) ^2 + \left(\frac{d}{dt}r sin\theta\right) ^2} \nonumber \\
+  &=& \sqrt{ \left(\frac{d}{dt} r \cos\theta \right) ^2 + \left(\frac{d}{dt}r \sin\theta\right) ^2} \nonumber \\
   &=& \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } 
 \end{eqnarray}	
 	
@@ -66,8 +66,8 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 \begin{eqnarray}\label{eq:diff}
 \left\{
   \begin{array}{ll}
-\Delta r = \sqrt{(\Delta x)^2+(\Delta y)^2} \\	
-\Delta \theta = tan^{-1} (\Delta y / \Delta x)
+\Delta r = r_2-r_1 = \sqrt{{x_2}^2+{y_2}^2} - \sqrt{{x_2}^2+{y_2}^2} \\	
+\Delta \theta = \theta_2-\theta_1 = \tan^{-1} (y_2 / x_2) - \tan^{-1} (y_1 / x_1)
   \end{array}
   \right. 
 \end{eqnarray}
@@ -137,9 +137,18 @@ F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
 
 \clearpage
 
-\section{予想される問題点}
-\subsection{半径の近似精度} 
-(\ref{eq:controller})式に表される$r_k$の計算において，$r_k$と$r_{k-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
+\section{実験}
+(\ref{eq:controller})式にしたがって実際にプリント実験を行ったところ，角速度の変動に射出量が追従できない，なぜか角速度が位置によってうまく変動しないなどの不具合があった．これをもとに，制御量の修正を行った．修正後の関係式を以下に示す．
+\begin{eqnarray}\label{eq:fix}
+  SNW = \gamma \frac{F\cdot r\cdot  \Delta E}{\sqrt{(\Delta x)^2+(\Delta y)^2}} \nonumber 
+\end{eqnarray}
+
+(\ref{eq:fix})式は原点より遠い場所ほどスクリュー回転数を高めるというアドホックな方法であるが，実際はこれでうまくいった．
+
+
+%\section{予想される問題点}
+%\subsection{半径の近似精度} 
+%(\ref{eq:controller})式に表される$r_k$の計算において，$r_k$と$r_{k-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
 
 \section{極座標におけるJerkについて}
 前章で述べたように，極座標系において一般に線速度は一定にすることができない．$\dot{r}$と$\dot{\theta}$の振る舞いはファームウェア内で加速度を設定することで操作できるが，この際の瞬発的な加速度の増加（加加速度$\dot{a}$）を{\bf Jerk}と呼んでいる．
