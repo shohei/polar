@@ -16,6 +16,8 @@ end
 thetadot = (2*t+6).*(t<=2) + 10*(t>2&t<8) + (-2*t+26).*(t>=8);
 v = sqrt(rdot.^2+(r.^2).*thetadot.^2);
 
+v2 = sqrt(rdot.^2+thetadot.^2);
+
 s=[0];
 for idx=1:length(t)-1
     s(idx+1) = s(idx) + v(idx)*(t(idx+1)-t(idx));
@@ -61,10 +63,10 @@ title('$v=\sqrt{\dot{r}^2+r^2 \dot{\theta}^2}$','interpreter','latex');
 
 
 
-fig = gcf;
-fig.PaperUnits = 'inches';
-fig.PaperPosition = [0 0 6 3];
-fig.PaperPositionMode = 'manual';
-print('accel.png','-dpng');
+% fig = gcf;
+% fig.PaperUnits = 'inches';
+% fig.PaperPosition = [0 0 6 3];
+% fig.PaperPositionMode = 'manual';
+% print('accel.png','-dpng');
 %
 end
