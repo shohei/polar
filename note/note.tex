@@ -248,10 +248,55 @@ Figure \ref{fig:jerk}から，$\dot{r}$と$\dot{\theta}$を台形型の速度プ
 以下で，上記の2点について考察する．
 
 \subsubsection{ステージ側の加速度制御}
-スライサーが吐き出したG-codeに記述されたエクストルーダの値から，スクリューの速度プロファイルを逆算する．いま，(\ref{eq:v})式に従って$v$が推移するとき，$\dot{r}$と$\dot{\theta}$は一意に決定できない．ここで独立変数を減らすために，$\theta$は今までと同じように台形型の加減速プロファイル（とくにleib ramp：詳しくは文献\cite{leib}を参照）をとると仮定する．leib rampは乗算器と加算器のみでステッピングモーターのパルス遅延時間を高速に計算するアルゴリズムであり，Marlinでも実装されている．
+スライサーが吐き出したG-codeに記述されたエクストルーダの値から，スクリューの速度プロファイルを逆算する．いま，(\ref{eq:v})式に従って$v$が推移するとき，$\dot{r}$と$\dot{\theta}$は一意に決定できない．ここで独立変数を減らすために，$\theta$は今までと同じように台形型の加減速プロファイル（とくにleib ramp：詳しくは文献\cite{leib}を参照）をとると仮定する．leib rampは乗算器と加算器のみでステッピングモーターのパルス遅延時間を高速に計算するアルゴリズムであり\footnote{台形の立ち上がり部分を3次関数で表現している．}，Marlinでも実装されている．
+\clearpage
+
+\begin{algorithm}                  
+\begin{algorithmic}                  
+\label{alg1}                          
+\STATE $v_0, v, a, F$ given.
+\STATE $S \Leftarrow (v^2-{v_0}^2) / 2 a$
+\STATE $p_1 \Leftarrow F / ({v_0}^2 + 2a)^{-\frac{1}{2}}$
+\STATE $p_s \Leftarrow F/v$
+\STATE $R \Leftarrow a / F^2$
+\STATE $T_ss$ given.
+\FOR{$i$ from $1$ to $Ts$}
+\IF{$i \leq S$}
+  \STATE $m \Leftarrow -R$
+\ELSIF{$i \leq T_s-S$}
+  \STATE $m \Leftarrow 0$
+\ELSE
+  \STATE $m \Leftarrow R$
+\ENDIF
+\STATE $p_{i+1} \Leftarrow p_i \cdot (1+m\cdot p \cdot p)$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+\vspace{-0.7cm}
+\captionof{figure}{Leib Ramp}
+\vspace{0.3cm}
+
+このとき，$\dot r$は以下のように逆算できる。
+
+\begin{algorithm}                  
+\begin{algorithmic}                  
+\label{alg1}                          
+\STATE $\Delta E \Leftarrow E_2-E_1$
+\STATE $\Delta S \Leftarrow ((x_2-x_1)^2 + (y_2-y_1)^2)^{\frac{1}{2}}$
+\STATE $\Delta \theta \Leftarrow \tan^{-1} (y_2/x_2) - \tan^{-1} (y_1/x_1)$
+\STATE $T_s = \alpha \cdot \Delta \theta$
+\STATE compute $p_i$ with Leib Ramp.
+\STATE $\dot \theta \Leftarrow 1 / p_i $ 
+\STATE $dr/dt \Leftarrow (\Delta E/\Delta t-r^2 \cdot \dot \theta)^{\frac{1}{2}}$
+\end{algorithmic}
+\end{algorithm}
+\vspace{-0.7cm}
+\captionof{figure}{$\dot r$ solver algorithm}
+\vspace{0.3cm}
 
 
-このとき，$\dot r$を逆算したものを図に示す．
+数値計算の結果を図に示す。
+
 
 \begin{figure}[htbp]
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{accel2.pdf}
@@ -292,8 +337,6 @@ Figure \ref{fig:jerk}から，$\dot{r}$と$\dot{\theta}$を台形型の速度プ
 
 まず，1.については回転数は実時間で追従していることが確認できている．したがって問題は2.の部分である．以下ではスクリュー内部の圧力変動をNavier-Stokes方程式で計算する．
 
-
-
 %補足として，Jerkをゼロとした時の計算結果をFigure \ref{fig:jerk}に示す．
 %\begin{figure}[t]
 %    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{accel.pdf}
@@ -311,27 +354,14 @@ Figure \ref{fig:jerk}から，$\dot{r}$と$\dot{\theta}$を台形型の速度プ
 
 %\appendix
 
-\begin{appendices}
-  \section{Leib Ramp}
-
-
-
-
-
-
-
-
-
-
-
-
-\end{appendices}
+%\begin{appendices}
+%  \section{Leib Ramp}
+%\end{appendices}
 
 \begin{thebibliography}{99}
   \bibitem{joshiki} 伊理正夫，藤野和建，『数値計算の常識』，共立出版 (1985)
   \bibitem{leib} Aryeh Eiderman, "Real Time Stepper Motor Linear Ramping Just by Addition and Multiplication," http://hwml.com/LeibRamp.pdf
 \end{thebibliography}
-
 
 %$\dot{v} = 0$より，
 %\begin{eqnarray}
