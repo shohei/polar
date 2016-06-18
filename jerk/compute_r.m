@@ -4,7 +4,7 @@ close all;
 format compact;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-CAPTURE = true;
+CAPTURE = false;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 FigHandle = figure;

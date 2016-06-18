@@ -3,6 +3,12 @@ clear all;
 close all;
 format compact;
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+CAPTURE = true;
+REDUCE = true;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % pathname = '/Users/shohei/Codes/C++/cgc/tests/fixtures/';
 % filename = 'jaws.gcode';
 
@@ -86,6 +92,11 @@ ylim([0,65]);
 
 counter=0;
 
+if(CAPTURE)
+    writerObj = VideoWriter('newfile.avi');
+    open(writerObj);
+end
+
 while ischar(tline)
     [startIndex,endIndex] = regexp(tline,'^G\d*');
     if(~isempty(startIndex))
@@ -112,10 +123,10 @@ while ischar(tline)
                     plot(v,'b');
                     subplot(255);
                     EE(end+1) = deltaE;
-                    plot(EE,'b');                                                     
+                    plot(EE,'b');
                     sign_for_dr(end+1) = checkSign(Xold,Yold,dx(end),dy(end));
                     
-                    dr = sign_for_dr.*sqrt(dx.^2+dy.^2);                    
+                    dr = sign_for_dr.*sqrt(dx.^2+dy.^2);
                     
                     subplot(257);
                     plot(dr,'b');
@@ -123,22 +134,29 @@ while ischar(tline)
                     XX(end+1) = Xnew;
                     YY(end+1) = Ynew;
                     r = sqrt(XX.^2+YY.^2);
-%                     r(end+1) = r(end) + dr(end);                    
+                    %                     r(end+1) = r(end) + dr(end);
                     if(isempty(dtheta))
-                      dtheta(end+1) = atan2(dy(end),dx(end));                                               
+                        dtheta(end+1) = atan2(dy(end),dx(end));
                     else
-                      dtheta(end+1) = atan2(dy(end),dx(end))-atan2(dy(end-1),dx(end-1));                        
+                        dtheta(end+1) = atan2(dy(end),dx(end))-atan2(dy(end-1),dx(end-1));
                     end
                     subplot(258);
                     plot(dtheta,'b');
                     subplot(259);
                     v2 = sqrt((dr./dt).^2+(r.^2).*(dtheta./dt).^2);
                     plot(v2,'b');
-
+                    
                     subplot(2,5,10);
                     plot(r,'b');
+                    if(~REDUCE)
+                        drawnow;
+                        if(CAPTURE)
+                            frame = getframe(gcf);
+                            writeVideo(writerObj, frame);
+                        end
+                        
+                    end
                     
-%                     drawnow;
                     Xold=Xnew;
                     Yold=Ynew;
                     Eold=Enew;
@@ -157,8 +175,15 @@ while ischar(tline)
         end
     end
     tline = fgets(fid);
-    if(mod(counter,50)==0)
-      drawnow;           
+    if(REDUCE)
+        if(mod(counter,20)==0)
+            drawnow;
+            if(CAPTURE)
+                frame = getframe(gcf);
+                writeVideo(writerObj, frame);
+            end
+            
+        end
     end
     counter=counter+1;
 end
@@ -178,13 +203,13 @@ fclose(fid);
                 S =  1;
             else
                 S = -1;
-            end                
+            end
         elseif(Xold<0 && Yold <0) %III
             if(dx<0 || dy<0)
                 S = 1;
             else
                 S = -1;
-            end     
+            end
         elseif (Xold>0 && Yold <0) %IV
             if(dx>0 || dy<0)
                 S = 1;
@@ -253,6 +278,10 @@ fclose(fid);
         end
         
     end
+
+if(CAPTURE)
+    close(writerObj);
+end
 
 
 end
