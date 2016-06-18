@@ -1,32 +1,47 @@
-function [v,t] = leib_ramp(totalsteps)
+function [v,t] = leib_ramp(totalsteps,a,F,v,v0)
 
 format compact;
 
+%% for debugging
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 STANDALONE = false;
+CAPTURE = false;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-if(STANDALONE)
-    clear all;
-    close all;
-end
+% if(STANDALONE)
+%     clear all;
+%     close all;
+% end
 
 if(STANDALONE)
     FigHandle = figure;
     set(FigHandle, 'Position', [100, 100, 1000, 300]);
 end
 
-a = 10; %steps per sec^2
-F = 2000; %Hz
-v = 25;% (steps/s): slew speed: max feedrate
-v0 = 5;%(steps/s): base speed
 
+%% given parameter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+if(STANDALONE)
+    totalsteps = 150; %total steps
+    a = 10; %steps per sec^2
+    F = 2000; %Hz
+    v = 25;% (steps/s): slew speed: max feedrate
+    v0 = 5;%(steps/s): base speed
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+if(CAPTURE)
+    writerObj = VideoWriter('newfile.avi');
+    open(writerObj);
+end
+
+
+%% main computation
 S = (v^2-v0^2) / (2*a);
 p1 = F/sqrt(v0^2+2*a);
 ps = F/v;
 R = a/F^2;
 
-% totalsteps = 150; %total steps
 
 p(1) = p1;
 x(1) = 0;
@@ -65,7 +80,18 @@ for i=1:totalsteps
         title('v');
         
         drawnow;
+    
+        if(CAPTURE)
+            frame = getframe(gcf);
+            writeVideo(writerObj, frame);
+        end
+
     end
+end
+t = t(1:end-1);
+
+if(CAPTURE)
+    close(writerObj);
 end
 
 
