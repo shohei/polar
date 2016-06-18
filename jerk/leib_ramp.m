@@ -4,7 +4,7 @@ clear all;
 close all;
 
 FigHandle = figure;
-set(FigHandle, 'Position', [100, 100, 800, 400]);
+set(FigHandle, 'Position', [100, 100, 1000, 300]);
 
 a = 10; %steps per sec^2
 F = 2000; %Hz
@@ -20,8 +20,13 @@ R = a/F^2
 L = 150; %total steps
 
 p(1) = p1;
-
+x(1) = 0;
+t(1) = 0;
 for i=1:L
+    x(end+1) = i;
+    t(end+1) = t(end) + p(end);
+    v = horzcat(abs(diff(x)./diff(t)));
+    
     if(i<S)
         m = -R;
     elseif(i<L-S)
@@ -37,16 +42,22 @@ for i=1:L
         p(i+1) = p1;
     end
 
-    subplot(121);
+    subplot(131);
     plot(p);
     title('delay');
     
-    subplot(122);
-    plot(1./p,'r');
-    title('V')
+    subplot(132);
+    plot(t,x,'r');
+    title('x')
     
+    subplot(133);
+    plot(t(1:end-1),v,'b');
+    title('v')
+
+   
     drawnow;
 end
+t
 
 
 
