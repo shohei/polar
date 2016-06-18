@@ -3,9 +3,6 @@ clear all;
 close all;
 format compact;
 
-t = linspace(0,10,101);
-
-
 % Gcode parser
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -16,6 +13,7 @@ fid = fopen(fullpath,'r');
 tline = fgets(fid);
 counter=0;
 
+t(1) = 0;
 while ischar(tline)
     [startIndex,endIndex] = regexp(tline,'^G\d*');
     if(~isempty(startIndex))
@@ -31,11 +29,13 @@ while ischar(tline)
                     dx(end+1) = Xnew-Xold;
                     dy(end+1) = Ynew-Yold;
                     dt(end+1) = sqrt(dx(end)^2+dy(end)^2)/Fnew*60;
+                    t(end+1) = t(end) + dt(end);
                     v = sqrt((dx./dt).^2+(dy./dt).^2);
-                    EE(end+1) = deltaE;
-                    plot(EE,'b');                                                     
-                    dr = sign_for_dr.*sqrt(dx.^2+dy.^2);                    
-                    
+                    thetadot =                     
+                    r(end+1) = sqrt(Xnew^2 + Ynew^2);
+                    rdot(end+1) = sqrt((deltaE/dt(end))^2 - r(end)^2 * thetadot^2);
+                    plot(rdot,t);
+                    title('$\dot r$','interpreter','latex');
                     drawnow;
                 end
             case 'G161' % Home axes to minimum
@@ -60,42 +60,42 @@ end
 fclose(fid);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% t = linspace(0,10,101);
 %t<=2: 2t+6
 %2<t<8: 10
 %t>=8: -2t+26
-rdot = (2*t+6).*(t<=2) + 10*(t>2&t<8) + (-2*t+26).*(t>=8);
-r=[0];
-for idx=1:length(t)-1
-    r(idx+1) = r(idx) + rdot(idx)*(t(idx+1)-t(idx));
-end
-thetadot = (2*t+6).*(t<=2) + 10*(t>2&t<8) + (-2*t+26).*(t>=8);
-v = sqrt(rdot.^2+(r.^2).*thetadot.^2);
-v2 = sqrt(rdot.^2+thetadot.^2);
-
-s=[0];
-for idx=1:length(t)-1
-    s(idx+1) = s(idx) + v(idx)*(t(idx+1)-t(idx));
-end
-
-
-FigHandle = figure;
-set(FigHandle, 'Position', [100, 100, 1200, 300]);
-set(gcf,'color','w');
-
-subplot(131);
-plot(t,v,'g');
-title('$v \sim \omega =  \frac{\Delta E}{\Delta t}$','interpreter','latex');
-
-subplot(132);
-plot(t,rdot,'r');
-title('$\dot{r}$','interpreter','latex');
-ylim([0 15]);
-
-subplot(133);
-plot(t,thetadot,'b');
-title('$\dot{\theta}$','interpreter','latex');
-ylim([0 15]);
+% rdot = (2*t+6).*(t<=2) + 10*(t>2&t<8) + (-2*t+26).*(t>=8);
+% r=[0];
+% for idx=1:length(t)-1
+%     r(idx+1) = r(idx) + rdot(idx)*(t(idx+1)-t(idx));
+% end
+% thetadot = (2*t+6).*(t<=2) + 10*(t>2&t<8) + (-2*t+26).*(t>=8);
+% v = sqrt(rdot.^2+(r.^2).*thetadot.^2);
+% v2 = sqrt(rdot.^2+thetadot.^2);
+% 
+% s=[0];
+% for idx=1:length(t)-1
+%     s(idx+1) = s(idx) + v(idx)*(t(idx+1)-t(idx));
+% end
+% 
+% 
+% FigHandle = figure;
+% set(FigHandle, 'Position', [100, 100, 1200, 300]);
+% set(gcf,'color','w');
+% 
+% subplot(131);
+% plot(t,v,'g');
+% title('$v \sim \omega =  \frac{\Delta E}{\Delta t}$','interpreter','latex');
+% 
+% subplot(132);
+% plot(t,rdot,'r');
+% title('$\dot{r}$','interpreter','latex');
+% ylim([0 15]);
+% 
+% subplot(133);
+% plot(t,thetadot,'b');
+% title('$\dot{\theta}$','interpreter','latex');
+% ylim([0 15]);
 
 
 % fig = gcf;
