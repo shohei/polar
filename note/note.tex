@@ -14,6 +14,7 @@
 
 \usepackage{ascmac}
 \usepackage[titletoc,title]{appendix}
+\usepackage{bm}
 
 \renewcommand{\sectionmark}[1]{\markleft{\thesection\ #1}}
 
@@ -114,7 +115,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 \end{eqnarray}
 
 エクストルーダ（スクリュー）の射出量を$\Delta E_{screw}$，スクリューの回転数を$SNW$[rpm]とおけば，以下の式が成り立つ．
-\begin{eqnarray}
+\begin{eqnarray}\label{eq:initial}
 	\Delta E_{screw} &=& \beta \cdot (SNW) \cdot \Delta t \nonumber \\
 	\therefore SNW &=& \frac{1}{\beta} \frac{\Delta E_{screw}}{\Delta t} = \beta^\prime \frac{F\cdot \Delta E_{screw}}{\sqrt{(\Delta x)^2+(\Delta y)^2}} \nonumber \\
 \end{eqnarray}
@@ -149,13 +150,62 @@ F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
 \section{試験結果をうけた制御式の変更}
 (\ref{eq:controller})式にしたがって実際にプリント試験を行ったところ，角速度の変動が速すぎて射出量が追従できない，あるいは角速度が位置によってうまく変動しないなどの不具合があった．微分の誤差が効いているものと思われる．
 
-したがって制御量の修正を行った．修正後の関係式を以下に示す．
+制御式の変更について、以下の２つのアプローチを考える。
+
+\begin{enumerate}
+	\item (\ref{eq:controller})式の高周波成分を抑制する
+	\item モデルを変更する
+\end{enumerate}
+
+以下でそれぞれについて検討する。
+\subsection{高周波成分の抑制}
+プリント試験に用いたモデルのG-codeを基に制御式のシミュレーションを行った結果を以下に示す。
+
+\begin{figure}[htbp]
+    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{gcodesim.png}
+    \caption{Numerical computation of screw speed}
+    \label{fig:noise}
+\end{figure}
+
+(\ref{eq:controller})式による制御結果
+Figure \ref{fig:noise}を見ると、下段$v_2$で示されるスクリュー速度が振動していることが読み取れる。これを適当なローパスフィルターで除去することを考える。ここではカルマンフィルターを適用してみる。
+
+カルマンフィルターのアルゴリズムは以下のように表される。
+  \begin{itembox}[l]{カルマンフィルター}
+    $\Box$ 時間更新式\\
+    $k=1,2,...,N$に対して以下を実行\\
+	$\bullet$ 予測ステップ\\
+	事前状態推定値: \\
+	$\:\:\:\:\:\: \hat{\bm{x}}^{-}(k) = \bm{A}\hat{\bm{x}}^{-}(k-1)$\\
+	事前誤差共分散行列: \\
+	$\:\:\:\:\:\: \bm{P}^{-}(k)=\bm{A}\bm{P}(k-1)\bm{A}^{T}+\bm{BQ}\bm{B}^T$\\		
+	$\bullet$ フィルタリングステップ\\
+	カルマンゲイン行列: \\
+	$\:\:\:\:\:\: \bm{G}(k)=\bm{P}^{-}(k)\bm{C}^T(\bm{C}\bm{P}^{-}(k)\bm{C}^{T}+R)^{-1}$\\
+	状態推定値: \\
+	$\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{G}(k)(\bm{y}(k)-\bm{C}\hat{\bm{x}}^{-}(k))$\\
+	事後誤差共分散行列: \\
+	$\:\:\:\:\:\: \bm{P}^(k)=(\bm{I}-\bm{G}(k)\bm{C}\bm{P}^{-1})$
+  \end{itembox}
+
+ただし共分散行列$\bm{P}^{-1}(k), \bm{P}(k)$は$n \times n$行列、カルマンゲイン$\bm{G}(k)$は$n \times p$行列である。
+
+
+
+\subsection{モデルの変更}
+Figure \ref{fig:noise}の計算結果で示されるような高周波成分を含む速度指令をスクリューに与えても、スクリュー内部での圧力変化にもとづく樹脂の流速の応答が遅いために樹脂の出力は追従できない。ならばいっそのことモデルを変更することを考える。
+
+樹脂の追従速度が遅いため、速度指令は時間発展に応じてなだらかにドリフトするようなモデルが好ましい。また、定性的には動径方向の変位が大きいときに射出速度を速めるような処理が必要となる。
+
+ここではヒューリスティックな方法として、単純に半径に比例するような成分を(\ref{eq:initial})式に加えてみる。修正後の関係式を以下に示す．
 
 \begin{eqnarray}\label{eq:fix}
   SNW = \gamma \frac{F\cdot r\cdot  \Delta E}{\sqrt{(\Delta x)^2+(\Delta y)^2}} 
 \end{eqnarray}
 
-(\ref{eq:fix})式は原点より遠い場所ほどスクリュー回転数を高めるというアドホックな方法であるが，直感的にもわかりやすく，またうまくいく方法であった．なぜこの方法がすぐれているのか，その原因については後述する．
+(\ref{eq:fix})式は原点より遠い場所ほどスクリュー回転数を高めるというアドホックな方法であるが，直感的にもわかりやすく、実装も単純である。
+
+実際に実験を行ったところ改善が見られたので、以降はこの方法を採用する．なぜこの方法がすぐれているのか，その原因については後述する．
 
 \section{議論}
 現時点で判明している問題点として，
@@ -336,6 +386,7 @@ Figure \ref{fig:jerk}から，$\dot{r}$と$\dot{\theta}$を台形型の速度プ
 \end{enumerate}
 
 まず，1.については回転数は実時間で追従していることが確認できている．したがって問題は2.の部分である．以下ではスクリュー内部の圧力変動をNavier-Stokes方程式で計算する．
+
 
 %補足として，Jerkをゼロとした時の計算結果をFigure \ref{fig:jerk}に示す．
 %\begin{figure}[t]

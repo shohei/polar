@@ -5,8 +5,9 @@ format compact;
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-CAPTURE = true;
+CAPTURE = false;
 REDUCE = true;
+SCREENSHOT = true;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % pathname = '/Users/shohei/Codes/C++/cgc/tests/fixtures/';
@@ -97,6 +98,8 @@ if(CAPTURE)
     open(writerObj);
 end
 
+
+MAXLOOP = 2000;
 while ischar(tline)
     [startIndex,endIndex] = regexp(tline,'^G\d*');
     if(~isempty(startIndex))
@@ -186,6 +189,16 @@ while ischar(tline)
         end
     end
     counter=counter+1;
+    if(counter>MAXLOOP)        
+        if(SCREENSHOT)
+            fig = gcf;
+            fig.PaperUnits = 'inches';
+            fig.PaperPosition = [0 0 6 3];
+            fig.PaperPositionMode = 'manual';
+            print('gcodesim.png','-dpng');
+        end
+        return;
+    end
 end
 
 fclose(fid);
@@ -282,6 +295,5 @@ fclose(fid);
 if(CAPTURE)
     close(writerObj);
 end
-
 
 end
