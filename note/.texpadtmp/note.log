@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  21 JUN 2016 10:30
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  21 JUN 2016 11:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -489,7 +489,16 @@ File: gcodesim.png Graphic file (type eps)
 
 ]
 File: accel2.pdf Graphic file (type eps)
- <accel2.pdf> [4] [5]
+ <accel2.pdf> [4]
+
+LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
+(Font)              using `JT1/mc/m/n' instead on input line 302.
+
+
+LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
+(Font)              using `JY1/mc/m/n' instead on input line 302.
+
+[5]
 File: accel2.pdf Graphic file (type eps)
  <accel2.pdf> 
 AED: lastpage setting LastPage
@@ -504,12 +513,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2699 strings out of 493777
- 33440 string characters out of 6151334
+ 2709 strings out of 493777
+ 33553 string characters out of 6151334
  104822 words of memory out of 5000000
- 6105 multiletter control sequences out of 15000+600000
- 23773 words of font info for 93 fonts, out of 8000000 for 9000
+ 6114 multiletter control sequences out of 15000+600000
+ 24119 words of font info for 94 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 32i,15n,43p,562b,499s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,15n,43p,507b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (6 pages, 39156 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (6 pages, 41448 bytes).
