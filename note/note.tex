@@ -321,7 +321,7 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \begin{eqnarray*}
 	p_i = \frac{F}{v_i}
 \end{eqnarray*}
-であるから，(\ref{eq:third})式を用いることで，pに関する漸化式は以下のように変形できる．
+であるから，(\ref{eq:third})式を用いることで，$p$に関する漸化式は以下のように変形できる．
 \begin{eqnarray}\label{eq:fourth}
 	p_i = \frac{F}{\sqrt{{(\frac{F}{p_{i-1}})}^2+2a}} 
 \end{eqnarray}
@@ -334,7 +334,7 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \left\{\begin{array}{r@{\,}c@{\,}r@{\,}c@{\,}l@{\;\;}r} m &=& -R &:& \:\:\: \mbox{\small during acceleration}\\ m &=& 0 &:&  \:\:\: \mbox{\small slew speed}\\ m &=& R &:&  \:\:\: \mbox{\small during deceleration}\end{array}%\right.
 \end{eqnarray}
 
-(\ref{eq:mdef})式をアルゴリズムとして整理したものをFigure \ref{alg:leib}に示す。
+(\ref{eq:mdef})式をアルゴリズムとして整理したものをFigure \ref{alg:leib}に示す．
 
 \begin{algorithm}                  
 \begin{algorithmic}                  
@@ -369,11 +369,11 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
     \label{fig:leib_ramp_result}
 \end{figure}
 
-いま、ある時刻における$\dot{\theta_i}$はleib rampで求まった。次に、$\dot r$は(\ref{eq:vdef})式を用いて
+いま，ある時刻における$\dot{\theta_i}$はleib rampで求まった．次に，$\dot r$は(\ref{eq:vdef})式を用いて
 \begin{eqnarray}
 	\bigg|\frac{dr}{dt}\bigg| = \sqrt{\frac{\Delta E}{\Delta t} - r^2 \cdot \dot \theta}
 \end{eqnarray}
-と表されるから、$\dot r$を求めるアルゴリズムをまとめると、Figure \ref{alg:drdt}のようになる。
+と表されるから，$\dot r$を求めるアルゴリズムをまとめると，Figure \ref{alg:drdt}のようになる．
 
 \begin{algorithm}[htbp]                  
 \begin{algorithmic}                  
@@ -391,7 +391,7 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \captionof{figure}{$\dot r$ solver algorithm}
 \vspace{0.3cm}
 
-数値計算の結果を図に示す．
+数値計算の結果をFigure \ref{eq:rdot_simulation}に示す．
 
 \begin{figure}[htbp]\label{eq:rdot_simulation}
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{compute_rdot_screenshot.png}
@@ -399,9 +399,17 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
     \label{fig:compute_rdot}
 \end{figure}
 
+\subsection{出力物の精度に与える影響の見積もり}
 Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御した時の$\dot r$の変動は非常に小さいものである．($\sim 1.0 \times 10^{-4}$)
 
-上記より，ステージ側Jerkの$\dot r$については修正の必要性はなく，現行の計算アルゴリズムを利用すればよいといえる．
+\begin{itemize}
+	\item TODO: $\dot r$の加速部分の加速時間と、変動量から理想制御におけるx-y変位量のオーダーを計算し、それが小さいことを述べる
+\end{itemize}
+
+
+
+
+%上記より，ステージ側Jerkの$\dot r$については修正の必要性はなく，現行の計算アルゴリズムを利用すればよいといえる．
 
 \section{樹脂射出応答の遅延について}
 制御ボード上のプロセッサがPLCに回転数指令を与えてから，じっさいにエクストルーダから樹脂が射出されるまでには遅延がある．これについて定量的な考察を行う．
@@ -412,7 +420,17 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
     \item スクリューの回転数が変更されたあと，射出量が追従するまでの遅延
 \end{enumerate}
 
-まず，1.については回転数は実時間で追従していることが確認できている．したがって問題は2.の部分である．以下ではスクリュー内部の圧力変動をNavier-Stokes方程式で計算する．
+まず，1.については回転数は実時間で追従していることが確認できている．したがって問題は2.の部分である．以下ではスクリュー内部の圧力変動による速度変化をNavier-Stokes方程式で計算する．
+
+\subsection{流れ関数-渦度法}
+渦度輸送方程式
+
+\subsection{速度-圧力法}
+前述の流れ関数-渦度法では連続の式を満たす利点があるものの、流れ関数を見積もる難しさがある。
+本項では速度-圧力法、特にフラクショナル・ステップ法\cite{nagare,ranryu}を用いて計算する。
+
+%チェス問題
+%sスタガード格子
 
 
 %補足として，Jerkをゼロとした時の計算結果をFigure \ref{fig:jerk}に示す．
@@ -438,7 +456,10 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
 
 \begin{thebibliography}{99}
   \bibitem{joshiki} 伊理正夫，藤野和建，『数値計算の常識』，共立出版 (1985)
+  \bibitem{kalman} 足立修一，丸田一郎，『カルマンフィルタの基礎』，東京電機大学出版局 (2012)
   \bibitem{leib} Aryeh Eiderman, "Real Time Stepper Motor Linear Ramping Just by Addition and Multiplication," http://hwml.com/LeibRamp.pdf
+  \bibitem{nagare} 河村 哲也，『流れのシミュレーションの基礎』，インデックス出版 (2007)
+   \bibitem{ranryu} 梶島 岳夫，『乱流の数値シミュレーション』，養賢堂 (2014)
 \end{thebibliography}
 
 %$\dot{v} = 0$より，
