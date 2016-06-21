@@ -8,10 +8,11 @@
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc} %useful to type directly diacritic characters
-\usepackage{algorithm}
+%\usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{capt-of}
-
+%\usepackage[boxed,linesnumbered,figure]{algorithm2e}
+\usepackage[ruled,vlined]{algorithm2e}
 \usepackage{ascmac}
 \usepackage[titletoc,title]{appendix}
 \usepackage{bm}
@@ -60,7 +61,7 @@ $v=k$（線速度一定）とすると，
 |\Delta r| &=& \sqrt{(k \Delta t)^2 - (r \Delta \theta)^2}
 \end{eqnarray}
 
-いっぽう，NCコードにおいて直線移動命令G1が与えられたとき，CNCコントローラではブレゼンハムのアルゴリズム[Figure 1]にしたがって補間位置$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$が計算される．
+いっぽう，NCコードにおいて直線移動命令G1が与えられたとき，CNCコントローラではブレゼンハムのアルゴリズム(Algorithm \ref{alg:bresenham})にしたがって補間位置$\{x_1,x_2,...,x_n\},\{y_1,y_2,...,y_n\}$が計算される．
 また，計算された$\{x_1,x_2,...,xw_n\},\{y_1,y_2,...,y_n\}$は以下の関係式を用いて$\{r_1,r_2,...,r_n\},\{\theta_1,\theta_2,...,\theta_n\}$へと座標変換される．　
 \begin{eqnarray*}
 \left\{
@@ -84,9 +85,8 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 %\newpage
 
 \begin{algorithm}                  
-%\captionof{algorithm}{Bresenham's algorithm}
 \begin{algorithmic}                  
-\label{alg1}                          
+\label{alg:bresenham}                          
 \STATE $dx \Leftarrow x1-x0$
 \STATE $dy \Leftarrow y1-y0$
 \STATE $D \Leftarrow 2*dy - dx$
@@ -103,8 +103,8 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 \ENDIF
 \ENDFOR
 \end{algorithmic}
+\caption{Interpolation of Bresenham}
 \end{algorithm}
-\captionof{figure}{Bresenham's algorithm}
 
 \section{エクストルーダの制御について}
 %\vspace{0.2in} 
@@ -192,7 +192,7 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
 
 ただし共分散行列$\bm{P}^{-1}(k), \bm{P}(k)$は$n \times n$行列，カルマンゲイン$\bm{G}(k)$は$n \times p$行列である．
 
-いま，線形カルマンフィルタを適用するために，(\ref{eq:controller})式をLTIシステムに線形化することを考える．
+いま，線形カルマンフィルタを適用するために，(\ref{eq:controller})式を時不変システムに線形化することを考える．
 
 
 \subsection{モデルの変更}
@@ -336,11 +336,10 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \left\{\begin{array}{r@{\,}c@{\,}r@{\,}c@{\,}l@{\;\;}r} m &=& -R &:& \:\:\: \mbox{\small during acceleration}\\ m &=& 0 &:&  \:\:\: \mbox{\small slew speed}\\ m &=& R &:&  \:\:\: \mbox{\small during deceleration}\end{array}%\right.
 \end{eqnarray}
 
-(\ref{eq:mdef})式をアルゴリズムとして整理したものをFigure \ref{alg:leib}に示す．
+(\ref{eq:mdef})式をアルゴリズムとして整理したものをAlgorithm 2に示す．
 
-\begin{algorithm}                  
+\begin{algorithm}         
 \begin{algorithmic}                  
-\label{alg:leib}                          
 \STATE $v_0, v, a, F$ given.
 \STATE $S \Leftarrow (v^2-{v_0}^2) / 2 a$
 \STATE $p_1 \Leftarrow F / ({v_0}^2 + 2a)^{-\frac{1}{2}}$
@@ -358,10 +357,10 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \STATE $p_{i+1} \Leftarrow p_i \cdot (1+m\cdot p \cdot p)$
 \ENDFOR
 \end{algorithmic}
+\caption{Leib ramp acceleration}
+\label{fig:leib_algorithm}                          
+
 \end{algorithm}
-\vspace{-0.7cm}
-\captionof{figure}{Leib ramp algorithm}
-\vspace{0.3cm}
 
 これをもとに数値計算を行った例をFigure \ref{fig:leib_ramp_result}に示す．
 
@@ -375,7 +374,7 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \begin{eqnarray}
 	\bigg|\frac{dr}{dt}\bigg| = \sqrt{\frac{\Delta E}{\Delta t} - r^2 \cdot \dot \theta}
 \end{eqnarray}
-と表されるから，$\dot r$を求めるアルゴリズムをまとめると，Figure \ref{alg:drdt}のようになる．
+と表されるから，$\dot r$を求めるアルゴリズムをまとめると，Algorithm 3のようになる．
 
 \begin{algorithm}[htbp]                  
 \begin{algorithmic}                  
@@ -388,24 +387,23 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \STATE $\dot \theta \Leftarrow 1 / p_i $ 
 \STATE $dr/dt \Leftarrow (\Delta E/\Delta t-r^2 \cdot \dot \theta)^{\frac{1}{2}}$
 \end{algorithmic}
+\caption{$\dot r$ solver}
+
 \end{algorithm}
-\vspace{-0.7cm}
-\captionof{figure}{$\dot r$ solver algorithm}
-\vspace{0.3cm}
 
 数値計算の結果をFigure \ref{eq:rdot_simulation}に示す．
 
-\begin{figure}[htbp]\label{eq:rdot_simulation}
+\begin{figure}[htbp]
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{compute_rdot_screenshot.png}
     \caption{Computed $\dot r$}
-    \label{fig:compute_rdot}
+   \label{eq:rdot_simulation}
 \end{figure}
 
 \subsection{出力物の精度に与える影響の見積もり}
 Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御した時の$\dot r$の変動は非常に小さいものである．($\sim 1.0 \times 10^{-4}$)
 
 \begin{itemize}
-	\item TODO: $\dot r$の加速部分の加速時間と、変動量から理想制御におけるx-y変位量のオーダーを計算し、それが小さいことを述べる
+	\item TODO: $\dot r$の加速部分の加速時間と，変動量から理想制御におけるx-y変位量のオーダーを計算し，それが小さいことを述べる
 \end{itemize}
 
 
@@ -421,44 +419,39 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
     \item スクリューの回転数が変更されたあと，射出量が追従するまでの遅延
 \end{enumerate}
 
-まず，1.については回転数は実時間で追従していることが確認できている．したがって問題は2.の部分である．以下ではスクリュー内部の圧力変動による速度変化をナビエ=ストークス方程式で計算する．
+まず，1.については回転数は実時間で追従していることが確認できている．したがって問題は2.の部分である．
 
-\subsection{流れ関数-渦度法}
-渦度輸送方程式
+以下ではスクリュー内部の圧力変動による速度変化をナビエ=ストークス方程式で計算する．本項では速度-圧力法，特にフラクショナル・ステップ法\cite{nagare,ranryu}を用いて計算する．
 
-\subsection{速度-圧力法}
-前述の流れ関数-渦度法では連続の式を満たす利点があるものの、流れ関数を見積もる難しさがある。
-本項では速度-圧力法、特にフラクショナル・ステップ法\cite{nagare,ranryu}を用いて計算する。
-
-いま、連続の式は
+いま，連続の式は
 \begin{eqnarray}\label{eq:continuous}
 	\nabla \cdot \bm{v} = 0
 \end{eqnarray}
 
-ナビエ=ストークス方程式は、
+ナビエ=ストークス方程式は，
 \begin{eqnarray}\label{eq:ns}
 	\frac{\partial \bm{v}}{\partial t} + (\bm{v}\cdot \nabla)\bm{v} = -\nabla p + \frac{1}{Re} \nabla^2 \bm{v}
 \end{eqnarray}
 
-(\ref{eq:ns})式の時間微分に対して前進差分を適用すると、
+(\ref{eq:ns})式の時間微分に対して前進差分を適用すると，
 \begin{eqnarray}\label{eq:ns2}
 	\frac{\bm{v}^{n+1}-\bm{v}^n}{\Delta t} + (\bm{v}^n \cdot \nabla )\bm{v}^n = - \nabla p + \frac{1}{Re} \nabla^2 \bm{v}^n
 \end{eqnarray}
-(\ref{eq:ns2})式を次の2式に分解して段階的に計算することを考える。
+(\ref{eq:ns2})式を次の2式に分解して段階的に計算することを考える．
 
 \begin{eqnarray}
 	\frac{\bm{v}^{\ast}-\bm{v}^n}{\Delta t} + (\bm{v}^n \cdot \nabla )\bm{v}^n &=& \frac{1}{Re} \nabla^2 \bm{v}^n \label{eq:velo_transport}\\
 	\frac{\bm{v}^{n+1}-\bm{v}^{\ast}}{\Delta t} &=& - \nabla p	\label{eq:p1}
 \end{eqnarray}
 
-ここで(\ref{eq:velo_transport})式は速度輸送方程式である。
+ここで(\ref{eq:velo_transport})式は速度輸送方程式である．
 
-(\ref{eq:velo_transport})式によって求めた$\bm{v}^\ast$と(\ref{eq:p1})式を用いれば、次の時間における$\bm{v}^{n+1}$が
+(\ref{eq:velo_transport})式によって求めた$\bm{v}^\ast$と(\ref{eq:p1})式を用いれば，次の時間における$\bm{v}^{n+1}$が
 \begin{eqnarray}
 \bm{v}^{n+1}=\bm{v}^{\ast}-\Delta t \nabla p \: \inlineeqno \label{eq:updateP}	
 \end{eqnarray}
 
-として求まるが、まだ圧力が決定されていない。(\ref{eq:updateP})式の両辺のダイバージェンスをとり、連続の式(\ref{eq:continuous})を用いれば、圧力$p$は以下のポアソン方程式を満たすように決定できる。
+として求まるが，まだ圧力が決定されていない．(\ref{eq:updateP})式の両辺のダイバージェンスをとり，連続の式(\ref{eq:continuous})を用いれば，圧力$p$は以下のポアソン方程式を満たすように決定できる．
 
 \begin{eqnarray}
 	\nabla^2 p = \frac{\nabla \cdot \bm{v}}{\Delta t}
