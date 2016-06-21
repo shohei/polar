@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  21 JUN 2016 20:41
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  21 JUN 2016 21:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -419,63 +419,107 @@ Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 \symboldsymbols=\mathgroup8
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2015/05/11 v1.16 mathematical typesetting tools
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count113
+\calc@Bcount=\count114
+\calc@Adimen=\dimen143
+\calc@Bdimen=\dimen144
+\calc@Askip=\skip64
+\calc@Bskip=\skip65
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count115
+\calc@Cskip=\skip66
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count116
+\l_MT_multwidth_dim=\dimen145
+\origjot=\skip67
+\l_MT_shortvdotswithinadjustabove_dim=\dimen146
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen147
+\l_MT_above_intertext_sep=\dimen148
+\l_MT_below_intertext_sep=\dimen149
+\l_MT_above_shortintertext_sep=\dimen150
+\l_MT_below_shortintertext_sep=\dimen151
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/sttools/cuted.sty
+Package: cuted 2012/10/04 v1.5 Mixing onecolumn and twocolumn modes
+\At@ViperColsBreak=\toks25
+\v@aaa=\box58
+\v@ccc=\box59
+\lastskip@a=\skip68
+\lastskip@b=\skip69
+\lastskip@d=\skip70
+\lastbox@a=\box60
+\stripsep=\skip71
+\@viper=\box61
+\viper@penalty=\count117
+\hold@viper=\box62
+\ht@viper=\dimen152
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip64
-\f@ncyO@elh=\skip65
-\f@ncyO@erh=\skip66
-\f@ncyO@olh=\skip67
-\f@ncyO@orh=\skip68
-\f@ncyO@elf=\skip69
-\f@ncyO@erf=\skip70
-\f@ncyO@olf=\skip71
-\f@ncyO@orf=\skip72
+\fancy@headwidth=\skip72
+\f@ncyO@elh=\skip73
+\f@ncyO@erh=\skip74
+\f@ncyO@olh=\skip75
+\f@ncyO@orh=\skip76
+\f@ncyO@elf=\skip77
+\f@ncyO@erf=\skip78
+\f@ncyO@olf=\skip79
+\f@ncyO@orf=\skip80
 ) (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 \openout1 = `note.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 38.
-LaTeX Font Info:    Try loading font information for U+msa on input line 39.
+(lastpage)             ! on input line 40.
+LaTeX Font Info:    Try loading font information for U+msa on input line 41.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 39.
+LaTeX Font Info:    Try loading font information for U+msb on input line 41.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 41.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 43.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 41.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 43.
 
-Overfull \hbox (1.02101pt too wide) in alignment at lines 75--82
+Overfull \hbox (1.02101pt too wide) in alignment at lines 77--84
  [][][] []
  []
 
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 95.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 97.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 95.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 97.
 
-Overfull \hbox (10.00002pt too wide) detected at line 107
+Overfull \hbox (10.00002pt too wide) detected at line 109
 [][] 
  []
 
@@ -483,69 +527,77 @@ Overfull \hbox (10.00002pt too wide) detected at line 107
 
 
 ]
-Overfull \hbox (47.41339pt too wide) in alignment at lines 128--132
- [][][] []
+Overfull \hbox (32.96881pt too wide) in paragraph at lines 141--141
+[] 
  []
 
 
-Overfull \hbox (196.88013pt too wide) in alignment at lines 135--142
- [][][] []
+Underfull \hbox (badness 10000) in paragraph at lines 143--153
+
  []
 
+Extra height:0.0pt when 143.98639pt
+(2)Left:143.98639pt Right:139.68582pt Output:143.98639pt
+- LAST -
+Left:143.98639pt
+Right:139.68582pt
+Output:143.98639pt
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 159.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 159.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: gcodesim.png Graphic file (type eps)
+ <gcodesim.png>
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 145.
+(Font)              using `JT1/mc/m/n' instead on input line 185.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 145.
+(Font)              using `JY1/mc/m/n' instead on input line 185.
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 145.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 185.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 145.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 145.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 185.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 185.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 145.
- [2
-
-]
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 148.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 148.
-File: gcodesim.png Graphic file (type eps)
- <gcodesim.png> [3
-
-]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
+ [2] [3]
 File: accel2.pdf Graphic file (type eps)
  <accel2.pdf> [4]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 304.
+(Font)              using `JT1/mc/m/n' instead on input line 315.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 304.
+(Font)              using `JY1/mc/m/n' instead on input line 315.
 
 
-Overfull \hbox (10.00002pt too wide) detected at line 369
+Overfull \hbox (10.00002pt too wide) detected at line 380
 [][] 
  []
 
 File: leib_ramp_screenshot.png Graphic file (type eps)
 <leib_ramp_screenshot.png> [5]
-Overfull \hbox (10.00002pt too wide) detected at line 398
+Overfull \hbox (10.00002pt too wide) detected at line 409
 [][] 
  []
 
 File: compute_rdot_screenshot.png Graphic file (type eps)
-<compute_rdot_screenshot.png> [6] 
+<compute_rdot_screenshot.png>
+Underfull \vbox (badness 1286) has occurred while \output is active []
+
+ [6] 
 AED: lastpage setting LastPage
 [7
 
@@ -555,12 +607,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 3987 strings out of 493777
- 51683 string characters out of 6151334
- 144894 words of memory out of 5000000
- 7387 multiletter control sequences out of 15000+600000
+ 4566 strings out of 493777
+ 61761 string characters out of 6151334
+ 159894 words of memory out of 5000000
+ 7952 multiletter control sequences out of 15000+600000
  24119 words of font info for 94 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 32i,16n,43p,507b,605s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 31i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (7 pages, 46476 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (7 pages, 46812 bytes).

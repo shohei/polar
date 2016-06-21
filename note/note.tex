@@ -16,9 +16,11 @@
 \usepackage{ascmac}
 \usepackage[titletoc,title]{appendix}
 \usepackage{bm}
-
+\usepackage{relsize}
 \renewcommand{\sectionmark}[1]{\markleft{\thesection\ #1}}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 
+\usepackage{mathtools, cuted}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
  \pagestyle{fancy}
@@ -125,13 +127,21 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 前回，スライサーからの$\Delta E=E_2-E_1$を$\Delta E_{screw}$と等しいとみなして計算を行ったが，これは誤りである．なぜならば，スライサーが出力した$E$には極座標の位置による速度変化が考慮されていないからである．したがって，スライサーからのエクストルーダの値は無視する．（実際の実装ではエクストルーダの値は射出のOn/Off判定のために使用している）
 
 極座標におけるステージの線速度を$F_{polar}(t)$とすれば，微分を後退差分表示することで以下の式を得る．
-\begin{eqnarray*}
-F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
-&=& \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tk} \\
-&=& \sqrt{\left( \frac{r_k - r_{k-1}}{\Delta t} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2 \left( \frac{\theta_k - \theta_{k-1} }{\Delta t} \right)^2}	
-\end{eqnarray*}
+%\begin{eqnarray*}
+%\end{eqnarray*}
+
+\resizebox{0.95\linewidth}{!}{
+  \begin{minipage}{\linewidth}
+  \begin{align*}
+F_{polar}(t_k) &= \frac{d S}{d t}\Bigg|_{t=tk}  \\
+&= \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tk}\\
+&= \sqrt{\left( \frac{r_k - r_{k-1}}{\Delta t} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2 \left( \frac{\theta_k - \theta_{k-1} }{\Delta t} \right)^2} 
+\end{align*}
+  \end{minipage}
+}
 
 ステージの変位とスクリューの変位は比例するので
+\begin{strip}
 \begin{eqnarray}\label{eq:controller}
 \int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F_{polar}(t) dt \nonumber \\
 \therefore SNW\big|_{t=t_k} &=& \alpha F_{polar}(t_k)  \nonumber \\
@@ -140,9 +150,10 @@ F_{polar}(t_k) &=& \frac{d S}{d t}\Bigg|_{t=tk} \\
 &=& \frac{\alpha^\prime}{F} \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2  \left( \theta_k - \theta_{k-1} \right)^2 }  \nonumber \\
 &\quad& \cdot \sqrt{ (r_k \cos\theta_k - r_{k-1} \cos\theta_{k-1})^2+(r_k \sin\theta_k - r_{k-1} \sin\theta_{k-1})^2 }
 \end{eqnarray}
+\end{strip}
+
 
 (\ref{eq:controller})式にしたがってスクリュー回転数を制御することで，線速度が変化する状況においてもスクリューの射出量を線速度に追従させることができる．
-\clearpage
 
 \section{予想される問題点}
 \subsection{半径の近似精度} 
