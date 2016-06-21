@@ -470,9 +470,15 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
 
 
 
-
-
-
+スタガード格子を用いたとき、速度輸送方程式の$x$成分と$y$成分はそれぞれ以下のようになる。
+\begin{strip}
+\begin{eqnarray}		
+	u^\ast_{i-1/2,j} &=& u^n_{i-1/2,j} - \Delta t \Bigg \{u^n_{i-1/2,j}\frac{u^n_{i+1/2,j}-u^n_{i-3/2,j}}{2\Delta x}+ v^n_{i-1/2,j}\frac{u^n_{i-1/2,j}-u^n_{i-1/2,j-1}}{2\Delta y} \nonumber \\
+	&+& \frac{1}{Re}\Bigg( \frac{u^n_{i+1/2,j}-2u^n_{i-1/2,j}+u^n_{i-3/2,j}}{(\Delta x)^2}+\frac{u^n_{i-1/2,j}-2u^n_{i-1/2,j}+u^n_{i-1/2,j-1}}{(\Delta y)^2} \Bigg) \Bigg\} \\
+	v^\ast_{i,j-1/2} &=& u^n_{i,j-1/2} - \Delta t \Bigg \{u^n_{i,j-1/2}\frac{v^n_{i+1,j-1/2}-v^n_{i-1,j=1/2}}{2\Delta x}+ v^n_{i,j-1/2}\frac{v^n_{i,j+1/2}-v^n_{i,j-3/2}}{2\Delta y} \nonumber \\
+	&+& \frac{1}{Re}\Bigg( \frac{v^n_{i+1,j-1/2}-2v^n_{i,j-1/2}+v^n_{i-1,j-1/2}}{(\Delta x)^2}+\frac{v^n_{i,j+1/2}-2v^n_{i,j-1/2}+v^n_{i,j-3/2}}{(\Delta y)^2} \Bigg) \Bigg\} 
+\end{eqnarray}
+\end{strip}
 
 
 

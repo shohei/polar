@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  21 JUN 2016 21:07
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  21 JUN 2016 21:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -597,7 +597,33 @@ File: compute_rdot_screenshot.png Graphic file (type eps)
 <compute_rdot_screenshot.png>
 Underfull \vbox (badness 1286) has occurred while \output is active []
 
- [6] 
+ [6]
+Underfull \hbox (badness 2941) in paragraph at lines 479--487
+[]\JY1/mc/m/sc/10 スタガ ード格子を用いたとき 、 速度輸送方程式
+ []
+
+
+Underfull \hbox (badness 1577) in paragraph at lines 479--487
+\JY1/mc/m/sc/10 の $\OML/cmm/m/it/10 x$ \JY1/mc/m/sc/10 成分と $\OML/cmm/m/it/10 y$ \JY1/mc/m/sc/10 成分はそれぞれ以下のようにな る 。
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 479--487
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 479--487
+
+ []
+
+Extra height:0.0pt when 94.11688pt
+(2)Left:94.11688pt Right:84.23378pt Output:94.11688pt
+- LAST -
+Left:94.11688pt
+Right:84.23378pt
+Output:94.11688pt
+
 AED: lastpage setting LastPage
 [7
 
@@ -615,4 +641,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  31i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (7 pages, 46812 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (7 pages, 49040 bytes).
