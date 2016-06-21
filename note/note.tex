@@ -190,7 +190,7 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
 
 ただし共分散行列$\bm{P}^{-1}(k), \bm{P}(k)$は$n \times n$行列，カルマンゲイン$\bm{G}(k)$は$n \times p$行列である．
 
-いま、線形カルマンフィルタを適用するために、(\ref{eq:controller})式をLTIシステムに線形化することを考える。
+いま，線形カルマンフィルタを適用するために，(\ref{eq:controller})式をLTIシステムに線形化することを考える．
 
 
 \subsection{モデルの変更}
@@ -299,41 +299,42 @@ Figure \ref{fig:jerk}から，$\dot{r}$と$\dot{\theta}$を台形型の速度プ
 以下で，上記の2点について考察する．
 
 \subsubsection{ステージ側の加速度制御}
-スライサーが吐き出したG-codeに記述されたエクストルーダの値から，スクリューの速度プロファイルを逆算する．いま，(\ref{eq:v})式に従って$v$が推移するとき，$\dot{r}$と$\dot{\theta}$は一意に決定できない．ここで独立変数を減らすために，$\theta$は今までと同じように線形加速制御を行うとする。いま、 この$\theta$の計算に乗算器と加算器のみでステッピングモーターのパルス遅延時間を高速に計算するアルゴリズムである{\it leib ramp}\cite{leib}をすると仮定する\footnote{Marlinでも実装されている．}．
+スライサーが吐き出したG-codeに記述されたエクストルーダの値から，スクリューの速度プロファイルを逆算する．いま，(\ref{eq:v})式に従って$v$が推移するとき，$\dot{r}$と$\dot{\theta}$は一意に決定できない．ここで独立変数を減らすために，$\theta$は今までと同じように線形加速制御を行うとする．いま， この$\theta$の計算に乗算器と加算器のみでステッピングモーターのパルス遅延時間を高速に計算するアルゴリズムである{\it leib ramp}\cite{leib}をすると仮定する\footnote{Marlinでも実装されている．}．
 
-$\theta$の計算方法について詳しく述べる。
-総加速ステップを$S$、ステッピングモーターの初期速度を$v_0$、目標速度を$v$、1秒ごとの加速ステップ数を$a$、加速時間を$t$とすれば、
+$\theta$の計算方法について詳しく述べる．
+総加速ステップを$S$，ステッピングモーターの初期速度を$v_0$，目標速度を$v$，1秒ごとの加速ステップ数を$a$，加速時間を$t$とすれば，
 
 \begin{eqnarray}\label{eq:first}
 	S = v_0 t + \frac{1}{2} a t^2 \nonumber \\
 	v = v_0 + a t	
 \end{eqnarray}
-(\ref{eq:first})における両式より、以下を得る。
+(\ref{eq:first})における両式より，以下を得る．
 \begin{eqnarray}\label{eq:second}
 	S = \frac{v^2-v_0}{2 a} \nonumber \\
 	v = \sqrt{v_0^2+2aS}
 \end{eqnarray}
-(\ref{eq:second})における両式を再帰的に適用して漸化式を導けば、
+(\ref{eq:second})における両式を再帰的に適用して漸化式を導けば，
 \begin{eqnarray}\label{eq:third}
 	v_i = \sqrt{v_{i-1}^2 + 2a}
 \end{eqnarray}
-$i$ステップにおけるステッピングモーターの遅延時間$p_i$は、タイマーの割り込み周波数を$F$とするとき、
+$i$ステップにおけるステッピングモーターの遅延時間$p_i$は，タイマーの割り込み周波数を$F$とするとき，
 \begin{eqnarray*}
 	p_i = \frac{F}{v_i}
 \end{eqnarray*}
-であるから、(\ref{eq:third})式を用いることで、pに関する漸化式は以下のように変形できる。
+であるから，(\ref{eq:third})式を用いることで，pに関する漸化式は以下のように変形できる．
 \begin{eqnarray}\label{eq:fourth}
 	p_i = \frac{F}{\sqrt{{(\frac{F}{p_{i-1}})}^2+2a}} 
 \end{eqnarray}
-目標速度における遅延時間を$p_s$、定数$R= a/F^2$とおき、(\ref{eq:fourth})式をTaylor展開して1次の項で打ち切れば、
-\begin{eqnarray}
-	p = p \cdot (1 + m \cdot p \cdot p) 
+目標速度における遅延時間を$p_s$，定数$R= a/F^2$とおき，(\ref{eq:fourth})式をTaylor展開して1次の項で打ち切れば，
+\begin{eqnarray}\label{eq:pupdate}
+	p_{i+1} = p_i \cdot (1 + m \cdot p_i \cdot p_i) 
 \end{eqnarray}
-ただし、m = 
+ただし，mは以下で定義する．
+\begin{eqnarray}\label{eq:mdef}
+\left\{\begin{array}{r@{\,}c@{\,}r@{\,}c@{\,}l@{\;\;}r} m &=& -R &:& \:\:\: \mbox{\small during acceleration}\\ m &=& 0 &:&  \:\:\: \mbox{\small slew speed}\\ m &=& R &:&  \:\:\: \mbox{\small during deceleration}\end{array}%\right.
+\end{eqnarray}
 
-
-
-\clearpage
+(\ref{eq:mdef})式をアルゴリズムとして整理したものが以下である．
 
 \begin{algorithm}                  
 \begin{algorithmic}                  
@@ -360,9 +361,18 @@ $i$ステップにおけるステッピングモーターの遅延時間$p_i$は
 \captionof{figure}{Leib Ramp}
 \vspace{0.3cm}
 
-このとき，$\dot r$は以下のように逆算できる．
+これをもとに数値計算を行った例を以下に示す．
 
-\begin{algorithm}                  
+\begin{figure}[htbp]
+    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{leib_ramp_screenshot.png}
+    \caption{Compute $\dot{\theta}$ with Leib ramp}
+    \label{fig:leib_ramp_result}
+\end{figure}
+
+
+$\dot{\theta}$をleib rampで求めたのち，$\dot r$を求めるアルゴリズムは以下となる．
+
+\begin{algorithm}[htbp]                  
 \begin{algorithmic}                  
 \label{alg1}                          
 \STATE $\Delta E \Leftarrow E_2-E_1$
@@ -378,37 +388,17 @@ $i$ステップにおけるステッピングモーターの遅延時間$p_i$は
 \captionof{figure}{$\dot r$ solver algorithm}
 \vspace{0.3cm}
 
-
 数値計算の結果を図に示す．
 
-
-\begin{figure}[htbp]
-    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{accel2.pdf}
+\begin{figure}[htbp]\label{eq:rdot_simulation}
+    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{compute_rdot_screenshot.png}
     \caption{Computed $\dot r$}
-    \label{fig:compute_r}
+    \label{fig:compute_rdot}
 \end{figure}
 
+Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御した時の$\dot r$の変動は非常に小さいものである．($\sim 1.0 \times 10^{-4}$)
 
-\subsubsection{出力物の精度に与える影響}
-上で求めた速度プロファイルを用いて加減速制御を用いたときに，発生する出力物の誤差を$e_{ideal}$と置けば，$e_{ideal}$は以下のように表される．
-\begin{eqnarray*}
-	 | e_{ideal} | &=& \int f(t) dt
-\end{eqnarray*}
-
-台形型プロファイルを用いた時の誤差を$e_{trapezoidal}$と置けば，$e_{trapezoidal}$は以下のように表される．
-\begin{eqnarray*}
-	 | e_{trapezoidal} | &=& \int g(t) dt
-\end{eqnarray*}
-
-
-したがって，両者の絶対誤差$e_{absolute}$は以下のようになる．
-
-\begin{eqnarray*}
-	 | e_{absolute} | &=& | e_{ideal} - e_{trapezoidal} | \\
-	                  &\cong& 1.0e^{-10}
-\end{eqnarray*}
-
-上記より，ステージ側Jerkの計算アルゴリズムを修正することに意味はないといえる．
+上記より，ステージ側Jerkの$\dot r$については修正の必要性はなく，現行の計算アルゴリズムを利用すればよいといえる．
 
 \section{樹脂射出応答の遅延について}
 制御ボード上のプロセッサがPLCに回転数指令を与えてから，じっさいにエクストルーダから樹脂が射出されるまでには遅延がある．これについて定量的な考察を行う．

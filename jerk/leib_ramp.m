@@ -6,6 +6,7 @@ format compact;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 STANDALONE = false;
 CAPTURE = false;
+SCREENSHOT = false;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % if(STANDALONE)
@@ -80,18 +81,26 @@ for i=1:totalsteps
         title('v');
         
         drawnow;
-    
+        
         if(CAPTURE)
             frame = getframe(gcf);
             writeVideo(writerObj, frame);
         end
-
+        
     end
 end
 t = t(1:end-1);
 
 if(CAPTURE)
     close(writerObj);
+end
+
+if(SCREENSHOT)
+    fig = gcf;
+    fig.PaperUnits = 'inches';
+    fig.PaperPosition = [0 0 6 3];
+    fig.PaperPositionMode = 'manual';
+    print('leib_ramp_screenshot.png','-dpng');
 end
 
 

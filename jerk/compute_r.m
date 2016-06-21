@@ -5,6 +5,7 @@ format compact;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 CAPTURE = false;
+SCREENSHOT = false;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 FigHandle = figure;
@@ -82,7 +83,7 @@ while ischar(tline)
 
                     subplot(236);
                     plot(t_stage,rdot,'r');
-                    title('$\dot r$ <magnified>','interpreter','latex');
+                    title('$\dot r$ [magnified]','interpreter','latex');
 
                     drawnow;
                     
@@ -113,6 +114,18 @@ while ischar(tline)
         drawnow;
     end
     counter=counter+1;
+    
+    if(counter==400)
+        if(SCREENSHOT)
+            fig = gcf;
+            fig.PaperUnits = 'inches';
+            fig.PaperPosition = [0 0 6 3];
+            fig.PaperPositionMode = 'manual';
+            print('compute_rdot_screenshot.png','-dpng');
+        end
+        return;
+    end
+    
 end
 
 fclose(fid);
@@ -179,7 +192,6 @@ end
         end
         
     end
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % t = linspace(0,10,101);
