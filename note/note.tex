@@ -206,7 +206,7 @@ Figure \ref{fig:noise}の計算結果で示されるような高周波成分を�
 
 (\ref{eq:fix})式は原点より遠い場所ほどスクリュー回転数を高めるというアドホックな方法であるが，直感的にもわかりやすく，実装も単純である．
 
-実際に実験を行ったところ改善が見られたので，以降はこの方法を採用する．なぜこの方法がすぐれているのか，その原因については後述する．
+(\ref{eq:fix})式を用いて実験を行ったところ改善が見られたので，以降はこの方法を採用する．なぜこの方法がすぐれているのか，その原因については後述する．
 
 \section{議論}
 現時点で判明している問題点として，
@@ -317,7 +317,7 @@ $\theta$の計算方法について詳しく述べる．
 \begin{eqnarray}\label{eq:third}
 	v_i = \sqrt{v_{i-1}^2 + 2a}
 \end{eqnarray}
-$i$ステップにおけるステッピングモーターの遅延時間$p_i$は，タイマーの割り込み周波数を$F$とするとき，
+$i$ステップにおけるステッピングモーターの遅延時間を$p_i$，プロセッサのタイマー割り込み周波数を$F$とするとき，
 \begin{eqnarray*}
 	p_i = \frac{F}{v_i}
 \end{eqnarray*}
@@ -334,11 +334,11 @@ $i$ステップにおけるステッピングモーターの遅延時間$p_i$は
 \left\{\begin{array}{r@{\,}c@{\,}r@{\,}c@{\,}l@{\;\;}r} m &=& -R &:& \:\:\: \mbox{\small during acceleration}\\ m &=& 0 &:&  \:\:\: \mbox{\small slew speed}\\ m &=& R &:&  \:\:\: \mbox{\small during deceleration}\end{array}%\right.
 \end{eqnarray}
 
-(\ref{eq:mdef})式をアルゴリズムとして整理したものが以下である．
+(\ref{eq:mdef})式をアルゴリズムとして整理したものをFigure \ref{alg:leib}に示す。
 
 \begin{algorithm}                  
 \begin{algorithmic}                  
-\label{alg1}                          
+\label{alg:leib}                          
 \STATE $v_0, v, a, F$ given.
 \STATE $S \Leftarrow (v^2-{v_0}^2) / 2 a$
 \STATE $p_1 \Leftarrow F / ({v_0}^2 + 2a)^{-\frac{1}{2}}$
@@ -358,23 +358,26 @@ $i$ステップにおけるステッピングモーターの遅延時間$p_i$は
 \end{algorithmic}
 \end{algorithm}
 \vspace{-0.7cm}
-\captionof{figure}{Leib Ramp}
+\captionof{figure}{Leib ramp algorithm}
 \vspace{0.3cm}
 
-これをもとに数値計算を行った例を以下に示す．
+これをもとに数値計算を行った例をFigure \ref{fig:leib_ramp_result}に示す．
 
 \begin{figure}[htbp]
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{leib_ramp_screenshot.png}
-    \caption{Compute $\dot{\theta}$ with Leib ramp}
+    \caption{Compute $\dot{\theta}$ with leib ramp}
     \label{fig:leib_ramp_result}
 \end{figure}
 
-
-$\dot{\theta}$をleib rampで求めたのち，$\dot r$を求めるアルゴリズムは以下となる．
+いま、ある時刻における$\dot{\theta_i}$はleib rampで求まった。次に、$\dot r$は(\ref{eq:vdef})式を用いて
+\begin{eqnarray}
+	\bigg|\frac{dr}{dt}\bigg| = \sqrt{\frac{\Delta E}{\Delta t} - r^2 \cdot \dot \theta}
+\end{eqnarray}
+と表されるから、$\dot r$を求めるアルゴリズムをまとめると、Figure \ref{alg:drdt}のようになる。
 
 \begin{algorithm}[htbp]                  
 \begin{algorithmic}                  
-\label{alg1}                          
+\label{alg:drdt}                          
 \STATE $\Delta E \Leftarrow E_2-E_1$
 \STATE $\Delta S \Leftarrow ((x_2-x_1)^2 + (y_2-y_1)^2)^{\frac{1}{2}}$
 \STATE $\Delta \theta \Leftarrow \tan^{-1} (y_2/x_2) - \tan^{-1} (y_1/x_1)$
