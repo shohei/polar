@@ -47,19 +47,19 @@
 \begin{eqnarray}
 |v| &=& \sqrt{\dot{x}^2 + \dot{y}^2} \nonumber \\
   &=& \sqrt{ \left(\frac{d}{dt} r \cos\theta \right) ^2 + \left(\frac{d}{dt}r \sin\theta\right) ^2} \nonumber \\
-  &=& \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } 
-\end{eqnarray}	
-	
+  &=& \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 }
+\end{eqnarray}    
+    
 いま，角速度と半径方向の速度を制御して線速度一定にすることを考える．
 $v=k$（線速度一定）とすると，
 \begin{eqnarray}\label{eq:vdef}
   \dot{r}^2+ r^2 \dot{\theta}^2 &=& k^2 \\
-  \dot{r}^2 &=&  k^2 - r^2 \dot{\theta}^2 
+  \dot{r}^2 &=&  k^2 - r^2 \dot{\theta}^2
 \end{eqnarray}
 微小区間で考えると
 
 \begin{eqnarray}\label{eq:deltar}
-	\left( \frac{\Delta r}{\Delta t}\right)^2 &=&  k^2 - r^2 \left( \frac{\Delta \theta}{\Delta t}\right)^2 \nonumber \\
+     \left( \frac{\Delta r}{\Delta t}\right)^2 &=&  k^2 - r^2 \left( \frac{\Delta \theta}{\Delta t}\right)^2 \nonumber \\
 |\Delta r| &=& \sqrt{(k \Delta t)^2 - (r \Delta \theta)^2}
 \end{eqnarray}
 
@@ -68,7 +68,7 @@ $v=k$（線速度一定）とすると，
 \begin{eqnarray*}
 \left\{
   \begin{array}{ll}
-r_i = \sqrt{{x_i}^2+{y_i}^2} \\	
+r_i = \sqrt{{x_i}^2+{y_i}^2} \\    
 \theta_i = \tan^{-1} (y_i / x_i)
   \end{array}
   \right.
@@ -77,18 +77,18 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 \begin{eqnarray}\label{eq:diff}
 \left\{
   \begin{array}{ll}
-\Delta r = r_2-r_1 = \sqrt{{x_2}^2+{y_2}^2} - \sqrt{{x_2}^2+{y_2}^2} \\	
+\Delta r = r_2-r_1 = \sqrt{{x_2}^2+{y_2}^2} - \sqrt{{x_2}^2+{y_2}^2} \\    
 \Delta \theta = \theta_2-\theta_1 = \tan^{-1} (y_2 / x_2) - \tan^{-1} (y_1 / x_1)
   \end{array}
-  \right. 
+  \right.
 \end{eqnarray}
 
 一般に，(\ref{eq:diff})で指定される$\Delta r, \Delta \theta$が(\ref{eq:deltar})式を満たすとは限らないため\footnote{$r$の自由度が残る．}，任意の目的地の座標が指定されたときに線速度を一定にすることはできない．
 %\newpage
 
-\begin{algorithm}                  
-\begin{algorithmic}                  
-\label{alg:bresenham}                          
+\begin{algorithm}                 
+\begin{algorithmic}                 
+\label{alg:bresenham}                         
 \STATE $dx \Leftarrow x1-x0$
 \STATE $dy \Leftarrow y1-y0$
 \STATE $D \Leftarrow 2*dy - dx$
@@ -109,19 +109,19 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 \end{algorithm}
 
 \section{エクストルーダの制御について}
-%\vspace{0.2in} 
+%\vspace{0.2in}
 ステージの変位と射出量の関係について考える．
 
 デカルト座標系において，移動時間$\Delta t$と線速度$F$[mm/min]の関係は，以下のように表される．
 
 \begin{eqnarray}
-	\Delta t = \frac{\sqrt{(\Delta x)^2+(\Delta y)^2}}{F}\cdot 60\cdot1000
+     \Delta t = \frac{\sqrt{(\Delta x)^2+(\Delta y)^2}}{F}\cdot 60\cdot1000
 \end{eqnarray}
 
 エクストルーダ（スクリュー）の射出量を$\Delta E_{screw}$，スクリューの回転数を$SNW$[rpm]とおけば，以下の式が成り立つ．
 \begin{eqnarray}\label{eq:initial}
-	\Delta E_{screw} &=& \beta \cdot (SNW) \cdot \Delta t \nonumber \\
-	\therefore SNW &=& \frac{1}{\beta} \frac{\Delta E_{screw}}{\Delta t} = \beta^\prime \frac{F\cdot \Delta E_{screw}}{\sqrt{(\Delta x)^2+(\Delta y)^2}} \nonumber \\
+     \Delta E_{screw} &=& \beta \cdot (SNW) \cdot \Delta t \nonumber \\
+     \therefore SNW &=& \frac{1}{\beta} \frac{\Delta E_{screw}}{\Delta t} = \beta^\prime \frac{F\cdot \Delta E_{screw}}{\sqrt{(\Delta x)^2+(\Delta y)^2}} \nonumber \\
 \end{eqnarray}
 
 前回，スライサーからの$\Delta E=E_2-E_1$を$\Delta E_{screw}$と等しいとみなして計算を行ったが，これは誤りである．なぜならば，スライサーが出力した$E$には極座標の位置による速度変化が考慮されていないからである．したがって，スライサーからのエクストルーダの値は無視する．（実際の実装ではエクストルーダの値は射出のOn/Off判定のために使用している）
@@ -135,7 +135,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
   \begin{align*}
 F_{polar}(t_k) &= \frac{d S}{d t}\Bigg|_{t=tk}  \\
 &= \sqrt{\dot{r}^2+r^2 \dot{\theta}^2}\Big|_{t=tk}\\
-&= \sqrt{\left( \frac{r_k - r_{k-1}}{\Delta t} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2 \left( \frac{\theta_k - \theta_{k-1} }{\Delta t} \right)^2} 
+&= \sqrt{\left( \frac{r_k - r_{k-1}}{\Delta t} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2 \left( \frac{\theta_k - \theta_{k-1} }{\Delta t} \right)^2}
 \end{align*}
   \end{minipage}
 }
@@ -156,7 +156,7 @@ F_{polar}(t_k) &= \frac{d S}{d t}\Bigg|_{t=tk}  \\
 (\ref{eq:controller})式にしたがってスクリュー回転数を制御することで，線速度が変化する状況においてもスクリューの射出量を線速度に追従させることができる．
 
 \section{予想される問題点}
-\subsection{半径の近似精度} 
+\subsection{半径の近似精度}
 (\ref{eq:controller})式に表される$r_k$の計算において，$r_k$と$r_{k-1}$の平均値を用いているが，$r$が急激に増減する場合にこの部分の誤差の影響が大きくなる．一部の特殊な形状—例えば鋭利なヒトデ型—を造形する際に問題が懸念されるが，これは与えられるG-codeの半径方向の刻み($ = \Delta r$)が小さい場合，実際は問題にならないと考えられる．
 
 
@@ -166,8 +166,8 @@ F_{polar}(t_k) &= \frac{d S}{d t}\Bigg|_{t=tk}  \\
 制御式の変更について，以下の２つのアプローチを考える．
 
 \begin{enumerate}
-	\item (\ref{eq:controller})式の高周波成分を抑制する
-	\item モデルを変更する
+     \item (\ref{eq:controller})式の高周波成分を抑制する
+     \item モデルを変更する
 \end{enumerate}
 
 以下でそれぞれについて検討する．
@@ -181,29 +181,91 @@ F_{polar}(t_k) &= \frac{d S}{d t}\Bigg|_{t=tk}  \\
 \end{figure}
 
 (\ref{eq:controller})式による制御結果
-Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー速度が振動していることが読み取れる．これを適当なローパスフィルターで除去することを考える．ここではカルマンフィルターを適用してみる．
+Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー速度が振動していることが読み取れる．これを適当なローパスフィルターで除去することを考える．
 
-カルマンフィルターのアルゴリズムは以下のように表される．
-  \begin{itembox}[l]{カルマンフィルター}
+
+\subsection{デジタルフィルタ}
+\subsubsection{移動平均フィルタ}
+$z$変換
+
+
+\subsection{非線形カルマンフィルタ}
+\subsubsection{拡張カルマンフィルタ(EKF)}
+(\ref{eq:controller})式を離散時間非線形状態空間表現で表す。
+\begin{eqnarray*}\label{eq:nonlinear}
+\bm{x}(k+1) &=& \bm{f}(\bm{x}(k))+\bm{b}v(k)\\
+y(k) &=& h(\bm{x}(k))+w(k)
+\end{eqnarray*}
+
+$\bm{f}(\bm{x}), h(\bm{x})$のヤコビ行列をそれぞれ$\bm{A}(k), \bm{c}^T(k)$とおけば、
+\begin{eqnarray*}
+\bm{A}(k) &=& \frac{\partial \bm{f}(\bm{x})}{\partial \bm{x}} \bigg| _{\bm{x}=\hat{\bm{x}}(k)}\\
+\bm{c}^T(k) &=& \frac{\partial h(\bm{x})}{\partial \bm{x} } \bigg| _{\bm{x}=\hat{\bm{x}}^{-}(k)}
+\end{eqnarray*}
+
+
+このとき、(\ref{eq:nonlinear})式は
+\begin{eqnarray*}
+\bm{x}(k+1) &=& \bm{A}(k)\bm{x}(k) + \bm{b}v(k)+\bm{u}(k)\\
+z(k) &=& \bm{c}^T(k)\bm{x}(k)
+\end{eqnarray*}
+
+拡張カルマンフィルタ(EKF)のアルゴリズムは以下のように表される．
+  \begin{itembox}[l]{拡張カルマンフィルタ}
     $\Box$ 時間更新式\\
     $k=1,2,...,N$に対して以下を実行\\
-	$\bullet$ 予測ステップ\\
-	事前状態推定値: \\
-	$\:\:\:\:\:\: \hat{\bm{x}}^{-}(k) = \bm{A}\hat{\bm{x}}^{-}(k-1)$\\
-	事前誤差共分散行列: \\
-	$\:\:\:\:\:\: \bm{P}^{-}(k)=\bm{A}\bm{P}(k-1)\bm{A}^{T}+\bm{BQ}\bm{B}^T$\\		
-	$\bullet$ フィルタリングステップ\\
-	カルマンゲイン行列: \\
-	$\:\:\:\:\:\: \bm{G}(k)=\bm{P}^{-}(k)\bm{C}^T(\bm{C}\bm{P}^{-}(k)\bm{C}^{T}+R)^{-1}$\\
-	状態推定値: \\
-	$\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{G}(k)(\bm{y}(k)-\bm{C}\hat{\bm{x}}^{-}(k))$\\
-	事後誤差共分散行列: \\
-	$\:\:\:\:\:\: \bm{P}^(k)=(\bm{I}-\bm{G}(k)\bm{C}\bm{P}^{-1})$
+     $\bullet$ 予測ステップ\\
+     事前状態推定値: \\
+     $\:\:\:\:\:\: \hat{\bm{x}}^{-}(k) = \bm{A}\hat{\bm{x}}^{-}(k-1)$\\
+     事前誤差共分散行列: \\
+     $\:\:\:\:\:\: \bm{P}^{-}(k)=\bm{A}\bm{P}(k-1)\bm{A}^{T}+\bm{BQ}\bm{B}^T$\\         
+     $\bullet$ フィルタリングステップ\\
+     カルマンゲイン行列: \\
+     $\:\:\:\:\:\: \bm{G}(k)=\bm{P}^{-}(k)\bm{C}^T(\bm{C}\bm{P}^{-}(k)\bm{C}^{T}+R)^{-1}$\\
+     状態推定値: \\
+     $\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{G}(k)(\bm{y}(k)-\bm{C}\hat{\bm{x}}^{-}(k))$\\
+     事後誤差共分散行列: \\
+     $\:\:\:\:\:\: \bm{P}^(k)=(\bm{I}-\bm{G}(k)\bm{C}\bm{P}^{-1})$
   \end{itembox}
 
 ただし共分散行列$\bm{P}^{-1}(k), \bm{P}(k)$は$n \times n$行列，カルマンゲイン$\bm{G}(k)$は$n \times p$行列である．
 
-いま，線形カルマンフィルタを適用するために，(\ref{eq:controller})式を時不変システムに線形化することを考える．
+
+
+\subsubsection{アンセンテッドカルマンフィルタ(UKF)}
+アンセンテッドカルマンフィルタ(UKF)のアルゴリズムは以下のように表される．
+  \begin{itembox}[l]{UKF}
+    $\Box$ 初期値\\
+
+    $\Box$ 時間更新式\\
+    $k=1,2,...,N$に対して以下を実行\\
+     $\bullet$ シグマポイントの計算\\
+
+     $\bullet$ 予測ステップ\\
+     シグマポイントの更新: \\
+
+     事前状態推定値: \\
+     $\:\:\:\:\:\: \hat{\bm{x}}^{-}(k) = \bm{A}\hat{\bm{x}}^{-}(k-1)$\\
+     事前誤差共分散行列: \\
+     $\:\:\:\:\:\: \bm{P}^{-}(k)=\bm{A}\bm{P}(k-1)\bm{A}^{T}+\bm{BQ}\bm{B}^T$\\         
+     シグマポイントの再計算: \\
+     出力のシグマポイントの更新: \\
+     事前出力推定値: \\
+     事前出力誤差共分散行列: \\
+     事前状態・出力誤差共分散行列: \\
+     カルマンゲイン: \\
+     $\:\:\:\:\:\: \bm{G}(k)=\bm{P}^{-}(k)\bm{C}^T(\bm{C}\bm{P}^{-}(k)\bm{C}^{T}+R)^{-1}$\\
+
+     $\bullet$ フィルタリングステップ\\
+     状態推定値: \\
+     $\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{G}(k)(\bm{y}(k)-\bm{C}\hat{\bm{x}}^{-}(k))$\\
+     事後誤差共分散行列: \\
+     $\:\:\:\:\:\: \bm{P}^(k)=(\bm{I}-\bm{G}(k)\bm{C}\bm{P}^{-1})$
+  \end{itembox}
+
+
+\subsection{パーティクルフィルタ}
+
 
 
 \subsection{モデルの変更}
@@ -214,7 +276,7 @@ Figure \ref{fig:noise}の計算結果で示されるような高周波成分を�
 ここではヒューリスティックな方法として，単純に半径に比例するような成分を(\ref{eq:initial})式に加えてみる．修正後の関係式を以下に示す．
 
 \begin{eqnarray}\label{eq:fix}
-  SNW = \gamma \frac{F\cdot r\cdot  \Delta E}{\sqrt{(\Delta x)^2+(\Delta y)^2}} 
+  SNW = \gamma \frac{F\cdot r\cdot  \Delta E}{\sqrt{(\Delta x)^2+(\Delta y)^2}}
 \end{eqnarray}
 
 (\ref{eq:fix})式は原点より遠い場所ほどスクリュー回転数を高めるというアドホックな方法であるが，直感的にもわかりやすく，実装も単純である．
@@ -225,9 +287,9 @@ Figure \ref{fig:noise}の計算結果で示されるような高周波成分を�
 現時点で判明している問題点として，
 
 \begin{enumerate}
-	\item そもそも吐出側を一定にしたい
-	\item 原点での切り返し問題
-	\item エクストルーダのOn/Offの遅延
+     \item そもそも吐出側を一定にしたい
+     \item 原点での切り返し問題
+     \item エクストルーダのOn/Offの遅延
 \end{enumerate}
 
 がある．以下でそれぞれについて考察する．
@@ -238,7 +300,7 @@ Figure \ref{fig:noise}の計算結果で示されるような高周波成分を�
 \begin{itemize}
     \item 回転数値が指令されてから実際にスクリューの回転数が変更されるまでに遅延がある
     \item スクリューの回転数が変更されたあと，射出量が追従するまでに遅延がある
-	\item 吐出量の変動に応じて冷却を調節する必要があるが，冷却はリニアに効くわけではない
+     \item 吐出量の変動に応じて冷却を調節する必要があるが，冷却はリニアに効くわけではない
 \end{itemize}
 
 したがって，ステージの線速度を制御したほうがよいという結論になるが，前章で述べたように極座標において線速度を一定にすることは理論的に不可能である．
@@ -249,7 +311,7 @@ Figure \ref{fig:noise}の計算結果で示されるような高周波成分を�
 ここで発想を変えて，射出量に応じた線速度から直接$r$と$\theta$の制御量を導くのではなく，なるべくこれに近しい線速度でステージが動くように本体を制御することを考える．具体的には，以下のように問題を単純化する．
 
 \begin{quote}
-	仮定1: 半径方向の速度変化は比較的小さく，回転方向の運動が主である
+     仮定1: 半径方向の速度変化は比較的小さく，回転方向の運動が主である
 \end{quote}
 
 この仮定をおけば(\ref{eq:vdef})式は$v=r \omega$と簡素化できるから，半径に反比例するようにステージ側の回転テーブルの回転数を調節すれば，エクストルーダのスクリュー回転数に追従することができる．
@@ -277,7 +339,7 @@ Figure \ref{fig:noise}の計算結果で示されるような高周波成分を�
 
 いま，極座標で加速度制御を行ったときに線速度のプロファイルがどのような様子を描くかに興味がある．極座標系での線速度は以下の式(\ref{eq:v})から計算できる．半径方向の速度$\dot{r}$と角速度$\dot{\theta}$を適当な台形プロファイルで仮定して数値計算した結果をFigure \ref{fig:jerk}に示す．図中の右で示される$v$が極座標系における線速度である．
 \begin{eqnarray}\label{eq:v}
-	|v| = \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } 
+     |v| = \sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 }
 \end{eqnarray}
 
 \begin{figure}[htbp]
@@ -305,8 +367,8 @@ Figure \ref{fig:jerk}から，$\dot{r}$と$\dot{\theta}$を台形型の速度プ
 いま，問題は以下の2つに分解される．
 
 \begin{enumerate}
-	\item スライサーからのエクストルーダの値を使った場合，ステージ側の加速度はどのように制御すればよいか
-	\item ステージ側のJerkを制御できたとして，それが出力物の精度に与える影響はいかほどか	
+     \item スライサーからのエクストルーダの値を使った場合，ステージ側の加速度はどのように制御すればよいか
+     \item ステージ側のJerkを制御できたとして，それが出力物の精度に与える影響はいかほどか    
 \end{enumerate}
 
 以下で，上記の2点について考察する．
@@ -318,39 +380,45 @@ $\theta$の計算方法について詳しく述べる．
 総加速ステップを$S$，ステッピングモーターの初期速度を$v_0$，目標速度を$v$，1秒ごとの加速ステップ数を$a$，加速時間を$t$とすれば，
 
 \begin{eqnarray}\label{eq:first}
-	S = v_0 t + \frac{1}{2} a t^2 \nonumber \\
-	v = v_0 + a t	
+     S = v_0 t + \frac{1}{2} a t^2 \nonumber \\
+     v = v_0 + a t    
 \end{eqnarray}
 (\ref{eq:first})における両式より，以下を得る．
 \begin{eqnarray}\label{eq:second}
-	S = \frac{v^2-v_0}{2 a} \nonumber \\
-	v = \sqrt{v_0^2+2aS}
+     S = \frac{v^2-v_0}{2 a} \nonumber \\
+     v = \sqrt{v_0^2+2aS}
 \end{eqnarray}
 (\ref{eq:second})における両式を再帰的に適用して漸化式を導けば，
 \begin{eqnarray}\label{eq:third}
-	v_i = \sqrt{v_{i-1}^2 + 2a}
+     v_i = \sqrt{v_{i-1}^2 + 2a}
 \end{eqnarray}
 $i$ステップにおけるステッピングモーターの遅延時間を$p_i$，プロセッサのタイマー割り込み周波数を$F$とするとき，
 \begin{eqnarray*}
-	p_i = \frac{F}{v_i}
+     p_i = \frac{F}{v_i}
 \end{eqnarray*}
 であるから，(\ref{eq:third})式を用いることで，$p$に関する漸化式は以下のように変形できる．
 \begin{eqnarray}\label{eq:fourth}
-	p_i = \frac{F}{\sqrt{{(\frac{F}{p_{i-1}})}^2+2a}} 
+     p_i = \frac{F}{\sqrt{{(\frac{F}{p_{i-1}})}^2+2a}}
 \end{eqnarray}
 目標速度における遅延時間を$p_s$，定数$R= a/F^2$とおき，(\ref{eq:fourth})式をテイラー展開して1次の項で打ち切れば，
 \begin{eqnarray}\label{eq:pupdate}
-	p_{i+1} = p_i \cdot (1 + m \cdot p_i \cdot p_i) 
+     p_{i+1} = p_i \cdot (1 + m \cdot p_i \cdot p_i)
 \end{eqnarray}
 ただし，mは以下で定義する．
 \begin{eqnarray}\label{eq:mdef}
-\left\{\begin{array}{r@{\,}c@{\,}r@{\,}c@{\,}l@{\;\;}r} m &=& -R &:& \:\:\: \mbox{\small during acceleration}\\ m &=& 0 &:&  \:\:\: \mbox{\small slew speed}\\ m &=& R &:&  \:\:\: \mbox{\small during deceleration}\end{array}%\right.
+\left\{
+\begin{array}{r@{\,}c@{\,}r@{\,}c@{\,}l@{\;\;}r}
+ m &=& -R &:& \:\:\: \mbox{\small during acceleration}\\
+ m &=& 0 &:&  \:\:\: \mbox{\small slew speed}\\
+ m &=& R &:&  \:\:\: \mbox{\small during deceleration}
+\end{array}%
+\right.
 \end{eqnarray}
 
 (\ref{eq:mdef})式をアルゴリズムとして整理したものをAlgorithm 2に示す．
 
-\begin{algorithm}         
-\begin{algorithmic}                  
+\begin{algorithm}        
+\begin{algorithmic}                 
 \STATE $v_0, v, a, F$ given.
 \STATE $S \Leftarrow (v^2-{v_0}^2) / 2 a$
 \STATE $p_1 \Leftarrow F / ({v_0}^2 + 2a)^{-\frac{1}{2}}$
@@ -369,7 +437,7 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \ENDFOR
 \end{algorithmic}
 \caption{Leib ramp acceleration}
-\label{fig:leib_algorithm}                          
+\label{fig:leib_algorithm}                         
 
 \end{algorithm}
 
@@ -383,19 +451,19 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 
 いま，ある時刻における$\dot{\theta_i}$はleib rampで求まった．次に，$\dot r$は(\ref{eq:vdef})式を用いて
 \begin{eqnarray}
-	\bigg|\frac{dr}{dt}\bigg| = \sqrt{\frac{\Delta E}{\Delta t} - r^2 \cdot \dot \theta}
+     \bigg|\frac{dr}{dt}\bigg| = \sqrt{\frac{\Delta E}{\Delta t} - r^2 \cdot \dot \theta}
 \end{eqnarray}
 と表されるから，$\dot r$を求めるアルゴリズムをまとめると，Algorithm 3のようになる．
 
-\begin{algorithm}[htbp]                  
-\begin{algorithmic}                  
-\label{alg:drdt}                          
+\begin{algorithm}[htbp]                 
+\begin{algorithmic}                 
+\label{alg:drdt}                         
 \STATE $\Delta E \Leftarrow E_2-E_1$
 \STATE $\Delta S \Leftarrow ((x_2-x_1)^2 + (y_2-y_1)^2)^{\frac{1}{2}}$
 \STATE $\Delta \theta \Leftarrow \tan^{-1} (y_2/x_2) - \tan^{-1} (y_1/x_1)$
 \STATE $T_s = \alpha \cdot \Delta \theta$
 \STATE compute $p_i$ with Leib Ramp.
-\STATE $\dot \theta \Leftarrow 1 / p_i $ 
+\STATE $\dot \theta \Leftarrow 1 / p_i $
 \STATE $dr/dt \Leftarrow (\Delta E/\Delta t-r^2 \cdot \dot \theta)^{\frac{1}{2}}$
 \end{algorithmic}
 \caption{$\dot r$ solver}
@@ -414,7 +482,7 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御した時の$\dot r$の変動は非常に小さいものである．($\sim 1.0 \times 10^{-4}$)
 
 \begin{itemize}
-	\item TODO: $\dot r$の加速部分の加速時間と，変動量から理想制御におけるx-y変位量のオーダーを計算し，それが小さいことを述べる
+     \item TODO: $\dot r$の加速部分の加速時間と，変動量から理想制御におけるx-y変位量のオーダーを計算し，それが小さいことを述べる
 \end{itemize}
 
 
@@ -436,51 +504,85 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
 
 いま，連続の式は
 \begin{eqnarray}\label{eq:continuous}
-	\nabla \cdot \bm{v} = 0
+     \nabla \cdot \bm{v} = 0
 \end{eqnarray}
 
 ナビエ=ストークス方程式は，
 \begin{eqnarray}\label{eq:ns}
-	\frac{\partial \bm{v}}{\partial t} + (\bm{v}\cdot \nabla)\bm{v} = -\nabla p + \frac{1}{Re} \nabla^2 \bm{v}
+     \frac{\partial \bm{v}}{\partial t} + (\bm{v}\cdot \nabla)\bm{v} = -\nabla p + \frac{1}{Re} \nabla^2 \bm{v}
 \end{eqnarray}
 
 (\ref{eq:ns})式の時間微分に対して前進差分を適用すると，
 \begin{eqnarray}\label{eq:ns2}
-	\frac{\bm{v}^{n+1}-\bm{v}^n}{\Delta t} + (\bm{v}^n \cdot \nabla )\bm{v}^n = - \nabla p + \frac{1}{Re} \nabla^2 \bm{v}^n
+     \frac{\bm{v}^{n+1}-\bm{v}^n}{\Delta t} + (\bm{v}^n \cdot \nabla )\bm{v}^n = - \nabla p + \frac{1}{Re} \nabla^2 \bm{v}^n
 \end{eqnarray}
 (\ref{eq:ns2})式を次の2式に分解して段階的に計算することを考える．
 
 \begin{eqnarray}
-	\frac{\bm{v}^{\ast}-\bm{v}^n}{\Delta t} + (\bm{v}^n \cdot \nabla )\bm{v}^n &=& \frac{1}{Re} \nabla^2 \bm{v}^n \label{eq:velo_transport}\\
-	\frac{\bm{v}^{n+1}-\bm{v}^{\ast}}{\Delta t} &=& - \nabla p	\label{eq:p1}
+     \frac{\bm{v}^{\ast}-\bm{v}^n}{\Delta t} + (\bm{v}^n \cdot \nabla )\bm{v}^n &=& \frac{1}{Re} \nabla^2 \bm{v}^n \label{eq:velo_transport}\\
+     \frac{\bm{v}^{n+1}-\bm{v}^{\ast}}{\Delta t} &=& - \nabla p     \label{eq:p1}
 \end{eqnarray}
 
 ここで(\ref{eq:velo_transport})式は速度輸送方程式である．
 
 (\ref{eq:velo_transport})式によって求めた$\bm{v}^\ast$と(\ref{eq:p1})式を用いれば，次の時間における$\bm{v}^{n+1}$が
 \begin{eqnarray}
-\bm{v}^{n+1}=\bm{v}^{\ast}-\Delta t \nabla p \: \inlineeqno \label{eq:updateP}	
+\bm{v}^{n+1}=\bm{v}^{\ast}-\Delta t \nabla p \: \inlineeqno \label{eq:updateP}    
 \end{eqnarray}
 
 として求まるが，まだ圧力が決定されていない．(\ref{eq:updateP})式の両辺のダイバージェンスをとり，連続の式(\ref{eq:continuous})を用いれば，圧力$p$は以下のポアソン方程式を満たすように決定できる．
 
 \begin{eqnarray}
-	\nabla^2 p = \frac{\nabla \cdot \bm{v}}{\Delta t}
+     \nabla^2 p = \frac{\nabla \cdot \bm{v}}{\Delta t}
 \end{eqnarray}
 
 
 
 スタガード格子を用いたとき、速度輸送方程式の$x$成分と$y$成分はそれぞれ以下のようになる。
 \begin{strip}
-\begin{eqnarray}		
-	u^\ast_{i-1/2,j} &=& u^n_{i-1/2,j} - \Delta t \Bigg \{u^n_{i-1/2,j}\frac{u^n_{i+1/2,j}-u^n_{i-3/2,j}}{2\Delta x}+ v^n_{i-1/2,j}\frac{u^n_{i-1/2,j}-u^n_{i-1/2,j-1}}{2\Delta y} \nonumber \\
-	&+& \frac{1}{Re}\Bigg( \frac{u^n_{i+1/2,j}-2u^n_{i-1/2,j}+u^n_{i-3/2,j}}{(\Delta x)^2}+\frac{u^n_{i-1/2,j}-2u^n_{i-1/2,j}+u^n_{i-1/2,j-1}}{(\Delta y)^2} \Bigg) \Bigg\} \\
-	v^\ast_{i,j-1/2} &=& u^n_{i,j-1/2} - \Delta t \Bigg \{u^n_{i,j-1/2}\frac{v^n_{i+1,j-1/2}-v^n_{i-1,j=1/2}}{2\Delta x}+ v^n_{i,j-1/2}\frac{v^n_{i,j+1/2}-v^n_{i,j-3/2}}{2\Delta y} \nonumber \\
-	&+& \frac{1}{Re}\Bigg( \frac{v^n_{i+1,j-1/2}-2v^n_{i,j-1/2}+v^n_{i-1,j-1/2}}{(\Delta x)^2}+\frac{v^n_{i,j+1/2}-2v^n_{i,j-1/2}+v^n_{i,j-3/2}}{(\Delta y)^2} \Bigg) \Bigg\} 
+\begin{eqnarray}         
+     u^\ast_{i-1/2,j} &=& u^n_{i-1/2,j} - \Delta t \Bigg \{u^n_{i-1/2,j}\frac{u^n_{i+1/2,j}-u^n_{i-3/2,j}}{2\Delta x}+ v^n_{i-1/2,j}\frac{u^n_{i-1/2,j}-u^n_{i-1/2,j-1}}{2\Delta y} \nonumber \\
+     &+& \frac{1}{Re}\Bigg( \frac{u^n_{i+1/2,j}-2u^n_{i-1/2,j}+u^n_{i-3/2,j}}{(\Delta x)^2}+\frac{u^n_{i-1/2,j}-2u^n_{i-1/2,j}+u^n_{i-1/2,j-1}}{(\Delta y)^2} \Bigg) \Bigg\} \\
+     v^\ast_{i,j-1/2} &=& u^n_{i,j-1/2} - \Delta t \Bigg \{u^n_{i,j-1/2}\frac{v^n_{i+1,j-1/2}-v^n_{i-1,j=1/2}}{2\Delta x}+ v^n_{i,j-1/2}\frac{v^n_{i,j+1/2}-v^n_{i,j-3/2}}{2\Delta y} \nonumber \\
+     &+& \frac{1}{Re}\Bigg( \frac{v^n_{i+1,j-1/2}-2v^n_{i,j-1/2}+v^n_{i-1,j-1/2}}{(\Delta x)^2}+\frac{v^n_{i,j+1/2}-2v^n_{i,j-1/2}+v^n_{i,j-3/2}}{(\Delta y)^2} \Bigg) \Bigg\}
 \end{eqnarray}
 \end{strip}
 
 
+2次元移流拡散方程式
+\begin{eqnarray*}
+\frac{\partial f}{\partial t} + u\frac{\partial f}{\partial x} + v\frac{\partial f}{\partial y} = D\bigg( \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} \bigg)
+\end{eqnarray*}
+2次元CIP法
+\begin{eqnarray*}
+\xi =  -u \Delta t\\
+\eta = -v \Delta t
+\end{eqnarray*}
+3次エルミート補間
+\begin{eqnarray*}
+F(\xi,\eta) = \sum_{l=0}^3 \sum_{m=0}^3 C_{l,m} \xi^l \eta^m
+\end{eqnarray*}
+
+A型CIP
+\begin{eqnarray*}
+F(\xi,\eta) &=& \{ ( C_{3,0} \xi + C_{2,1}\eta + C_{2,0}) \xi + C_{1,1}\eta + C_{1,0} \} \xi \\
+ &+& \{C_{0,3}\eta + C_{1,2}\xi + C_{0,2})\eta + C_{0,1}\} \eta + C_{0,0}
+\end{eqnarray*}
+格子点の関数の計算値
+\begin{eqnarray*}
+C_{3,0} &=& \{ (g_{ip,j} + g_{i,j}) \delta_x - 2(f_{i,j}-f_{ip,j})\}/ \delta_x^3 \\
+C_{0,3} &=& \{ (h_{i,jp} + h_{i,j}) \delta_y - 2(f_{i,j}-f_{i,jp})\}/ \delta_y^3 \\
+C_{2,0} &=& \{ 3(f_{ip,j} - f_{i,j})  + 2(g_{ip,j}+2g_{i,j}) \delta_x \}/ \delta_x^2 \\
+C_{0,2} &=& \{ 3(f_{i,jp} - f_{i,j})  + 2(h_{i,jp}+2h_{i,j}) \delta_y \}/ \delta_y^2 \\
+a  &=& f_{i,j} - f_{i,jp} - f_{ip,j} + f_{ip,jp} \\
+b &=& h_{ip,j} - h_{i,j} \\
+C_{1,2} &=& (-a-b\delta_y) / (\delta_x \delta_y^2)\\
+C_{2,1} &=& \{  -a-(g_{i,jp} - g_{i,j})  \delta_x / \delta_x^2 \delta_y  \}\\
+C_{1,1} &=& (-b+C_{2,1}\delta_x^2)/\delta_x\\
+C_{1,0} &=& g_{i,j} \\
+C_{0,1} &=& h_{i,j} \\
+C_{0,0} &=& f(i,j)
+\end{eqnarray*}
 
 %補足として，Jerkをゼロとした時の計算結果をFigure \ref{fig:jerk}に示す．
 %\begin{figure}[t]
@@ -513,43 +615,43 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
 
 %$\dot{v} = 0$より，
 %\begin{eqnarray}
-%    
-%	\frac{d}{dt} \left(\sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } \right) &=& 0 \nonumber \\
-%\frac{1}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} \cdot \frac{d}{dt}\left( \dot{r}^2+r^2 \dot{\theta}^2 \right) &=& 0 \nonumber \\ 
+%   
+%     \frac{d}{dt} \left(\sqrt{ \dot{r}^2+ r^2 \dot{\theta}^2 } \right) &=& 0 \nonumber \\
+%\frac{1}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} \cdot \frac{d}{dt}\left( \dot{r}^2+r^2 \dot{\theta}^2 \right) &=& 0 \nonumber \\
 %\frac{2\dot{r}\ddot{r} + 2r\dot{r}\dot{\theta}^2 + 2r^2\dot{\theta}\ddot{\theta}}{2\sqrt{ \dot{r}^2+ r^2 \theta^2 }} &=& 0 \nonumber \\
-%\dot{r}\ddot{r} + r\dot{r}\dot{\theta}^2 + r^2\dot{\theta}\ddot{\theta} &=& 0  
+%\dot{r}\ddot{r} + r\dot{r}\dot{\theta}^2 + r^2\dot{\theta}\ddot{\theta} &=& 0 
 %\end{eqnarray}
-%	
+%    
 %以上を満たすように$r$と$\theta$を制御する必要がある．
-%	
+%    
 %(2)式をさらに計算する．
 %$\dot{\theta}=\omega$とおいて，
 %\begin{eqnarray}
 %  \dot{r}\ddot{r}+r\omega(\dot{r}\omega+r\dot{\omega})&=&0 \nonumber \\
-%  \dot{r}\ddot{r} &=& -r\omega\frac{d}{dt}(r\omega) 
+%  \dot{r}\ddot{r} &=& -r\omega\frac{d}{dt}(r\omega)
 %\end{eqnarray}
 %$\dot{r}=x, r\omega=y$とおくと，
 %\begin{eqnarray}
 %  x\frac{dx}{dt} &=& -y\frac{dy}{dt} \nonumber \\
-%  xdx + ydy &=& 0	
+%  xdx + ydy &=& 0    
 %\end{eqnarray}
 %
 %(4)式は完全微分形の微分方程式である．(4)を解くと，
 %\begin{eqnarray}
 %  x^2+y^2 &=& C  \nonumber \\
 %  \dot{r}^2 + (r\omega)^2 &=& C \nonumber \\
-%  \dot{r}^2 &=& -(r\omega)^2 + C 	
+%  \dot{r}^2 &=& -(r\omega)^2 + C     
 %\end{eqnarray}
 %初期条件$t=0, r=a, \dot{r}=0, \omega=\omega_0$とすると，
 %\begin{eqnarray*}
-%  C=a^2\omega_0^2	
+%  C=a^2\omega_0^2    
 %\end{eqnarray*}
 %したがって，
 %\begin{eqnarray}
 %  \dot{r}^2 &=& a^2 \omega_0^2 - r^2 \omega^2 \nonumber \\
 %  \dot{r}^2 - a^2 \omega_0^2 &=& r^2 \omega^2 \nonumber \\
 %  \omega^2 &=& \frac{1}{r^2} \left\{ \dot{r}^2 - a^2 {\omega_0}^2  \right\} \nonumber \\
-%  \omega &=& \frac{1}{r} \sqrt{ \dot{r}^2 - a^2 {\omega_0}^2 }  
+%  \omega &=& \frac{1}{r} \sqrt{ \dot{r}^2 - a^2 {\omega_0}^2 } 
 %\end{eqnarray}
 
 
