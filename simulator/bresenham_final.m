@@ -1,4 +1,4 @@
-function compare_velo
+function bresenham_final
 clear all;
 close all;
 format compact;
