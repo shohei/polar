@@ -1,10 +1,12 @@
 \documentclass[twocolumn,oneside,a4paper]{article}
-\title{極座標ステージとエクストルーダの\\同期に関する考察}
+\title{極座標ステージとエクストルーダの同期}
 \author{青木 翔平}
 
 \usepackage[usenames]{color} %used for font color
 \usepackage{amssymb} %maths
-\usepackage{amsmath} %maths
+\usepackage{amsmath,cases}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc} %useful to type directly diacritic characters
@@ -233,7 +235,24 @@ z(k) &=& \bm{c}^T(k)\bm{x}(k)
 
 
 \subsubsection{アンセンテッドカルマンフィルタ(UKF)}
+非線形関数$\bm{f}: \mathfrak{R}^n \rightarrow \mathfrak{R}^n$がn次元確率変数$\bm{x}$をn次元確率変数$\bm{y}$に変換するとき、$\bm{x}$を1次モーメント統計量と2次モーメント統計量で表現するためのシグマポイントは、スケーリングパラメータを$\kappa$とすると以下のように表される。
+\begin{eqnarray*}
+	\mathscr{X}_0 &=& \bar{\bm{x}} \\
+	\mathscr{X}_i &=& \bar{\bm{x}} + \sqrt{n+\kappa}(\sqrt{\bm{P}_x})_i\\
+	\mathscr{X}_{n+1} &=& \bar{\bm{x}} - \sqrt{n+\kappa}(\sqrt{\bm{P}_x})_i
+\end{eqnarray*}
+$\bm{P}_x$は共分散行列の定義から正定値対称行列であり、したがって$\sqrt{\bm{P}_x}$はコレスキー分解によって求まる。
+
+上のシグマポイントを用いて確率密度関数をU変換する。具体的には、
+\begin{eqnarray*}
+	\mathscr{Y}_i &=& \bm{f}(\mathscr{X}_i) \\
+	\bar{\bm{y}} &=& \sum_{i=0}^{2n} w_i \mathscr{Y}_i) \\
+	\bm{P}_y &=& \sum_{i=0}^{2n} w_i (\mathscr{Y}_i - \bar{\bm{y}}) (\mathscr{Y}_i - \bar{\bm{y}})^{T}
+\end{eqnarray*}
+
+
 アンセンテッドカルマンフィルタ(UKF)のアルゴリズムは以下のように表される．
+
   \begin{itembox}[l]{UKF}
     $\Box$ 初期値\\
 
@@ -569,19 +588,23 @@ F(\xi,\eta) &=& \{ ( C_{3,0} \xi + C_{2,1}\eta + C_{2,0}) \xi + C_{1,1}\eta + C_
  &+& \{C_{0,3}\eta + C_{1,2}\xi + C_{0,2})\eta + C_{0,1}\} \eta + C_{0,0}
 \end{eqnarray*}
 格子点の関数の計算値
+
 \begin{eqnarray*}
-C_{3,0} &=& \{ (g_{ip,j} + g_{i,j}) \delta_x - 2(f_{i,j}-f_{ip,j})\}/ \delta_x^3 \\
-C_{0,3} &=& \{ (h_{i,jp} + h_{i,j}) \delta_y - 2(f_{i,j}-f_{i,jp})\}/ \delta_y^3 \\
-C_{2,0} &=& \{ 3(f_{ip,j} - f_{i,j})  + 2(g_{ip,j}+2g_{i,j}) \delta_x \}/ \delta_x^2 \\
-C_{0,2} &=& \{ 3(f_{i,jp} - f_{i,j})  + 2(h_{i,jp}+2h_{i,j}) \delta_y \}/ \delta_y^2 \\
-a  &=& f_{i,j} - f_{i,jp} - f_{ip,j} + f_{ip,jp} \\
-b &=& h_{ip,j} - h_{i,j} \\
-C_{1,2} &=& (-a-b\delta_y) / (\delta_x \delta_y^2)\\
-C_{2,1} &=& \{  -a-(g_{i,jp} - g_{i,j})  \delta_x / \delta_x^2 \delta_y  \}\\
-C_{1,1} &=& (-b+C_{2,1}\delta_x^2)/\delta_x\\
-C_{1,0} &=& g_{i,j} \\
-C_{0,1} &=& h_{i,j} \\
-C_{0,0} &=& f(i,j)
+\begin{cases}\;C_{3,0} = \{ (g_{ip,j} + g_{i,j}) \delta_x - 2(f_{i,j}-f_{ip,j})\}/ \delta_x^3 \\
+\;C_{0,3} = \{ (h_{i,jp} + h_{i,j}) \delta_y - 2(f_{i,j}-f_{i,jp})\}/ \delta_y^3 \\
+\;C_{2,0} = \{ 3(f_{ip,j} - f_{i,j})  + 2(g_{ip,j}+2g_{i,j}) \delta_x \}/ \delta_x^2 \\
+\;C_{0,2} = \{ 3(f_{i,jp} - f_{i,j})  + 2(h_{i,jp}+2h_{i,j}) \delta_y \}/ \delta_y^2 \\
+\;a = f_{i,j} - f_{i,jp} - f_{ip,j} + f_{ip,jp} \\
+\;b = h_{ip,j} - h_{i,j} \\
+\;C_{1,2} = (-a-b\delta_y) / (\delta_x \delta_y^2)\\
+\;C_{2,1} = \{  -a-(g_{i,jp} - g_{i,j})  \delta_x / \delta_x^2 \delta_y  \}\\
+\;C_{1,1} = (-b+C_{2,1}\delta_x^2)/\delta_x\\
+\;C_{1,0} = g_{i,j} \\
+\;C_{0,1} = h_{i,j} \\
+\;C_{0,0} = f(i,j)
+
+
+\end{cases}  
 \end{eqnarray*}
 
 %補足として，Jerkをゼロとした時の計算結果をFigure \ref{fig:jerk}に示す．
@@ -606,11 +629,18 @@ C_{0,0} &=& f(i,j)
 %\end{appendices}
 
 \begin{thebibliography}{99}
+   \bibitem{rikougaku} 水島二郎，柳瀬眞一郎，理工学のための数値計算法，数理工学社 (2009)
   \bibitem{joshiki} 伊理正夫，藤野和建，『数値計算の常識』，共立出版 (1985)
+   \bibitem{nagai} 永井清，土橋宏規，『ロボット機構学』，コロナ社 (2015)
+    \bibitem{wakariyasui} 松日楽信人，大明準治，『わかりやすいロボットシステム入門』，オーム社 (2010)
+    \bibitem{seimitsu} 松原厚，『精密位置決め・送り系設計のための制御工学』、森北出版 (2008)
   \bibitem{kalman} 足立修一，丸田一郎，『カルマンフィルタの基礎』，東京電機大学出版局 (2012)
   \bibitem{leib} Aryeh Eiderman, "Real Time Stepper Motor Linear Ramping Just by Addition and Multiplication," http://hwml.com/LeibRamp.pdf
-  \bibitem{nagare} 河村 哲也，『流れのシミュレーションの基礎』，インデックス出版 (2007)
-   \bibitem{ranryu} 梶島 岳夫，『乱流の数値シミュレーション』，養賢堂 (2014)
+  \bibitem{webgl} 酒井幸市，『WebGLによる流れと波のシミュレーション』，工学社 (2014)
+  \bibitem{nagare} 河村哲也，『流れのシミュレーションの基礎』，インデックス出版 (2007)
+   \bibitem{ranryu} 梶島岳夫，『乱流の数値シミュレーション』，養賢堂 (2014)
+   \bibitem{matlab_dsp} 川又政征，MATLABで学ぶディジタル信号処理の基礎，信号処理学会誌 (2001)
+   \bibitem{scilab_dsp} 三谷政昭，Scilabで学ぶディジタル信号処理，CQ出版 (2006)
 \end{thebibliography}
 
 %$\dot{v} = 0$より，

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  22 JUN 2016 10:16
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  22 JUN 2016 11:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -96,6 +96,11 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/cases/cases.sty
+Package: cases 2002/05/02 ver 2.5 
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen128
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -414,9 +419,9 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@ppsaveapp=\count112
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
-\symboldoperators=\mathgroup6
-\symboldletters=\mathgroup7
-\symboldsymbols=\mathgroup8
+\symboldoperators=\mathgroup7
+\symboldletters=\mathgroup8
+\symboldsymbols=\mathgroup9
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/mathtools/mathtools.sty
@@ -478,48 +483,52 @@ Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 ) (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 \openout1 = `note.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 40.
-LaTeX Font Info:    Try loading font information for U+msa on input line 41.
+(lastpage)             ! on input line 42.
+LaTeX Font Info:    Try loading font information for U+msa on input line 43.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 41.
+LaTeX Font Info:    Try loading font information for U+msb on input line 43.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 43.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 43.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 43.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 45.
 
-Overfull \hbox (1.02101pt too wide) in alignment at lines 77--84
+Overfull \hbox (1.02101pt too wide) in alignment at lines 79--86
  [][][] []
  []
 
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 97.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 99.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 97.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 99.
 
-Overfull \hbox (10.00002pt too wide) detected at line 109
+Overfull \hbox (10.00002pt too wide) detected at line 111
 [][] 
  []
 
@@ -527,12 +536,12 @@ Overfull \hbox (10.00002pt too wide) detected at line 109
 
 
 ]
-Overfull \hbox (32.96881pt too wide) in paragraph at lines 141--141
+Overfull \hbox (32.96881pt too wide) in paragraph at lines 143--143
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--153
+Underfull \hbox (badness 10000) in paragraph at lines 145--155
 
  []
 
@@ -543,9 +552,9 @@ Left:143.98639pt
 Right:139.68582pt
 Output:143.98639pt
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 159.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 161.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 159.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 161.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -553,26 +562,30 @@ File: gcodesim.png Graphic file (type eps)
  <gcodesim.png>
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 185.
+(Font)              using `JT1/mc/m/n' instead on input line 187.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 185.
+(Font)              using `JY1/mc/m/n' instead on input line 187.
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 185.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 187.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 185.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 185.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 187.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 187.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 185.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 187.
  [2]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Font Info:    Try loading font information for U+euf on input line 238.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+Underfull \vbox (badness 2486) has occurred while \output is active []
 
  [3] [4]
 Underfull \vbox (badness 5847) has occurred while \output is active []
@@ -581,41 +594,41 @@ File: accel2.pdf Graphic file (type eps)
  <accel2.pdf> [5]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 377.
+(Font)              using `JT1/mc/m/n' instead on input line 396.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 377.
+(Font)              using `JY1/mc/m/n' instead on input line 396.
 
 
-Overfull \hbox (10.00002pt too wide) detected at line 442
+Overfull \hbox (10.00002pt too wide) detected at line 461
 [][] 
  []
 
 File: leib_ramp_screenshot.png Graphic file (type eps)
 <leib_ramp_screenshot.png>
-Overfull \hbox (10.00002pt too wide) detected at line 471
+Overfull \hbox (10.00002pt too wide) detected at line 490
 [][] 
  []
 
 File: compute_rdot_screenshot.png Graphic file (type eps)
 <compute_rdot_screenshot.png> [6]
-Underfull \hbox (badness 2941) in paragraph at lines 541--549
+Underfull \hbox (badness 2941) in paragraph at lines 560--568
 []\JY1/mc/m/sc/10 スタガ ード格子を用いたとき 、 速度輸送方程式
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 541--549
+Underfull \hbox (badness 1577) in paragraph at lines 560--568
 \JY1/mc/m/sc/10 の $\OML/cmm/m/it/10 x$ \JY1/mc/m/sc/10 成分と $\OML/cmm/m/it/10 y$ \JY1/mc/m/sc/10 成分はそれぞれ以下のようにな る 。
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--549
+Underfull \hbox (badness 10000) in paragraph at lines 560--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--549
+Underfull \hbox (badness 10000) in paragraph at lines 560--568
 
  []
 
@@ -627,7 +640,12 @@ Left:0.0pt
 Right:0.0pt
 Output:0.0pt
 
-Overfull \hbox (4.21677pt too wide) in alignment at lines 567--570
+Overfull \hbox (4.21677pt too wide) in alignment at lines 586--589
+ [][][] []
+ []
+
+
+Overfull \hbox (6.65356pt too wide) in alignment at lines 592--609
  [][][] []
  []
 
@@ -639,12 +657,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4567 strings out of 493777
- 61775 string characters out of 6151334
- 159902 words of memory out of 5000000
- 7953 multiletter control sequences out of 15000+600000
- 24119 words of font info for 94 fonts, out of 8000000 for 9000
+ 4637 strings out of 493777
+ 63103 string characters out of 6151334
+ 160268 words of memory out of 5000000
+ 8004 multiletter control sequences out of 15000+600000
+ 26288 words of font info for 105 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  31i,15n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (8 pages, 54656 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (8 pages, 58188 bytes).
