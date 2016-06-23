@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 18:54
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 19:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -715,10 +715,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  5571 strings out of 493777
  71729 string characters out of 6151334
- 189033 words of memory out of 5000000
+ 189039 words of memory out of 5000000
  8916 multiletter control sequences out of 15000+600000
  25108 words of font info for 100 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  32i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (9 pages, 62832 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (9 pages, 62848 bytes).
