@@ -216,7 +216,7 @@ FIRフィルタ  & No.1 & No.2 \\
 \end{tabular}
 
 
-フィルタ段数はカイザー窓の遷移帯域幅に関するテーブルを参照して求めた．これらのFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$を Figure \ref{eq:fir_window2}，Figure \ref{eq:fir_window}に示す．
+フィルタ段数はカイザー窓の遷移帯域幅に関するテーブルを参照して求めた．これらのFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$を Figure \ref{eq:fir_window}，Figure \ref{eq:fir_window2}に示す．
 
 
 \begin{figure}[htbp]
@@ -264,49 +264,49 @@ FIRフィルタ  & No.1 & No.2 \\
 SNWの波形は原波形に比べてなまっているものの，$r$の推移に追従しているわけではない．
 
 
-\subsubsection{非線形カルマンフィルタ}
-\paragraph{拡張カルマンフィルタ(EKF)}
-(\ref{eq:controller})式を離散時間における非線形状態空間表現で表す．
-\begin{eqnarray*}\label{eq:nonlinear}
-\bm{x}(k+1) &=& \bm{f}(\bm{x}(k))+\bm{b}v(k)\\
-y(k) &=& h(\bm{x}(k))+w(k)
-\end{eqnarray*}
-
-$\bm{f}(\bm{x}), h(\bm{x})$のヤコビ行列をそれぞれ$\bm{A}(k), \bm{c}^T(k)$とおけば，
-\begin{eqnarray*}
-\bm{A}(k) &=& \frac{\partial \bm{f}(\bm{x})}{\partial \bm{x}} \bigg| _{\bm{x}=\hat{\bm{x}}(k)}\\
-\bm{c}^T(k) &=& \frac{\partial h(\bm{x})}{\partial \bm{x} } \bigg| _{\bm{x}=\hat{\bm{x}}^{-}(k)}
-\end{eqnarray*}
-
-
-このとき，(\ref{eq:nonlinear})式は
-\begin{eqnarray*}
-\bm{x}(k+1) &=& \bm{A}(k)\bm{x}(k) + \bm{b}v(k)+\bm{u}(k)\\
-z(k) &=& \bm{c}^T(k)\bm{x}(k)
-\end{eqnarray*}
-
-拡張カルマンフィルタ(EKF)のアルゴリズムは以下のように表される．
-  \begin{breakitembox}[l]{拡張カルマンフィルタ}
-    \hspace{-0.3in} $\Box$ 時間更新式\\
-    $k=1,2,...,N$に対して以下を実行\\
-     $\bullet$ 予測ステップ\\
-     事前状態推定値: \\
-     $\:\:\:\:\:\: \hat{\bm{x}}^{-}(k) = \bm{f}(\hat{\bm{x}}(k-1))$ \\
-線形近似: \\
-     $\:\:\:\:\:\: \bm{A}(k) = \frac{\partial \bm{f}(\bm{x})}{\partial \bm{x}} \bigg| _{\bm{x}=\hat{\bm{x}}(k)} $ \\
-     $\:\:\:\:\:\: \bm{c}^T(k) = \frac{\partial h(\bm{x})}{\partial \bm{x} } \bigg| _{\bm{x}=\hat{\bm{x}}^{-}(k)} $ \\
-     事前誤差共分散行列: \\
-     $\:\:\:\:\:\: \bm{P}^{-}(k) = \bm{A}(k-1)\bm{P}(k-1)\bm{A}^T(k-1) + \sigma_v^2(k-1)\bm{b}\bm{b}^T$ \\
-     $\bullet$ フィルタリングステップ\\
-     カルマンゲイン: \\
-     $\:\:\:\:\:\: \bm{g}(k)= \frac{\bm{P}^{-}(k) \bm{c}(k)}{\bm{c}^T \bm{P}^{-}(k)\bm{c}(k) + \sigma_v^2} $\\
-     状態推定値: \\
-     $\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{g}(k)\{y(k)-h(\hat{x}^{-}(k))\}$\\
-     事後誤差共分散行列: \\
-     $\:\:\:\:\:\: \bm{P}^(k)=\{ \bm{I}-\bm{g}(k)\bm{c}^T(k)\} \bm{P}^{-1}(k)$
-  \end{breakitembox}
-
-ただし共分散行列$\bm{P}^{-1}(k), \bm{P}(k)$は$n \times n$行列，カルマンゲイン$\bm{G}(k)$は$n \times p$行列である．
+%\subsubsection{非線形カルマンフィルタ}
+%\paragraph{拡張カルマンフィルタ(EKF)}
+%(\ref{eq:controller})式を離散時間における非線形状態空間表現で表す．
+%\begin{eqnarray*}\label{eq:nonlinear}
+%\bm{x}(k+1) &=& \bm{f}(\bm{x}(k))+\bm{b}v(k)\\
+%y(k) &=& h(\bm{x}(k))+w(k)
+%\end{eqnarray*}
+%
+%$\bm{f}(\bm{x}), h(\bm{x})$のヤコビ行列をそれぞれ$\bm{A}(k), \bm{c}^T(k)$とおけば，
+%\begin{eqnarray*}
+%\bm{A}(k) &=& \frac{\partial \bm{f}(\bm{x})}{\partial \bm{x}} \bigg| _{\bm{x}=\hat{\bm{x}}(k)}\\
+%\bm{c}^T(k) &=& \frac{\partial h(\bm{x})}{\partial \bm{x} } \bigg| _{\bm{x}=\hat{\bm{x}}^{-}(k)}
+%\end{eqnarray*}
+%
+%
+%このとき，(\ref{eq:nonlinear})式は
+%\begin{eqnarray*}
+%\bm{x}(k+1) &=& \bm{A}(k)\bm{x}(k) + \bm{b}v(k)+\bm{u}(k)\\
+%z(k) &=& \bm{c}^T(k)\bm{x}(k)
+%\end{eqnarray*}
+%
+%拡張カルマンフィルタ(EKF)のアルゴリズムは以下のように表される．
+%  \begin{breakitembox}[l]{拡張カルマンフィルタ}
+%    \hspace{-0.3in} $\Box$ 時間更新式\\
+%    $k=1,2,...,N$に対して以下を実行\\
+%     $\bullet$ 予測ステップ\\
+%     事前状態推定値: \\
+%     $\:\:\:\:\:\: \hat{\bm{x}}^{-}(k) = \bm{f}(\hat{\bm{x}}(k-1))$ \\
+%線形近似: \\
+%     $\:\:\:\:\:\: \bm{A}(k) = \frac{\partial \bm{f}(\bm{x})}{\partial \bm{x}} \bigg| _{\bm{x}=\hat{\bm{x}}(k)} $ \\
+%     $\:\:\:\:\:\: \bm{c}^T(k) = \frac{\partial h(\bm{x})}{\partial \bm{x} } \bigg| _{\bm{x}=\hat{\bm{x}}^{-}(k)} $ \\
+%     事前誤差共分散行列: \\
+%     $\:\:\:\:\:\: \bm{P}^{-}(k) = \bm{A}(k-1)\bm{P}(k-1)\bm{A}^T(k-1) + \sigma_v^2(k-1)\bm{b}\bm{b}^T$ \\
+%     $\bullet$ フィルタリングステップ\\
+%     カルマンゲイン: \\
+%     $\:\:\:\:\:\: \bm{g}(k)= \frac{\bm{P}^{-}(k) \bm{c}(k)}{\bm{c}^T \bm{P}^{-}(k)\bm{c}(k) + \sigma_v^2} $\\
+%     状態推定値: \\
+%     $\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{g}(k)\{y(k)-h(\hat{x}^{-}(k))\}$\\
+%     事後誤差共分散行列: \\
+%     $\:\:\:\:\:\: \bm{P}^(k)=\{ \bm{I}-\bm{g}(k)\bm{c}^T(k)\} \bm{P}^{-1}(k)$
+%  \end{breakitembox}
+%
+%ただし共分散行列$\bm{P}^{-1}(k), \bm{P}(k)$は$n \times n$行列，カルマンゲイン$\bm{G}(k)$は$n \times p$行列である．
 
 
 %\paragraph{アンセンテッドカルマンフィルタ(UKF)}
