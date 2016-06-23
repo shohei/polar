@@ -22,7 +22,9 @@
 \renewcommand{\sectionmark}[1]{\markleft{\thesection\ #1}}
 \newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 \usepackage{booktabs} \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
-
+\let\oldbibliography\thebibliography
+\renewcommand{\thebibliography}[1]{\oldbibliography{#1}
+\setlength{\itemsep}{0pt}} %Reducing spacing in the bibliography.
 \usepackage{mathtools, cuted}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
