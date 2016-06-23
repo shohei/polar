@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 17:40
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 17:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -618,54 +618,48 @@ File: accel2.pdf Graphic file (type eps)
  <accel2.pdf> [6]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 472.
+(Font)              using `JT1/mc/m/n' instead on input line 475.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 472.
+(Font)              using `JY1/mc/m/n' instead on input line 475.
 
 
-Overfull \hbox (10.00002pt too wide) detected at line 537
+Overfull \hbox (10.00002pt too wide) detected at line 540
 [][] 
  []
 
 File: leib_ramp_screenshot.png Graphic file (type eps)
-<leib_ramp_screenshot.png>
-Overfull \hbox (10.00002pt too wide) detected at line 566
+<leib_ramp_screenshot.png> [7]
+Overfull \hbox (10.00002pt too wide) detected at line 569
 [][] 
  []
 
 File: compute_rdot_screenshot.png Graphic file (type eps)
-<compute_rdot_screenshot.png> [7] [8]
-Underfull \vbox (badness 7631) has occurred while \output is active []
+<compute_rdot_screenshot.png>
+Underfull \vbox (badness 1286) has occurred while \output is active []
 
+ [8]
+Underfull \vbox (badness 1019) has occurred while \output is active []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:0.0pt when 43.08911pt
-
-Underfull \vbox (badness 7631) has occurred while \output is active []
-
-(2)Left:43.08911pt Right:34.0pt Output:43.08911pt
+Extra height:0.0pt when 95.08911pt
+(2)Left:95.08911pt Right:84.23378pt Output:95.08911pt
 - LAST -
-Left:43.08911pt
-Right:34.0pt
-Output:43.08911pt
+Left:95.08911pt
+Right:84.23378pt
+Output:95.08911pt
 
-Underfull \vbox (badness 7631) has occurred while \output is active []
-
-
-Overfull \hbox (18.80385pt too wide) in alignment at lines 657--659
+Overfull \hbox (18.80385pt too wide) in alignment at lines 660--662
  [][][] []
  []
 
 
-Overfull \hbox (4.21677pt too wide) in alignment at lines 690--694
+Overfull \hbox (4.21677pt too wide) in alignment at lines 693--697
  [][][] []
  []
 
 [9]
-Overfull \hbox (6.65356pt too wide) in alignment at lines 704--720
+Overfull \hbox (6.65356pt too wide) in alignment at lines 707--723
  [][][] []
  []
 
@@ -680,10 +674,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  4716 strings out of 493777
  64178 string characters out of 6151334
- 162116 words of memory out of 5000000
+ 164117 words of memory out of 5000000
  8074 multiletter control sequences out of 15000+600000
  26288 words of font info for 105 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  31i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 72008 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 72840 bytes).
