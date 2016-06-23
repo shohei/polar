@@ -185,9 +185,8 @@ F_{polar}(t_k) &= \frac{d S}{d t}\Bigg|_{t=tk}  \\
 (\ref{eq:controller})式による制御結果
 Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー速度が振動していることが読み取れる．これを適当なローパスフィルターで除去することを考える．
 
-
-\subsection{デジタルフィルタ}
-\subsubsection{移動平均フィルタ}
+\subsubsection{デジタルフィルタ}
+\paragraph{FIRフィルタ}
 阻止域減衰量60dBとして、窓関数法でローパスフィルタを設計する。
 カイザー窓は以下で与えられる。
 \begin{eqnarray*}
@@ -227,9 +226,9 @@ $\alpha = 6.0$、フィルタ段数を39、通過域端周波数$\omega_p = 0.00
 SNWの波形は原波形に比べてなまっているものの、$r$の推移に追従しているわけではない。
 
 
-\subsection{非線形カルマンフィルタ}
-\subsubsection{拡張カルマンフィルタ(EKF)}
-(\ref{eq:controller})式を離散時間非線形状態空間表現で表す。
+\subsubsection{非線形カルマンフィルタ}
+\paragraph{拡張カルマンフィルタ(EKF)}
+(\ref{eq:controller})式を離散時間における非線形状態空間表現で表す。
 \begin{eqnarray*}\label{eq:nonlinear}
 \bm{x}(k+1) &=& \bm{f}(\bm{x}(k))+\bm{b}v(k)\\
 y(k) &=& h(\bm{x}(k))+w(k)
@@ -270,7 +269,7 @@ z(k) &=& \bm{c}^T(k)\bm{x}(k)
 
 
 
-\subsubsection{アンセンテッドカルマンフィルタ(UKF)}
+\paragraph{アンセンテッドカルマンフィルタ(UKF)}
 非線形関数$\bm{f}: \mathfrak{R}^n \rightarrow \mathfrak{R}^n$が$n$次元確率変数$\bm{x}$を$n$次元確率変数$\bm{y}$に変換するとき、$\bm{x}$を1次モーメント統計量と2次モーメント統計量で表現するためのシグマポイントは、スケーリングパラメータを$\kappa$とすると以下のように表される。
 \begin{eqnarray*}
 	\mathscr{X}_0 &=& \bar{\bm{x}} \\
@@ -317,10 +316,6 @@ $\bm{P}_x$は共分散行列の定義から正定値対称行列であり、し�
      事後誤差共分散行列: \\
      $\:\:\:\:\:\: \bm{P}^(k)=(\bm{I}-\bm{G}(k)\bm{C}\bm{P}^{-1})$
   \end{itembox}
-
-
-\subsection{パーティクルフィルタ}
-割愛する。
 
 
 \subsection{モデルの変更}

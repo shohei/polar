@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 15:53
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 15:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -585,66 +585,68 @@ File: impulse_h.pdf Graphic file (type eps)
  <impulse_h.pdf>
 File: snw_filtered.pdf Graphic file (type eps)
  <snw_filtered.pdf> [3]
-LaTeX Font Info:    Try loading font information for U+euf on input line 274.
+LaTeX Font Info:    Try loading font information for U+euf on input line 273.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-) [4]
-Underfull \vbox (badness 5847) has occurred while \output is active []
-
- [5]
+) [4] [5]
 File: accel2.pdf Graphic file (type eps)
  <accel2.pdf>
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 432.
+(Font)              using `JT1/mc/m/n' instead on input line 427.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 432.
+(Font)              using `JY1/mc/m/n' instead on input line 427.
 
 [6]
-Overfull \hbox (10.00002pt too wide) detected at line 497
+Overfull \hbox (10.00002pt too wide) detected at line 492
 [][] 
  []
 
 File: leib_ramp_screenshot.png Graphic file (type eps)
 <leib_ramp_screenshot.png>
-Overfull \hbox (10.00002pt too wide) detected at line 526
+Overfull \hbox (10.00002pt too wide) detected at line 521
 [][] 
  []
 
 File: compute_rdot_screenshot.png Graphic file (type eps)
 <compute_rdot_screenshot.png> [7]
-Underfull \vbox (badness 1888) has occurred while \output is active []
-
-Extra height:0.0pt when 343.57935pt
-(2)Left:343.57935pt Right:298.28473pt Output:343.57935pt
+Extra height:0.0pt when 397.74457pt
+(2)Left:397.74457pt Right:404.05869pt Output:397.74457pt
+(2)Left:404.05869pt Right:352.32523pt Output:404.05869pt
 - LAST -
-Left:343.57935pt
-Right:298.28473pt
-Output:343.57935pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Left:404.05869pt
+Right:352.32523pt
+Output:404.05869pt
 
 
-Overfull \vbox (57.58142pt too high) has occurred while \output is active []
+LaTeX Warning: Optional argument of \twocolumn too tall on page 8(2 stulpelis).
+
+
+Overfull \vbox (2.74573pt too high) has occurred while \output is active []
+
+
+
+LaTeX Warning: Text page 8 contains only floats.
+
+
+Overfull \vbox (2.74573pt too high) has occurred while \output is active []
 
  [8]
-Overfull \hbox (4.21677pt too wide) in alignment at lines 652--656
+Overfull \hbox (4.21677pt too wide) in alignment at lines 647--651
  [][][] []
  []
 
 
-Overfull \hbox (6.65356pt too wide) in alignment at lines 666--682
+Overfull \hbox (6.65356pt too wide) in alignment at lines 661--677
  [][][] []
  []
 
 File: duct_fs.pdf Graphic file (type eps)
 <duct_fs.pdf> [9] 
 AED: lastpage setting LastPage
-[10
-
-] (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
+[10] (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -652,10 +654,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  4649 strings out of 493777
  63268 string characters out of 6151334
- 163322 words of memory out of 5000000
+ 165322 words of memory out of 5000000
  8013 multiletter control sequences out of 15000+600000
  26288 words of font info for 105 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  31i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 68896 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 68848 bytes).
