@@ -21,6 +21,7 @@
 \usepackage{relsize}
 \renewcommand{\sectionmark}[1]{\markleft{\thesection\ #1}}
 \newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\usepackage{booktabs} \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 \usepackage{mathtools, cuted}
 \usepackage{lastpage}
@@ -199,17 +200,17 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
 であり、$\Gamma$はガンマ関数$\Gamma(z) = \int_0^{\infty} t^{z-1}e^{-t} dt$である。
 
 $\alpha = 6.0$として、以下の2種類のローパスフィルタを設計する。
-\begin{itemize}
-	\item 通過域端周波数$\omega_p = 0.4 \pi$
-	\item 阻止域端周波数$\omega_s = 0.6 \pi$
-	\item フィルタ段数39
-\end{itemize}
 
-\begin{itemize}
-	\item 通過域端周波数$\omega_p = 0.005 \pi$
-	\item 阻止域端周波数$\omega_s = 0.01 \pi$
-	\item フィルタ段数1521
-\end{itemize}
+\begin{tabular}{crr}
+\toprule
+FIRフィルタ  & No.1 & No.2 \\
+\midrule
+通過域端周波数 $\omega_p$[rad] & $0.4 \pi$ & $0.005 \pi$ \\
+阻止域端周波数 $\omega_s$[rad] & $0.6 \pi$ & $0.01 \pi$ \\
+フィルタ段数 & 39 & 1521 \\
+\bottomrule
+\end{tabular}
+
 
 フィルタ段数はカイザー窓の遷移帯域幅に関するテーブルを参照して求めた。これらのFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$をFigure \ref{eq:fir_window}, Figure \ref{eq:fir_window2}に示す。
 
