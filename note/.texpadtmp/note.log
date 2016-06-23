@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 18:29
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 18:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -644,72 +644,81 @@ File: snw_filtered.pdf Graphic file (type eps)
 File: gcodesim_filtered.pdf Graphic file (type eps)
  <gcodesim_filtered.pdf> [3] [4]
 File: accel2.pdf Graphic file (type eps)
- <accel2.pdf> [5]
+ <accel2.pdf>
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 477.
+(Font)              using `JT1/mc/m/n' instead on input line 476.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 477.
+(Font)              using `JY1/mc/m/n' instead on input line 476.
 
-
-Overfull \hbox (10.00002pt too wide) detected at line 542
+[5]
+Overfull \hbox (10.00002pt too wide) detected at line 540
 [][] 
  []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: leib_ramp_screenshot.png Graphic file (type eps)
-<leib_ramp_screenshot.png> [6]
-Overfull \hbox (10.00002pt too wide) detected at line 571
+<leib_ramp_screenshot.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (10.00002pt too wide) detected at line 570
 [][] 
  []
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: compute_rdot_screenshot.png Graphic file (type eps)
-<compute_rdot_screenshot.png> [7]
-Extra height:0.0pt when 322.00156pt
-(2)Left:322.00156pt Right:300.28473pt Output:322.00156pt
+<compute_rdot_screenshot.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6] [7]
+Extra height:0.0pt when 0.0pt
+(2)Left:0.0pt Right:0.0pt Output:0.0pt
 - LAST -
-Left:322.00156pt
-Right:300.28473pt
-Output:322.00156pt
+Left:0.0pt
+Right:0.0pt
+Output:0.0pt
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (36.00363pt too high) has occurred while \output is active []
-
- [8]
-Overfull \hbox (18.80385pt too wide) in alignment at lines 662--664
+Overfull \hbox (18.80385pt too wide) in alignment at lines 659--661
  [][][] []
  []
 
 
-Overfull \hbox (4.21677pt too wide) in alignment at lines 695--699
+Overfull \hbox (4.21677pt too wide) in alignment at lines 692--696
  [][][] []
  []
 
 
-Overfull \hbox (6.65356pt too wide) in alignment at lines 709--725
+Overfull \hbox (6.65356pt too wide) in alignment at lines 706--722
  [][][] []
  []
 
+[8
+
+]
 File: duct_fs.pdf Graphic file (type eps)
-<duct_fs.pdf> [9] 
+ <duct_fs.pdf> 
 AED: lastpage setting LastPage
-[10
-
-] (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
+[9] (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 5572 strings out of 493777
- 71743 string characters out of 6151334
- 188044 words of memory out of 5000000
- 8917 multiletter control sequences out of 15000+600000
+ 5571 strings out of 493777
+ 71729 string characters out of 6151334
+ 189033 words of memory out of 5000000
+ 8916 multiletter control sequences out of 15000+600000
  25108 words of font info for 100 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  32i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 67500 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (9 pages, 62832 bytes).

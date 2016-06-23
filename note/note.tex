@@ -190,7 +190,6 @@ F_{polar}(t_k) &= \frac{d S}{d t}\Bigg|_{t=tk}  \\
 (\ref{eq:controller})式による制御結果
 Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー速度が振動していることが読み取れる．これを適当なローパスフィルターで除去することを考える．
 
-\subsubsection{デジタルフィルタ}
 \paragraph{FIRフィルタ}
 阻止域減衰量60dBとして，窓関数法でローパスフィルタを設計する．
 カイザー窓は以下で与えられる．
@@ -517,7 +516,7 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 
 (\ref{eq:mdef})式をアルゴリズムとして整理したものをAlgorithm 2に示す．
 
-\begin{algorithm}        
+\begin{algorithm}[h]        
 \begin{algorithmic}                 
 \STATE $v_0, v, a, F$ given.
 \STATE $S \Leftarrow (v^2-{v_0}^2) / 2 a$
@@ -538,24 +537,25 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \end{algorithmic}
 \caption{Leib ramp acceleration}
 \label{fig:leib_algorithm}                         
-
 \end{algorithm}
 
 これをもとに数値計算を行った例をFigure \ref{fig:leib_ramp_result}に示す．
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{leib_ramp_screenshot.png}
     \caption{Compute $\dot{\theta}$ with leib ramp}
     \label{fig:leib_ramp_result}
 \end{figure}
 
 いま，ある時刻における$\dot{\theta_i}$はleib rampで求まった．次に，$\dot r$は(\ref{eq:vdef})式を用いて
+
 \begin{eqnarray}
      \bigg|\frac{dr}{dt}\bigg| = \sqrt{\frac{\Delta E}{\Delta t} - r^2 \cdot \dot \theta}
 \end{eqnarray}
-と表されるから，$\dot r$を求めるアルゴリズムをまとめると，Algorithm 3のようになる．
 
-\begin{algorithm}[htbp]                 
+と表されるから，$\dot r$を求めるアルゴリズムをまとめると，Algorithm \ref{alg:drdt}のようになる．
+
+\begin{algorithm}[h]                 
 \begin{algorithmic}                 
 \label{alg:drdt}                         
 \STATE $\Delta E \Leftarrow E_2-E_1$
@@ -567,12 +567,11 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \STATE $dr/dt \Leftarrow (\Delta E/\Delta t-r^2 \cdot \dot \theta)^{\frac{1}{2}}$
 \end{algorithmic}
 \caption{$\dot r$ solver}
-
 \end{algorithm}
 
-数値計算の結果をFigure \ref{eq:rdot_simulation}に示す．
+Algorithm \ref{alg:drdt}を用いて数値計算を行った結果をFigure \ref{eq:rdot_simulation}に示す．
 
-\begin{figure}[htbp]
+\begin{figure}[h]
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{compute_rdot_screenshot.png}
     \caption{Computed $\dot r$}
    \label{eq:rdot_simulation}
@@ -581,10 +580,7 @@ $i$ステップにおけるステッピングモーターの遅延時間を$p_i$
 \subsection{出力物の精度に与える影響の見積もり}
 Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御した時の$\dot r$の変動は非常に小さいものである．($\sim 1.0 \times 10^{-4}$)
 
-\begin{itemize}
-     \item TODO: $\dot r$の加速部分の加速時間と，変動量から理想制御におけるx-y変位量のオーダーを計算し，それが小さいことを述べる
-\end{itemize}
-
+この結果から、$\dot r$の加速部における変動が理想的制御を行った際のx-y変位量にもたらす影響は極めて小さいと考えられる。
 
 
 %上記より，ステージ側Jerkの$\dot r$については修正の必要性はなく，現行の計算アルゴリズムを利用すればよいといえる．
@@ -639,6 +635,7 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
 
 さて，まず$x$方向の速度$u$と$y$方向の速度$v$を求める．スタガード格子を用いたとき，速度輸送方程式の$x$成分と$y$成分はそれぞれ以下のようになる．
 
+\clearpage
 \begin{strip}
 \begin{eqnarray}         
      u^\ast_{i-1/2,j} &=& u^n_{i-1/2,j} - \Delta t \Bigg \{u^n_{i-1/2,j}\frac{u^n_{i+1/2,j}-u^n_{i-3/2,j}}{2\Delta x}+ v^n_{i-1/2,j}\frac{u^n_{i-1/2,j}-u^n_{i-1/2,j-1}}{2\Delta y} \nonumber \\
