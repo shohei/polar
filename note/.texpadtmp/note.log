@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 15:56
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 16:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -634,12 +634,17 @@ LaTeX Warning: Text page 8 contains only floats.
 Overfull \vbox (2.74573pt too high) has occurred while \output is active []
 
  [8]
-Overfull \hbox (4.21677pt too wide) in alignment at lines 647--651
+Overfull \hbox (18.80385pt too wide) in alignment at lines 612--614
  [][][] []
  []
 
 
-Overfull \hbox (6.65356pt too wide) in alignment at lines 661--677
+Overfull \hbox (4.21677pt too wide) in alignment at lines 645--649
+ [][][] []
+ []
+
+
+Overfull \hbox (6.65356pt too wide) in alignment at lines 659--675
  [][][] []
  []
 
@@ -660,4 +665,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  31i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 68848 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 68868 bytes).
