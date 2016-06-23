@@ -8,11 +8,13 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{multirow}
+\usepackage{itembkbx}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc} %useful to type directly diacritic characters
 %\usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{capt-of}
+\usepackage{framed}
 %\usepackage[boxed,linesnumbered,figure]{algorithm2e}
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{ascmac}
@@ -284,8 +286,8 @@ z(k) &=& \bm{c}^T(k)\bm{x}(k)
 \end{eqnarray*}
 
 拡張カルマンフィルタ(EKF)のアルゴリズムは以下のように表される．
-  \begin{itembox}[l]{拡張カルマンフィルタ}
-    $\Box$ 時間更新式\\
+  \begin{breakitembox}[l]{拡張カルマンフィルタ}
+    \hspace{-0.3in} $\Box$ 時間更新式\\
     $k=1,2,...,N$に対して以下を実行\\
      $\bullet$ 予測ステップ\\
      事前状態推定値: \\
@@ -302,7 +304,7 @@ z(k) &=& \bm{c}^T(k)\bm{x}(k)
      $\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{g}(k)\{y(k)-h(\hat{x}^{-}(k))\}$\\
      事後誤差共分散行列: \\
      $\:\:\:\:\:\: \bm{P}^(k)=\{ \bm{I}-\bm{g}(k)\bm{c}^T(k)\} \bm{P}^{-1}(k)$
-  \end{itembox}
+  \end{breakitembox}
 
 ただし共分散行列$\bm{P}^{-1}(k), \bm{P}(k)$は$n \times n$行列，カルマンゲイン$\bm{G}(k)$は$n \times p$行列である．
 
@@ -326,8 +328,8 @@ $\bm{P}_x$は共分散行列の定義から正定値対称行列であり，し�
 
 アンセンテッドカルマンフィルタ(UKF)のアルゴリズムは以下のように表される．
 
-  \begin{itembox}[l]{UKF}
-    $\Box$ 初期値\\
+  \begin{breakitembox}[l]{UKF}
+    \hspace{-0.3in} $\Box$ 初期値\\
     状態推定値の初期値$\hat{x}(0)$は、$N(\bm{x}_0,\bm{\Sigma}_0)$に従う正規性確率ベクトルとする。すなわち、\\
     $\:\:\:\:\:\: \hat{\bm{x}}(0) = E[\bm{x}(0)] = \bm{x}(0)$ \\
     $\:\:\:\:\:\: \bm{P}(0) = E[\bm{x}(0)-E[\bm{x}(0)]] = \bm{\Sigma}_0$ \\
@@ -363,7 +365,7 @@ $\bm{P}_x$は共分散行列の定義から正定値対称行列であり，し�
      $\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{g}(k)(y(k)-\hat{y}^{-}(k))$\\
      事後誤差共分散行列: \\
      $\:\:\:\:\:\: \bm{P}^(k)=\bm{P}^{-1}(k) - \bm{g}(k)(\bm{P}^{-}_{xy}(k))^T$
-  \end{itembox}
+  \end{breakitembox}
 
 
 \subsection{モデルの変更}

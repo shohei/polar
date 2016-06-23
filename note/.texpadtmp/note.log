@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 17:50
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 18:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -103,12 +103,71 @@ Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen128
+) (./itembkbx.sty
+Package: itembkbx 2007/06/10 v 0.21β
+ (./eclbkbox.sty
+\bk@bxb=\box43
+\bk@bxa=\box44
+\bk@lcnt=\count101
+) (./itembbox.sty
+Package: itembbox 2006/07/19 v 0.20
+ (/usr/local/texlive/2015/texmf-dist/tex/platex/base/ascmac.sty (/usr/local/texlive/2015/texmf-dist/tex/platex/base/tascmac.sty
+\@savetbaselineshift=\dimen129
+\@saveybaselineshift=\dimen130
+\scb@x=\box45
+\scscb@x=\box46
+\@bw=\dimen131
+\@nbox=\box47
+\@nbody=\box48
+\@scw=\dimen132
+\@itemh=\dimen133
+\@iboxpos=\toks21
+\@iboxstr=\box49
+\@bwsp=\box50
+\@@bwsp=\box51
+\@bcal=\count102
+\shaderule=\dimen134
+)) (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+\iboxpos@=\toks23
+\sc@itemb@x=\box52
+\sc@itemb@x@=\box53
+\@itemw=\dimen135
+\shaderule=\dimen136
+\dblboxrule=\dimen137
+\dblboxrulein=\dimen138
+\dblboxsep=\dimen139
+) (./jquote.sty
+Package: jquote 2009/10/21 v0.11
+) (./emathC.sty
+Package: emathC 2010/07/03 v0.74
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count103
+\calc@Bcount=\count104
+\calc@Adimen=\dimen140
+\calc@Bdimen=\dimen141
+\calc@Askip=\skip46
+\calc@Bskip=\skip47
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count105
+\calc@Cskip=\skip48
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@tempcnta=\count106
+\templa=\dimen142
+\emath@toks@=\toks24
+\Sett@width=\dimen143
+)
+\linesep=\dimen144
+\itembkbx@dima=\dimen145
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks21
-) (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
  (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
@@ -117,12 +176,12 @@ File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: dvips.def on input line 94.
 )
-\Gin@req@height=\dimen129
-\Gin@req@width=\dimen130
+\Gin@req@height=\dimen146
+\Gin@req@width=\dimen147
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks22
-\inpenc@posthook=\toks23
+\inpenc@prehook=\toks25
+\inpenc@posthook=\toks26
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
@@ -337,20 +396,24 @@ Now handling font encoding JT1 ...
    defining Unicode char U+2423 (decimal 9251)
 )) (/usr/local/texlive/2015/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
- (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\c@ALC@unique=\count101
-\c@ALC@line=\count102
-\c@ALC@rem=\count103
-\c@ALC@depth=\count104
-\ALC@tlm=\skip46
-\algorithmicindent=\skip47
+\c@ALC@unique=\count107
+\c@ALC@line=\count108
+\c@ALC@rem=\count109
+\c@ALC@depth=\count110
+\ALC@tlm=\skip49
+\algorithmicindent=\skip50
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/capt-of/capt-of.sty
 Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip51
+\fb@frw=\dimen148
+\fb@frh=\dimen149
+\FrameRule=\dimen150
+\FrameSep=\dimen151
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2013/01/06 v5.00 algorithms environments
-\c@AlgoLine=\count105
+\c@AlgoLine=\count111
  (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/relsize/relsize.sty
@@ -363,60 +426,44 @@ Package `algorithm2e' Release 5.0 -- january 06 2013 --
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 - Author: Christophe Fiorio (cfiorio@um2.fr)
 ********************************************************
-\skiptotal=\skip48
-\skiplinenumber=\skip49
-\skiprule=\skip50
-\skiphlne=\skip51
-\skiptext=\skip52
-\skiplength=\skip53
-\algomargin=\skip54
-\skipalgocfslide=\skip55
-\algowidth=\dimen131
-\inoutsize=\dimen132
-\inoutindent=\dimen133
-\interspacetitleruled=\dimen134
-\interspacealgoruled=\dimen135
-\interspacetitleboxruled=\dimen136
-\algocf@inoutbox=\box43
-\algocf@inputbox=\box44
-\AlCapSkip=\skip56
-\AlCapHSkip=\skip57
-\algoskipindent=\skip58
-\algocf@nlbox=\box45
-\algocf@hangingbox=\box46
-\algocf@untilbox=\box47
-\algocf@skipuntil=\skip59
-\algocf@capbox=\box48
-\algoheightruledefault=\skip60
-\algoheightrule=\skip61
-\algotitleheightruledefault=\skip62
-\algotitleheightrule=\skip63
-\c@algocfline=\count106
-\c@algocfproc=\count107
-\c@algocf=\count108
-\algocf@algoframe=\box49
-\algocf@algobox=\box50
-) (/usr/local/texlive/2015/texmf-dist/tex/platex/base/ascmac.sty (/usr/local/texlive/2015/texmf-dist/tex/platex/base/tascmac.sty
-\@savetbaselineshift=\dimen137
-\@saveybaselineshift=\dimen138
-\scb@x=\box51
-\scscb@x=\box52
-\@bw=\dimen139
-\@nbox=\box53
-\@nbody=\box54
-\@scw=\dimen140
-\@itemh=\dimen141
-\@iboxpos=\toks24
-\@iboxstr=\box55
-\@bwsp=\box56
-\@@bwsp=\box57
-\@bcal=\count109
-\shaderule=\dimen142
-)) (/usr/local/texlive/2015/texmf-dist/tex/latex/appendix/appendix.sty
+\skiptotal=\skip52
+\skiplinenumber=\skip53
+\skiprule=\skip54
+\skiphlne=\skip55
+\skiptext=\skip56
+\skiplength=\skip57
+\algomargin=\skip58
+\skipalgocfslide=\skip59
+\algowidth=\dimen152
+\inoutsize=\dimen153
+\inoutindent=\dimen154
+\interspacetitleruled=\dimen155
+\interspacealgoruled=\dimen156
+\interspacetitleboxruled=\dimen157
+\algocf@inoutbox=\box54
+\algocf@inputbox=\box55
+\AlCapSkip=\skip60
+\AlCapHSkip=\skip61
+\algoskipindent=\skip62
+\algocf@nlbox=\box56
+\algocf@hangingbox=\box57
+\algocf@untilbox=\box58
+\algocf@skipuntil=\skip63
+\algocf@capbox=\box59
+\algoheightruledefault=\skip64
+\algoheightrule=\skip65
+\algotitleheightruledefault=\skip66
+\algotitleheightrule=\skip67
+\c@algocfline=\count112
+\c@algocfproc=\count113
+\c@algocf=\count114
+\algocf@algoframe=\box60
+\algocf@algobox=\box61
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/appendix/appendix.sty
 Package: appendix 2009/09/02 v1.2b extra appendix facilities
-\c@@pps=\count110
-\c@@ppsavesec=\count111
-\c@@ppsaveapp=\count112
+\c@@pps=\count115
+\c@@ppsavesec=\count116
+\c@@ppsaveapp=\count117
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup7
@@ -426,128 +473,116 @@ LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen143
-\lightrulewidth=\dimen144
-\cmidrulewidth=\dimen145
-\belowrulesep=\dimen146
-\belowbottomsep=\dimen147
-\aboverulesep=\dimen148
-\abovetopsep=\dimen149
-\cmidrulesep=\dimen150
-\cmidrulekern=\dimen151
-\defaultaddspace=\dimen152
-\@cmidla=\count113
-\@cmidlb=\count114
-\@aboverulesep=\dimen153
-\@belowrulesep=\dimen154
-\@thisruleclass=\count115
-\@lastruleclass=\count116
-\@thisrulewidth=\dimen155
+\heavyrulewidth=\dimen158
+\lightrulewidth=\dimen159
+\cmidrulewidth=\dimen160
+\belowrulesep=\dimen161
+\belowbottomsep=\dimen162
+\aboverulesep=\dimen163
+\abovetopsep=\dimen164
+\cmidrulesep=\dimen165
+\cmidrulekern=\dimen166
+\defaultaddspace=\dimen167
+\@cmidla=\count118
+\@cmidlb=\count119
+\@aboverulesep=\dimen168
+\@belowrulesep=\dimen169
+\@thisruleclass=\count120
+\@lastruleclass=\count121
+\@thisrulewidth=\dimen170
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2015/05/11 v1.16 mathematical typesetting tools
- (/usr/local/texlive/2015/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count117
-\calc@Bcount=\count118
-\calc@Adimen=\dimen156
-\calc@Bdimen=\dimen157
-\calc@Askip=\skip64
-\calc@Bskip=\skip65
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count119
-\calc@Cskip=\skip66
-) (/usr/local/texlive/2015/texmf-dist/tex/latex/mathtools/mhsetup.sty
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
 )
 LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count120
-\l_MT_multwidth_dim=\dimen158
-\origjot=\skip67
-\l_MT_shortvdotswithinadjustabove_dim=\dimen159
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen160
-\l_MT_above_intertext_sep=\dimen161
-\l_MT_below_intertext_sep=\dimen162
-\l_MT_above_shortintertext_sep=\dimen163
-\l_MT_below_shortintertext_sep=\dimen164
+\g_MT_multlinerow_int=\count122
+\l_MT_multwidth_dim=\dimen171
+\origjot=\skip68
+\l_MT_shortvdotswithinadjustabove_dim=\dimen172
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen173
+\l_MT_above_intertext_sep=\dimen174
+\l_MT_below_intertext_sep=\dimen175
+\l_MT_above_shortintertext_sep=\dimen176
+\l_MT_below_shortintertext_sep=\dimen177
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/sttools/cuted.sty
 Package: cuted 2012/10/04 v1.5 Mixing onecolumn and twocolumn modes
-\At@ViperColsBreak=\toks25
-\v@aaa=\box58
-\v@ccc=\box59
-\lastskip@a=\skip68
-\lastskip@b=\skip69
-\lastskip@d=\skip70
-\lastbox@a=\box60
-\stripsep=\skip71
-\@viper=\box61
-\viper@penalty=\count121
-\hold@viper=\box62
-\ht@viper=\dimen165
+\At@ViperColsBreak=\toks27
+\v@aaa=\box62
+\v@ccc=\box63
+\lastskip@a=\skip69
+\lastskip@b=\skip70
+\lastskip@d=\skip71
+\lastbox@a=\box64
+\stripsep=\skip72
+\@viper=\box65
+\viper@penalty=\count123
+\hold@viper=\box66
+\ht@viper=\dimen178
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/lastpage/lastpage.sty
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip72
-\f@ncyO@elh=\skip73
-\f@ncyO@erh=\skip74
-\f@ncyO@olh=\skip75
-\f@ncyO@orh=\skip76
-\f@ncyO@elf=\skip77
-\f@ncyO@erf=\skip78
-\f@ncyO@olf=\skip79
-\f@ncyO@orf=\skip80
+\fancy@headwidth=\skip73
+\f@ncyO@elh=\skip74
+\f@ncyO@erh=\skip75
+\f@ncyO@olh=\skip76
+\f@ncyO@orh=\skip77
+\f@ncyO@elf=\skip78
+\f@ncyO@erf=\skip79
+\f@ncyO@olf=\skip80
+\f@ncyO@orf=\skip81
 ) (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 \openout1 = `note.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 45.
-LaTeX Font Info:    Try loading font information for U+msa on input line 46.
+(lastpage)             ! on input line 47.
+LaTeX Font Info:    Try loading font information for U+msa on input line 48.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 46.
+LaTeX Font Info:    Try loading font information for U+msb on input line 48.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 46.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 48.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 48.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 48.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 50.
 
-Overfull \hbox (1.02101pt too wide) in alignment at lines 82--89
+Overfull \hbox (1.02101pt too wide) in alignment at lines 84--91
  [][][] []
  []
 
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 102.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 104.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 102.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 104.
 
-Overfull \hbox (10.00002pt too wide) detected at line 114
+Overfull \hbox (10.00002pt too wide) detected at line 116
 [][] 
  []
 
@@ -555,12 +590,12 @@ Overfull \hbox (10.00002pt too wide) detected at line 114
 
 
 ]
-Overfull \hbox (32.96881pt too wide) in paragraph at lines 146--146
+Overfull \hbox (32.96881pt too wide) in paragraph at lines 148--148
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--158
+Underfull \hbox (badness 10000) in paragraph at lines 150--160
 
  []
 
@@ -571,9 +606,9 @@ Left:143.98639pt
 Right:139.68582pt
 Output:143.98639pt
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 164.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 166.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 164.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 166.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -581,24 +616,24 @@ File: gcodesim.png Graphic file (type eps)
  <gcodesim.png>
 
 LaTeX Font Warning: Font shape `JT1/mc/m/sc' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 190.
+(Font)              using `JT1/mc/m/n' instead on input line 192.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/sc' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 190.
+(Font)              using `JY1/mc/m/n' instead on input line 192.
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 190.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 192.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 190.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 190.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 192.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 192.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 192.
  [2]
 File: impulse_h.pdf Graphic file (type eps)
  <impulse_h.pdf>
@@ -608,58 +643,64 @@ File: snw_filtered.pdf Graphic file (type eps)
  <snw_filtered.pdf>
 File: gcodesim_filtered.pdf Graphic file (type eps)
  <gcodesim_filtered.pdf> [3]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Font Info:    Try loading font information for U+euf on input line 311.
+LaTeX Font Info:    Try loading font information for U+euf on input line 313.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [4] [5]
+Underfull \vbox (badness 5847) has occurred while \output is active []
+
 File: accel2.pdf Graphic file (type eps)
  <accel2.pdf> [6]
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 475.
+(Font)              using `JT1/mc/m/n' instead on input line 477.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 475.
+(Font)              using `JY1/mc/m/n' instead on input line 477.
 
 
-Overfull \hbox (10.00002pt too wide) detected at line 540
+Overfull \hbox (10.00002pt too wide) detected at line 542
 [][] 
  []
 
 File: leib_ramp_screenshot.png Graphic file (type eps)
-<leib_ramp_screenshot.png> [7]
-Overfull \hbox (10.00002pt too wide) detected at line 569
+<leib_ramp_screenshot.png>
+Overfull \hbox (10.00002pt too wide) detected at line 571
 [][] 
  []
 
 File: compute_rdot_screenshot.png Graphic file (type eps)
-<compute_rdot_screenshot.png>
-Underfull \vbox (badness 1286) has occurred while \output is active []
+<compute_rdot_screenshot.png> [7] [8]
+Underfull \vbox (badness 7631) has occurred while \output is active []
 
- [8]
-Underfull \vbox (badness 1019) has occurred while \output is active []
 
-Extra height:0.0pt when 95.08911pt
-(2)Left:95.08911pt Right:84.23378pt Output:95.08911pt
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Extra height:0.0pt when 43.08911pt
+
+Underfull \vbox (badness 7631) has occurred while \output is active []
+
+(2)Left:43.08911pt Right:34.0pt Output:43.08911pt
 - LAST -
-Left:95.08911pt
-Right:84.23378pt
-Output:95.08911pt
+Left:43.08911pt
+Right:34.0pt
+Output:43.08911pt
 
-Overfull \hbox (18.80385pt too wide) in alignment at lines 660--662
+Underfull \vbox (badness 7631) has occurred while \output is active []
+
+
+Overfull \hbox (18.80385pt too wide) in alignment at lines 662--664
  [][][] []
  []
 
 
-Overfull \hbox (4.21677pt too wide) in alignment at lines 693--697
+Overfull \hbox (4.21677pt too wide) in alignment at lines 695--699
  [][][] []
  []
 
 [9]
-Overfull \hbox (6.65356pt too wide) in alignment at lines 707--723
+Overfull \hbox (6.65356pt too wide) in alignment at lines 709--725
  [][][] []
  []
 
@@ -672,12 +713,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4716 strings out of 493777
- 64178 string characters out of 6151334
- 164117 words of memory out of 5000000
- 8074 multiletter control sequences out of 15000+600000
+ 5587 strings out of 493777
+ 72015 string characters out of 6151334
+ 200045 words of memory out of 5000000
+ 8926 multiletter control sequences out of 15000+600000
  26288 words of font info for 105 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 31i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 72840 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 75164 bytes).
