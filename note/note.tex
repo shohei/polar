@@ -188,7 +188,32 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
 
 \subsection{デジタルフィルタ}
 \subsubsection{移動平均フィルタ}
-$z$変換
+窓関数法でローパスフィルタを設計する。
+
+阻止域減衰量60dBを達成するためにカイザー窓を用いる。
+カイザー窓は以下で与えられる。
+\begin{eqnarray*}
+	w(n) = \frac{I_0 \left( \alpha \sqrt{1-\left(\frac{2n}{N-1}\right)^2} \right) }{I_0(\alpha)}	
+\end{eqnarray*}
+ただし、$I_0({\alpha})$は0次の第1種変形ベッセル関数
+\begin{eqnarray*}
+ I_0(z)	= \sum_{k=0}^{\infty}\frac{\left(\frac{z^2}{4}\right)}{k!\Gamma (k+1)}
+\end{eqnarray*}
+であり、$\Gamma$はガンマ関数$\Gamma(z) = \int_0^{\infty} t^{z-1}e^{-t} dt$である。
+いま、$\alpha = 6.0$、フィルタ段数を39として設計したFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$を以下に示す。
+
+
+
+フィルタリングする前のSNW時系列データの$z$変換を$X(z)$、フィルター出力の$z$変換を$Y(z)$とすれば、フィルターの畳込みは
+\begin{eqnarray*}
+	Y(z) = H(z) X(z)
+\end{eqnarray*}
+であり、これを逆$z$変換することで時系列が求まる。
+逆$z$変換は以下で求める。
+\begin{eqnarray*}
+	\{y_n\} = \mathcal{Z}^{-1}[(Y(z))] = \frac{1}{2 \pi i} \oint_c Y(Z) z^{n-1} dz
+\end{eqnarray*}
+
 
 
 \subsection{非線形カルマンフィルタ}
