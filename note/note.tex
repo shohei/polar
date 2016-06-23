@@ -188,9 +188,7 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
 
 \subsection{デジタルフィルタ}
 \subsubsection{移動平均フィルタ}
-窓関数法でローパスフィルタを設計する。
-
-阻止域減衰量60dBを達成するためにカイザー窓を用いる。
+阻止域減衰量60dBとして、窓関数法でローパスフィルタを設計する。
 カイザー窓は以下で与えられる。
 \begin{eqnarray*}
 	w(n) = \frac{I_0 \left( \alpha \sqrt{1-\left(\frac{2n}{N-1}\right)^2} \right) }{I_0(\alpha)}	
@@ -200,11 +198,12 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
  I_0(z)	= \sum_{k=0}^{\infty}\frac{\left(\frac{z^2}{4}\right)}{k!\Gamma (k+1)}
 \end{eqnarray*}
 であり、$\Gamma$はガンマ関数$\Gamma(z) = \int_0^{\infty} t^{z-1}e^{-t} dt$である。
-いま、$\alpha = 6.0$、フィルタ段数を39として設計したFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$をFigure \ref{eq:fir_window}に示す。
+
+$\alpha = 6.0$、フィルタ段数を39、通過域端周波数$\omega_p = 0.005 \pi$、阻止域端周波数$\omega_s = 0.01 \pi$として設計したFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$をFigure \ref{eq:fir_window}に示す。
 
 \begin{figure}[htbp]
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{impulse_h.pdf}
-    \caption{FIR filter by window method}
+    \caption{FIR filter with kaiser window function}
    \label{eq:fir_window}
 \end{figure}
 
@@ -219,7 +218,13 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
 \end{eqnarray*}
 
 フィルタリング後のSNW時系列データをFigure \ref{fig:filtered}に示す。
+\begin{figure}[htbp]
+    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{snw_filtered.pdf}
+    \caption{SNW after FIR filtering}
+   \label{fig:filtered}
+\end{figure}
 
+追従しているために
 
 
 
