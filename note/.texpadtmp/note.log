@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 15:51
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 15:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -480,11 +480,7 @@ Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 \f@ncyO@erf=\skip78
 \f@ncyO@olf=\skip79
 \f@ncyO@orf=\skip80
-) (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux
-
-LaTeX Warning: Label `eq:fir_window' multiply defined.
-
-)
+) (/Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.aux)
 \openout1 = `note.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
@@ -587,18 +583,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
  [2]
 File: impulse_h.pdf Graphic file (type eps)
  <impulse_h.pdf>
-
-LaTeX Warning: Reference `fig:filtered' on page 3 undefined on input line 220.
-
 File: snw_filtered.pdf Graphic file (type eps)
-<snw_filtered.pdf> [3]
+ <snw_filtered.pdf> [3]
 LaTeX Font Info:    Try loading font information for U+euf on input line 274.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-Underfull \vbox (badness 2486) has occurred while \output is active []
-
- [4]
+) [4]
 Underfull \vbox (badness 5847) has occurred while \output is active []
 
  [5]
@@ -658,20 +648,14 @@ AED: lastpage setting LastPage
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
  4649 strings out of 493777
  63268 string characters out of 6151334
- 163353 words of memory out of 5000000
+ 163322 words of memory out of 5000000
  8013 multiletter control sequences out of 15000+600000
  26288 words of font info for 105 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  31i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 68744 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (10 pages, 68896 bytes).
