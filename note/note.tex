@@ -235,7 +235,7 @@ z(k) &=& \bm{c}^T(k)\bm{x}(k)
 
 
 \subsubsection{アンセンテッドカルマンフィルタ(UKF)}
-非線形関数$\bm{f}: \mathfrak{R}^n \rightarrow \mathfrak{R}^n$がn次元確率変数$\bm{x}$をn次元確率変数$\bm{y}$に変換するとき、$\bm{x}$を1次モーメント統計量と2次モーメント統計量で表現するためのシグマポイントは、スケーリングパラメータを$\kappa$とすると以下のように表される。
+非線形関数$\bm{f}: \mathfrak{R}^n \rightarrow \mathfrak{R}^n$が$n$次元確率変数$\bm{x}$を$n$次元確率変数$\bm{y}$に変換するとき、$\bm{x}$を1次モーメント統計量と2次モーメント統計量で表現するためのシグマポイントは、スケーリングパラメータを$\kappa$とすると以下のように表される。
 \begin{eqnarray*}
 	\mathscr{X}_0 &=& \bar{\bm{x}} \\
 	\mathscr{X}_i &=& \bar{\bm{x}} + \sqrt{n+\kappa}(\sqrt{\bm{P}_x})_i\\
@@ -284,7 +284,7 @@ $\bm{P}_x$は共分散行列の定義から正定値対称行列であり、し�
 
 
 \subsection{パーティクルフィルタ}
-
+割愛する。
 
 
 \subsection{モデルの変更}
@@ -551,13 +551,13 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
 
 として求まるが，まだ圧力が決定されていない．(\ref{eq:updateP})式の両辺のダイバージェンスをとり，連続の式(\ref{eq:continuous})を用いれば，圧力$p$は以下のポアソン方程式を満たすように決定できる．
 
-\begin{eqnarray}
+\begin{eqnarray}\label{eq:poisson}
      \nabla^2 p = \frac{\nabla \cdot \bm{v}}{\Delta t}
 \end{eqnarray}
 
 
+さて、まず$x$方向の速度$u$と$y$方向の速度$v$を求める。スタガード格子を用いたとき、速度輸送方程式の$x$成分と$y$成分はそれぞれ以下のようになる。
 
-スタガード格子を用いたとき、速度輸送方程式の$x$成分と$y$成分はそれぞれ以下のようになる。
 \begin{strip}
 \begin{eqnarray}         
      u^\ast_{i-1/2,j} &=& u^n_{i-1/2,j} - \Delta t \Bigg \{u^n_{i-1/2,j}\frac{u^n_{i+1/2,j}-u^n_{i-3/2,j}}{2\Delta x}+ v^n_{i-1/2,j}\frac{u^n_{i-1/2,j}-u^n_{i-1/2,j-1}}{2\Delta y} \nonumber \\
@@ -567,27 +567,65 @@ Figure \ref{eq:rdot_simulation}によれば，$\dot{\theta}$を線形制御し�
 \end{eqnarray}
 \end{strip}
 
+スタガード格子では圧力が定義されている格子点において速度が定義されないので、再近接4格子点の平均値で値を補間する。
 
-2次元移流拡散方程式
 \begin{eqnarray*}
-\frac{\partial f}{\partial t} + u\frac{\partial f}{\partial x} + v\frac{\partial f}{\partial y} = D\bigg( \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} \bigg)
+ v^n_{i-1/2,j} &=& \frac{1}{4}\bigg(v^n_{i-1,j-1/2}+v^n_{i,j-1/2} +\\
+               &&\:\:\:\:\: v^n_{i-1,j+1/2}+v^n_{i,j+1/2}\bigg) \\
+ u^n_{i-1/2,j} &=& \frac{1}{4}\bigg(u^n_{i-1/2,j-1}+u^n_{i-1/2,j-1} +\\
+               &&\:\:\:\:\: u^n_{i-1/2,j}+u^n_{i+1/2,j}\bigg)
 \end{eqnarray*}
-2次元CIP法
+
+
+ここで、ポアソンの方程式(\ref{eq:poisson})を次の差分方程式で近似する。
+\begin{eqnarray*}
+	\frac{p_{i+1,j}-2p_{i,j}+p_{i-1,j}}{(\Delta x)^2} + \frac{p_{i,j+1}-2p_{i,j}+p_{i,j-1}}{(\Delta y)^2}
+\end{eqnarray*}
+
+
+拡散係数$D_{i,j}$は次の式で近似できる。
+\begin{eqnarray*}
+	D_{i,j} &=& \frac{1}{\Delta t}\bigg( \frac{p_{i+1,j}-2p_{i,j}+p_{i-1,j}}{(\Delta x)^2}  \\
+	&-& \frac{p_{i,j+1}-2p_{i,j}+p_{i,j-1}}{(\Delta y)^2} \bigg)
+\end{eqnarray*}
+
+
+よって、拡散係数$D$と速度輸送方程式の結果を用いれば圧力$p_{i,j}$が求まる。
+
+\begin{eqnarray*}
+	p_{i,j} &=& \frac{(\Delta x \Delta y)^2}{2((\Delta x)^2+(\Delta y)^2)} \\
+	&\cdot& \bigg( \frac{p_{i+1,j}+p_{i-1,j}}{(\Delta x)^2} + \frac{p_{i,j+1}+p_{i,j-1}}{(\Delta y)^2} - D_{i,j}\bigg)
+\end{eqnarray*}
+
+上式の圧力を用いて、次の時間ステップにおける速度を計算すると、
+\begin{eqnarray*}
+	u^{n+1}_{i-1/2,j} &=& u^\ast_{i-1/2,j} - \Delta t \frac{p_{i,j}-p_{i-1,j}}{\Delta x} \\
+	v^{n+1}_{i-1/2,j} &=& v^\ast_{i-1/2,j} - \Delta t \frac{p_{i,j}-p_{i-1,j}}{\Delta y} 
+\end{eqnarray*}
+
+速度輸送方程式(\ref{eq:velo_transport})はCIPスキームで計算する。
+いま、(\ref{eq:velo_transport})は拡散係数をレイノルズ数の逆数とした2次元の移流拡散方程式とみれる。(\ref{eq:velo_transport})式を変形すると、
+\begin{eqnarray}\label{eq:advec_diffus}
+\frac{\partial \bm{v}}{\partial t} + u\frac{\partial \bm{v}}{\partial x} + v\frac{\partial \bm{v}}{\partial y} = \frac{1}{Re} \bigg( \frac{\partial^2 \bm{v}}{\partial x^2} + \frac{\partial^2 \bm{v}}{\partial y^2} \bigg)
+\end{eqnarray}
+であるから、(\ref{eq:advec_diffus})式を2次元CIP法で解くことを考える。
+
+CIPスキームでは、ある時刻$t=t_n$における区間$[i-1,i]$の関数値を$F(\xi,\eta)$、微係数を$G(\xi,\eta)$とし、$\bm v$の値を3次多項式でエルミート補間する。
+
+A型のCIPスキームを仮定すれば、
+\begin{eqnarray*}
+F(\xi,\eta) &=& \sum_{l=0}^3 \sum_{m=0}^3 C_{l,m} \xi^l \eta^m \\
+&=& \{ ( C_{3,0} \xi + C_{2,1}\eta + C_{2,0}) \xi + C_{1,1}\eta + C_{1,0} \} \xi \\
+ &+& \{C_{0,3}\eta + C_{1,2}\xi + C_{0,2})\eta + C_{0,1}\} \eta + C_{0,0}
+\end{eqnarray*}
+
+ただし、$\xi,\eta$は以下で与えられる。
 \begin{eqnarray*}
 \xi =  -u \Delta t\\
 \eta = -v \Delta t
 \end{eqnarray*}
-3次エルミート補間
-\begin{eqnarray*}
-F(\xi,\eta) = \sum_{l=0}^3 \sum_{m=0}^3 C_{l,m} \xi^l \eta^m
-\end{eqnarray*}
 
-A型CIP
-\begin{eqnarray*}
-F(\xi,\eta) &=& \{ ( C_{3,0} \xi + C_{2,1}\eta + C_{2,0}) \xi + C_{1,1}\eta + C_{1,0} \} \xi \\
- &+& \{C_{0,3}\eta + C_{1,2}\xi + C_{0,2})\eta + C_{0,1}\} \eta + C_{0,0}
-\end{eqnarray*}
-格子点の関数の計算値
+また、定式における係数は以下で表される。ただし$\bm v$の値を$f$、$\bm{v}$の$x,y$方向の偏微分係数をそれぞれ$g,h$とする。
 
 \begin{eqnarray*}
 \begin{cases}\;C_{3,0} = \{ (g_{ip,j} + g_{i,j}) \delta_x - 2(f_{i,j}-f_{ip,j})\}/ \delta_x^3 \\
@@ -603,9 +641,36 @@ F(\xi,\eta) &=& \{ ( C_{3,0} \xi + C_{2,1}\eta + C_{2,0}) \xi + C_{1,1}\eta + C_
 \;C_{0,1} = h_{i,j} \\
 \;C_{0,0} = f(i,j)
 
-
 \end{cases}  
 \end{eqnarray*}
+
+スタガード格子における速度および圧力の境界条件は以下で与える。
+\begin{eqnarray}\label{eq:vcondition}
+\begin{cases}\;v_{i,1} = u_{1,j} = v_{i,N_y-1} = u_{N_x-1,j} = 0\nonumber\\
+\;u_{I,0} = -u_{I,1}, v_{0,J} = -v_{1,J}, \nonumber\\
+\; u_{I,N_y-1} = -u_{I,N_y-2}, v_{N_x-1,J} = -v_{N_X-2,J} \nonumber\\
+\; u_{I,N_y-1} = 2U - u_{I,N_y-2} \nonumber\\
+\; v_{i,0} = v_{i,2}, u_{0,j} = u_{2,j}, \nonumber\\
+\; v_{i,N_y} = v_{i,N_y-2}, u_{N_x,j} = u_{N_x-2,j} \\
+\;p_{i,0} = p_i - \frac{1}{Re}\frac{2v_{i,0}}{\Delta y} \nonumber\\
+\;p_{i,N_y-1} = p_{i,N_y-2} + \frac{1}{Re}\frac{2v_{N_y}}{\Delta y} \nonumber\\
+\;p_{0,j} = p_{1,j} - \frac{1}{Re}\frac{2u_{0,j}}{\Delta x} \nonumber\\
+\;p_{N_x-1,j} = p_{N_x-2,j} + \frac{1}{Re}\frac{2u_{Nx,j}}{\Delta x}  \\
+\end{cases}  
+\end{eqnarray}
+
+
+
+条件をクーラン数$c=u \cdot \Delta t / \Delta x=0.19999$、拡散数$d=D \cdot \Delta t/(\Delta x)^2=0.015999$、レイノルズ数$Re=\rho v L / \mu = 500$として計算した結果をFigure \ref{eq:duct_fs}に示す。
+
+\begin{figure}[htbp]
+        \includegraphics[bb=0 0 619 304,width=1\columnwidth]{duct_fs.pdf}
+    \caption{Discharge from extruder}
+   \label{eq:duct_fs}
+\end{figure}
+
+こののち、スクリュー回転数と圧力増加の見積もりについて検討する。
+
 
 %補足として，Jerkをゼロとした時の計算結果をFigure \ref{fig:jerk}に示す．
 %\begin{figure}[t]
