@@ -309,63 +309,63 @@ z(k) &=& \bm{c}^T(k)\bm{x}(k)
 ただし共分散行列$\bm{P}^{-1}(k), \bm{P}(k)$は$n \times n$行列，カルマンゲイン$\bm{G}(k)$は$n \times p$行列である．
 
 
-\paragraph{アンセンテッドカルマンフィルタ(UKF)}
-非線形関数$\bm{f}: \mathfrak{R}^n \rightarrow \mathfrak{R}^n$が$n$次元確率変数$\bm{x}$を$n$次元確率変数$\bm{y}$に変換するとき，$\bm{x}$を1次モーメント統計量と2次モーメント統計量で表現するためのシグマポイントは，スケーリングパラメータを$\kappa$とすると以下のように表される．
-\begin{eqnarray*}
-	\mathscr{X}_0 &=& \bar{\bm{x}} \\
-	\mathscr{X}_i &=& \bar{\bm{x}} + \sqrt{n+\kappa}(\sqrt{\bm{P}_x})_i\\
-	\mathscr{X}_{n+1} &=& \bar{\bm{x}} - \sqrt{n+\kappa}(\sqrt{\bm{P}_x})_i
-\end{eqnarray*}
-$\bm{P}_x$は共分散行列の定義から正定値対称行列であり，したがって$\sqrt{\bm{P}_x}$はコレスキー分解によって求まる．
-
-上のシグマポイントを用いて確率密度関数をU変換する．具体的には，
-\begin{eqnarray*}
-	\mathscr{Y}_i &=& \bm{f}(\mathscr{X}_i) \\
-	\bar{\bm{y}} &=& \sum_{i=0}^{2n} w_i \mathscr{Y}_i) \\
-	\bm{P}_y &=& \sum_{i=0}^{2n} w_i (\mathscr{Y}_i - \bar{\bm{y}}) (\mathscr{Y}_i - \bar{\bm{y}})^{T}
-\end{eqnarray*}
-
-
-アンセンテッドカルマンフィルタ(UKF)のアルゴリズムは以下のように表される．
-
-  \begin{breakitembox}[l]{UKF}
-    \hspace{-0.3in} $\Box$ 初期値\\
-    状態推定値の初期値$\hat{x}(0)$は、$N(\bm{x}_0,\bm{\Sigma}_0)$に従う正規性確率ベクトルとする。すなわち、\\
-    $\:\:\:\:\:\: \hat{\bm{x}}(0) = E[\bm{x}(0)] = \bm{x}(0)$ \\
-    $\:\:\:\:\:\: \bm{P}(0) = E[\bm{x}(0)-E[\bm{x}(0)]] = \bm{\Sigma}_0$ \\
-    $\Box$ 時間更新式\\
-    $k=1,2,...,N$に対して以下を実行\\
-     $\bullet$ シグマポイントの計算\\
-	$\:\:\:\:\:\: \mathscr{X}_0(k-1) = \bar{\bm{x}}(k-1) $\\
-	$\:\:\:\:\:\: \mathscr{X}_i(k-1) = \bar{\bm{x}}(k-1) + \sqrt{n+\kappa}(\sqrt{\bm{P}(k-1)})_i $ \\
-	$\:\:\:\:\:\: \mathscr{X}_{n+1}(k-1) = \bar{\bm{x}}(k-1) - \sqrt{n+\kappa}(\sqrt{\bm{P}(k-1)})_i $ \\
-     $\bullet$ 予測ステップ\\
-     シグマポイントの更新: \\
-	$\:\:\:\:\:\: \mathscr{X}_{i}^{-}(k) = \bm{f}(\mathscr{X}_{i}(k-1)) $ \\
-     事前状態推定値: \\
-     $\:\:\:\:\:\: \hat{\bm{x}}^{-}(k) = \sum_{i=0}^{2n} w_i \mathscr{X}^{-}(k)$\\
-     事前誤差共分散行列: \\
-     $\:\:\:\:\:\: \bm{P}^{-}(k)= \sum_{i=0}^{2n} w_i \{ \mathscr{X}_i^{-}(k) - \hat{\bm{x}}^{-}(k) \} \{ \mathscr{X}_i^{-}(k) - \hat{\bm{x}}^{-}(k) \}^T + 2\sigma_v^2 \bm{b} \bm{b}^T$ \\
-     シグマポイントの再計算: \\
-	$\:\:\:\:\:\: \mathscr{X}_0(k) = \bar{\bm{x}}(k) $\\
-	$\:\:\:\:\:\: \mathscr{X}_i(k) = \bar{\bm{x}}(k) + \sqrt{n+\kappa}(\sqrt{\bm{P}^{-}(k)})_i $ \\
-	$\:\:\:\:\:\: \mathscr{X}_{n+1}(k) = \bar{\bm{x}}(k) - \sqrt{n+\kappa}(\sqrt{\bm{P}^{-}(k)})_i $ \\
-     出力のシグマポイントの更新: \\
-     $\:\:\:\:\:\: \mathscr{Y}_i^{-}(k) = h(\mathscr{X}_i^{-}(k))$ \\
-     事前出力推定値: \\
-     $\:\:\:\:\:\: \hat{y}^{-}(k) = \sum_{i=0}^{2n} w_i \mathscr{Y}_{i}^{-} (k) $ \\
-     事前出力誤差共分散行列: \\
-     $\:\:\:\:\:\: P^{-}_{yy}(k) = \sum_{i=0}^{2n} w_i \{\mathscr{Y}_i^{-}(k) - \hat{y}^{-}(k)\}^2$ \\
-     事前状態・出力誤差共分散行列: \\
-     $\:\:\:\:\:\: \bm{P}^{-}_xy(k) = \sum_{i=0}^{2n} w_i \{ \mathscr{X}_i^{-}(k) - \hat{\bm{x}}^{-}(k)\} \{\mathscr{Y}_i^{-}(k) - \hat{y}^{-}(k)\} $ \\
-     カルマンゲイン: \\
-     $\:\:\:\:\:\: \bm{g}(k)= \frac{\bm{P}^{-}_{xy}} {P_{yy}^{-}(k) + \sigma_w^2} $\\
-     $\bullet$ フィルタリングステップ\\
-     状態推定値: \\
-     $\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{g}(k)(y(k)-\hat{y}^{-}(k))$\\
-     事後誤差共分散行列: \\
-     $\:\:\:\:\:\: \bm{P}^(k)=\bm{P}^{-1}(k) - \bm{g}(k)(\bm{P}^{-}_{xy}(k))^T$
-  \end{breakitembox}
+%\paragraph{アンセンテッドカルマンフィルタ(UKF)}
+%非線形関数$\bm{f}: \mathfrak{R}^n \rightarrow \mathfrak{R}^n$が$n$次元確率変数$\bm{x}$を$n$次元確率変数$\bm{y}$に変換するとき，$\bm{x}$を1次モーメント統計量と2次モーメント統計量で表現するためのシグマポイントは，スケーリングパラメータを$\kappa$とすると以下のように表される．
+%\begin{eqnarray*}
+%	\mathscr{X}_0 &=& \bar{\bm{x}} \\
+%	\mathscr{X}_i &=& \bar{\bm{x}} + \sqrt{n+\kappa}(\sqrt{\bm{P}_x})_i\\
+%	\mathscr{X}_{n+1} &=& \bar{\bm{x}} - \sqrt{n+\kappa}(\sqrt{\bm{P}_x})_i
+%\end{eqnarray*}
+%$\bm{P}_x$は共分散行列の定義から正定値対称行列であり，したがって$\sqrt{\bm{P}_x}$はコレスキー分解によって求まる．
+%
+%上のシグマポイントを用いて確率密度関数をU変換する．具体的には，
+%\begin{eqnarray*}
+%	\mathscr{Y}_i &=& \bm{f}(\mathscr{X}_i) \\
+%	\bar{\bm{y}} &=& \sum_{i=0}^{2n} w_i \mathscr{Y}_i) \\
+%	\bm{P}_y &=& \sum_{i=0}^{2n} w_i (\mathscr{Y}_i - \bar{\bm{y}}) (\mathscr{Y}_i - \bar{\bm{y}})^{T}
+%\end{eqnarray*}
+%
+%
+%アンセンテッドカルマンフィルタ(UKF)のアルゴリズムは以下のように表される．
+%
+%  \begin{breakitembox}[l]{UKF}
+%    \hspace{-0.3in} $\Box$ 初期値\\
+%    状態推定値の初期値$\hat{x}(0)$は、$N(\bm{x}_0,\bm{\Sigma}_0)$に従う正規性確率ベクトルとする。すなわち、\\
+%    $\:\:\:\:\:\: \hat{\bm{x}}(0) = E[\bm{x}(0)] = \bm{x}(0)$ \\
+%    $\:\:\:\:\:\: \bm{P}(0) = E[\bm{x}(0)-E[\bm{x}(0)]] = \bm{\Sigma}_0$ \\
+%    $\Box$ 時間更新式\\
+%    $k=1,2,...,N$に対して以下を実行\\
+%     $\bullet$ シグマポイントの計算\\
+%	$\:\:\:\:\:\: \mathscr{X}_0(k-1) = \bar{\bm{x}}(k-1) $\\
+%	$\:\:\:\:\:\: \mathscr{X}_i(k-1) = \bar{\bm{x}}(k-1) + \sqrt{n+\kappa}(\sqrt{\bm{P}(k-1)})_i $ \\
+%	$\:\:\:\:\:\: \mathscr{X}_{n+1}(k-1) = \bar{\bm{x}}(k-1) - \sqrt{n+\kappa}(\sqrt{\bm{P}(k-1)})_i $ \\
+%     $\bullet$ 予測ステップ\\
+%     シグマポイントの更新: \\
+%	$\:\:\:\:\:\: \mathscr{X}_{i}^{-}(k) = \bm{f}(\mathscr{X}_{i}(k-1)) $ \\
+%     事前状態推定値: \\
+%     $\:\:\:\:\:\: \hat{\bm{x}}^{-}(k) = \sum_{i=0}^{2n} w_i \mathscr{X}^{-}(k)$\\
+%     事前誤差共分散行列: \\
+%     $\:\:\:\:\:\: \bm{P}^{-}(k)= \sum_{i=0}^{2n} w_i \{ \mathscr{X}_i^{-}(k) - \hat{\bm{x}}^{-}(k) \} \{ \mathscr{X}_i^{-}(k) - \hat{\bm{x}}^{-}(k) \}^T + 2\sigma_v^2 \bm{b} \bm{b}^T$ \\
+%     シグマポイントの再計算: \\
+%	$\:\:\:\:\:\: \mathscr{X}_0(k) = \bar{\bm{x}}(k) $\\
+%	$\:\:\:\:\:\: \mathscr{X}_i(k) = \bar{\bm{x}}(k) + \sqrt{n+\kappa}(\sqrt{\bm{P}^{-}(k)})_i $ \\
+%	$\:\:\:\:\:\: \mathscr{X}_{n+1}(k) = \bar{\bm{x}}(k) - \sqrt{n+\kappa}(\sqrt{\bm{P}^{-}(k)})_i $ \\
+%     出力のシグマポイントの更新: \\
+%     $\:\:\:\:\:\: \mathscr{Y}_i^{-}(k) = h(\mathscr{X}_i^{-}(k))$ \\
+%     事前出力推定値: \\
+%     $\:\:\:\:\:\: \hat{y}^{-}(k) = \sum_{i=0}^{2n} w_i \mathscr{Y}_{i}^{-} (k) $ \\
+%     事前出力誤差共分散行列: \\
+%     $\:\:\:\:\:\: P^{-}_{yy}(k) = \sum_{i=0}^{2n} w_i \{\mathscr{Y}_i^{-}(k) - \hat{y}^{-}(k)\}^2$ \\
+%     事前状態・出力誤差共分散行列: \\
+%     $\:\:\:\:\:\: \bm{P}^{-}_xy(k) = \sum_{i=0}^{2n} w_i \{ \mathscr{X}_i^{-}(k) - \hat{\bm{x}}^{-}(k)\} \{\mathscr{Y}_i^{-}(k) - \hat{y}^{-}(k)\} $ \\
+%     カルマンゲイン: \\
+%     $\:\:\:\:\:\: \bm{g}(k)= \frac{\bm{P}^{-}_{xy}} {P_{yy}^{-}(k) + \sigma_w^2} $\\
+%     $\bullet$ フィルタリングステップ\\
+%     状態推定値: \\
+%     $\:\:\:\:\:\: \hat{\bm{x}}(k) = \hat{\bm{x}}^{-}(k) + \bm{g}(k)(y(k)-\hat{y}^{-}(k))$\\
+%     事後誤差共分散行列: \\
+%     $\:\:\:\:\:\: \bm{P}^(k)=\bm{P}^{-1}(k) - \bm{g}(k)(\bm{P}^{-}_{xy}(k))^T$
+%  \end{breakitembox}
 
 
 \subsection{モデルの変更}
