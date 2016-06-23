@@ -198,12 +198,32 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
 \end{eqnarray*}
 であり、$\Gamma$はガンマ関数$\Gamma(z) = \int_0^{\infty} t^{z-1}e^{-t} dt$である。
 
-$\alpha = 6.0$、フィルタ段数を39、通過域端周波数$\omega_p = 0.005 \pi$、阻止域端周波数$\omega_s = 0.01 \pi$として設計したFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$をFigure \ref{eq:fir_window}に示す。
+$\alpha = 6.0$として、以下の2種類のローパスフィルタを設計する。
+\begin{itemize}
+	\item 通過域端周波数$\omega_p = 0.4 \pi$
+	\item 阻止域端周波数$\omega_s = 0.6 \pi$
+	\item フィルタ段数39
+\end{itemize}
+
+\begin{itemize}
+	\item 通過域端周波数$\omega_p = 0.005 \pi$
+	\item 阻止域端周波数$\omega_s = 0.01 \pi$
+	\item フィルタ段数1521
+\end{itemize}
+
+フィルタ段数はカイザー窓の遷移帯域幅に関するテーブルを参照して求めた。これらのFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$をFigure \ref{eq:fir_window}, Figure \ref{eq:fir_window2}に示す。
+
 
 \begin{figure}[htbp]
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{impulse_h.pdf}
-    \caption{FIR filter with kaiser window function}
+    \caption{FIR filter No.1 with kaiser window function}
    \label{eq:fir_window}
+\end{figure}
+
+\begin{figure}[htbp]
+    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{impulse1521.pdf}
+    \caption{FIR filter No.2 with kaiser window function}
+   \label{eq:fir_window2}
 \end{figure}
 
 フィルタリングする前のSNW時系列データの$z$変換を$X(z)$、フィルター出力の$z$変換を$Y(z)$とすれば、フィルターの畳込みは
@@ -216,12 +236,25 @@ $\alpha = 6.0$、フィルタ段数を39、通過域端周波数$\omega_p = 0.00
 	\{y_n\} = \mathcal{Z}^{-1}[(Y(z))] = \frac{1}{2 \pi i} \oint_c Y(z) z^{n-1} dz
 \end{eqnarray*}
 
-フィルタリング後のSNW時系列データをFigure \ref{fig:filtered}に示す。
+2つのFIRフィルタを用いたフィルタリング後のSNW時系列データをFigure \ref{fig:filtered}, Figure \ref{fig:filtered2}に示す。
+
 \begin{figure}[htbp]
-    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{snw_filtered.pdf}
-    \caption{SNW after FIR filtering}
+    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{gcodesim_filtered.pdf}
+    \caption{SNW after FIR filter No.1}
    \label{fig:filtered}
 \end{figure}
+
+\begin{figure}[htbp]
+    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{snw_filtered.pdf}
+    \caption{SNW after FIR filter No.2}
+   \label{fig:filtered2}
+\end{figure}
+
+%\begin{figure}[htbp]
+%    \includegraphics[bb=0 0 432 216,width=1\columnwidth]{snw_filtered.pdf}
+%    \caption{SNW after FIR filtering}
+%   \label{fig:filtered}
+%\end{figure}
 
 SNWの波形は原波形に比べてなまっているものの、$r$の推移に追従しているわけではない。
 

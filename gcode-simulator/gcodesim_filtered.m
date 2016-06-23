@@ -19,7 +19,9 @@ wp = 0.005*pi;
 ws = 0.01*pi;
 trwidth = ws-wp;
 alpha = 6.0;
-N = 39;
+
+% N = 39;
+N = 1521;
 wc = (wp+ws)/2;
 h = fir1(N-1,wc/pi,kaiser(N,alpha));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,7 +162,7 @@ while ischar(tline)
             fig.PaperUnits = 'inches';
             fig.PaperPosition = [0 0 6 3];
             fig.PaperPositionMode = 'manual';
-            print('gcodesim.png','-dpng');
+            print('gcodesim_filtered.png2','-dpng');
         end
         return;
     end
