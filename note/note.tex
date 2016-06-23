@@ -200,7 +200,7 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
  I_0(z)	= \sum_{k=0}^{\infty}\frac{\left(\frac{z^2}{4}\right)}{k!\Gamma (k+1)}
 \end{eqnarray*}
 であり、$\Gamma$はガンマ関数$\Gamma(z) = \int_0^{\infty} t^{z-1}e^{-t} dt$である。
-いま、$\alpha = 6.0$、フィルタ段数を39として設計したFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$を以下に示す。
+いま、$\alpha = 6.0$、フィルタ段数を39として設計したFIRフィルタのインパルス応答と正規化振幅特性$H(e^{j \omega})$をFigure \ref{eq:fir_window}に示す。
 
 \begin{figure}[htbp]
     \includegraphics[bb=0 0 432 216,width=1\columnwidth]{impulse_h.pdf}
@@ -217,6 +217,9 @@ Figure \ref{fig:noise}を見ると，下段$v_2$で示されるスクリュー�
 \begin{eqnarray*}
 	\{y_n\} = \mathcal{Z}^{-1}[(Y(z))] = \frac{1}{2 \pi i} \oint_c Y(z) z^{n-1} dz
 \end{eqnarray*}
+
+フィルタリング後のSNW時系列データをFigure \ref{fig:filtered}に示す。
+
 
 
 
