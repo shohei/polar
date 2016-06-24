@@ -84,7 +84,7 @@ r_i = \sqrt{{x_i}^2+{y_i}^2} \\
 \begin{eqnarray}\label{eq:diff}
 \left\{
   \begin{array}{ll}
-\Delta r = r_2-r_1 = \sqrt{{x_2}^2+{y_2}^2} - \sqrt{{x_2}^2+{y_2}^2} \\    
+\Delta r = r_2-r_1 = \sqrt{{x_2}^2+{y_2}^2} - \sqrt{{x_1}^2+{y_1}^2} \\    
 \Delta \theta = \theta_2-\theta_1 = \tan^{-1} (y_2 / x_2) - \tan^{-1} (y_1 / x_1)
   \end{array}
   \right.
@@ -153,9 +153,8 @@ F_{polar}(t_k) &= \frac{d S}{d t}\Bigg|_{t=tk}  \\
 \int_{t_1}^{t_2} SNW(t)dt &=& \alpha \int_{t_1}^{t_2} F_{polar}(t) dt \nonumber \\
 \therefore SNW\big|_{t=t_k} &=& \alpha F_{polar}(t_k)  \nonumber \\
 &=& \frac{\alpha}{\Delta t} \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2 \left( \theta_k - \theta_{k-1} \right)^2} \nonumber \\
-&=& \frac{\alpha \cdot 60\cdot1000 \cdot \sqrt{(\Delta x)^2+(\Delta y)^2}}{F} \cdot \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2  \left( \theta_k - \theta_{k-1} \right)^2} \nonumber \\
-&=& \frac{\alpha^\prime}{F} \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2  \left( \theta_k - \theta_{k-1} \right)^2 }  \nonumber \\
-&\quad& \cdot \sqrt{ (r_k \cos\theta_k - r_{k-1} \cos\theta_{k-1})^2+(r_k \sin\theta_k - r_{k-1} \sin\theta_{k-1})^2 }
+&=& \frac{\alpha F}{\cdot 60\cdot1000 \cdot \sqrt{(\Delta x)^2+(\Delta y)^2}} \cdot \sqrt{\left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2  \left( \theta_k - \theta_{k-1} \right)^2} \nonumber \\
+&=& \alpha^\prime F \sqrt{\frac{ \left( r_k - r_{k-1} \right)^2 + \left(\frac{r_k+r_{k-1}}{2} \right)^2  \left( \theta_k - \theta_{k-1} \right)^2 } {(r_k \cos\theta_k - r_{k-1} \cos\theta_{k-1})^2+(r_k \sin\theta_k - r_{k-1} \sin\theta_{k-1})^2 }}
 \end{eqnarray}
 \end{strip}
 
@@ -479,13 +478,13 @@ $\theta$の計算方法について詳しく述べる．
 総加速ステップを$S$，ステッピングモーターの初期速度を$v_0$，目標速度を$v$，1秒ごとの加速ステップ数を$a$，加速時間を$t$とすれば，
 
 \begin{eqnarray}\label{eq:first}
-     S = v_0 t + \frac{1}{2} a t^2 \nonumber \\
-     v = v_0 + a t    
+     S &=& v_0 t + \frac{1}{2} a t^2 \nonumber \\
+     v &=& v_0 + a t    
 \end{eqnarray}
 (\ref{eq:first})における両式より，以下を得る．
 \begin{eqnarray}\label{eq:second}
-     S = \frac{v^2-v_0}{2 a} \nonumber \\
-     v = \sqrt{v_0^2+2aS}
+     S &=& \frac{v^2-v_0}{2 a} \nonumber \\
+     v &=& \sqrt{v_0^2+2aS}
 \end{eqnarray}
 (\ref{eq:second})における両式を再帰的に適用して漸化式を導けば，
 \begin{eqnarray}\label{eq:third}

@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  23 JUN 2016 19:16
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2016.3.27)  24 JUN 2016 12:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -595,7 +595,7 @@ Overfull \hbox (32.96881pt too wide) in paragraph at lines 148--148
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--160
+Underfull \hbox (badness 10000) in paragraph at lines 150--159
 
  []
 
@@ -606,9 +606,9 @@ Left:143.98639pt
 Right:139.68582pt
 Output:143.98639pt
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 166.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 165.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 166.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 165.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -647,14 +647,14 @@ File: accel2.pdf Graphic file (type eps)
  <accel2.pdf>
 
 LaTeX Font Warning: Font shape `JT1/mc/m/it' undefined
-(Font)              using `JT1/mc/m/n' instead on input line 476.
+(Font)              using `JT1/mc/m/n' instead on input line 475.
 
 
 LaTeX Font Warning: Font shape `JY1/mc/m/it' undefined
-(Font)              using `JY1/mc/m/n' instead on input line 476.
+(Font)              using `JY1/mc/m/n' instead on input line 475.
 
 [5]
-Overfull \hbox (10.00002pt too wide) detected at line 540
+Overfull \hbox (10.00002pt too wide) detected at line 539
 [][] 
  []
 
@@ -667,7 +667,7 @@ File: leib_ramp_screenshot.png Graphic file (type eps)
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (10.00002pt too wide) detected at line 570
+Overfull \hbox (10.00002pt too wide) detected at line 569
 [][] 
  []
 
@@ -687,17 +687,17 @@ Left:0.0pt
 Right:0.0pt
 Output:0.0pt
 
-Overfull \hbox (18.80385pt too wide) in alignment at lines 659--661
+Overfull \hbox (18.80385pt too wide) in alignment at lines 658--660
  [][][] []
  []
 
 
-Overfull \hbox (4.21677pt too wide) in alignment at lines 692--696
+Overfull \hbox (4.21677pt too wide) in alignment at lines 691--695
  [][][] []
  []
 
 
-Overfull \hbox (6.65356pt too wide) in alignment at lines 706--722
+Overfull \hbox (6.65356pt too wide) in alignment at lines 705--721
  [][][] []
  []
 
@@ -719,6 +719,6 @@ Here is how much of TeX's memory you used:
  8916 multiletter control sequences out of 15000+600000
  25108 words of font info for 100 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 32i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,16n,43p,507b,627s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (9 pages, 62848 bytes).
+Output written on /Users/shohei/Documents/MATLAB/Projects/polar/note/.texpadtmp/note.dvi (9 pages, 62832 bytes).
