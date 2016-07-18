@@ -8,6 +8,7 @@ format compact;
 CAPTURE = false;
 REDUCE = true;
 SCREENSHOT = false;
+SECOND_MONITOR = false;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -40,9 +41,9 @@ v2=[];
 r = [0];
 sign_for_dr=[];
 
-FigHandle = figure;
-set(FigHandle, 'Position', [100, 100, 1200, 600]);
-subplot(2,5,[1 6]);
+
+
+figure(1);
 axis equal;
 s = 60;
 % s = 5;
@@ -52,41 +53,55 @@ xlim([-s/2,s/2]);
 % ylim([0,130]);
 hold on;
 title('cartesian')
+t1 = text(10,55,'$X_{new}$');
+t1.Interpreter = 'latex';
+t1.FontSize = 15;
+t2 = text(10,52,'$Y_{new}$');
+t2.Interpreter = 'latex';
+t2.FontSize = 15;
 
-subplot(252)
-hold on;
-title('$\Delta x$','interpreter','latex');
 
-subplot(253)
-hold on;
-title('$\Delta y$','interpreter','latex');
-
-subplot(254)
-hold on;
-title('$v_1=\sqrt{\dot{x}^2+\dot{y}^2}$','interpreter','latex');
-
-subplot(255)
-hold on;
-title('$\Delta E$','interpreter','latex');
-ylim([0,3]);
-
-subplot(257)
-hold on;
-title('$\Delta r$','interpreter','latex');
-
-subplot(258)
-hold on;
-title('$\Delta \theta$','interpreter','latex');
-
-subplot(259)
-hold on;
-title('$v_2=\sqrt{\dot{r}^2+r^2 \dot{\theta}^2}$','interpreter','latex');
-ylim([0 1000]);
-
-subplot(2,5,10)
-hold on;
-title('$r$','interpreter','latex');
-ylim([0,65]);
+if(SECOND_MONITOR)
+    
+    FigHandle = figure(2);
+    set(FigHandle, 'Position', [100, 100, 600, 600]);
+    
+    subplot(241)
+    hold on;
+    title('$\Delta x$','interpreter','latex');
+    
+    subplot(242)
+    hold on;
+    title('$\Delta y$','interpreter','latex');
+    
+    subplot(243)
+    hold on;
+    title('$v_1=\sqrt{\dot{x}^2+\dot{y}^2}$','interpreter','latex');
+    
+    subplot(244)
+    hold on;
+    title('$\Delta E$','interpreter','latex');
+    ylim([0,3]);
+    
+    subplot(245)
+    hold on;
+    title('$\Delta r$','interpreter','latex');
+    
+    subplot(246)
+    hold on;
+    title('$\Delta \theta$','interpreter','latex');
+    
+    subplot(247)
+    hold on;
+    title('$v_2=\sqrt{\dot{r}^2+r^2 \dot{\theta}^2}$','interpreter','latex');
+    ylim([0 1000]);
+    
+    subplot(248)
+    hold on;
+    title('$r$','interpreter','latex');
+    ylim([0,65]);
+    
+end
 
 counter=0;
 
@@ -109,45 +124,57 @@ while ischar(tline)
                 [isMove,Xnew,Ynew,Enew,Fnew]=linear_move(tline(endIndex+1:length(tline)),Xold,Yold,Eold,Fold);
                 deltaE = Enew - Eold;
                 if(deltaE~=0 && isMove)
-                    subplot(2,5,[1 6]);
+                    figure(1);
+                    str1 = sprintf('$X_{new}$: %.2f',Xnew);
+                    t1.String = str1;
+                    str2 = sprintf('$Y_{new}$: %.2f',Ynew);
+                    t2.String = str2;
+                    current_point = plot(Xnew,Ynew,'ro');
                     plot([Xold,Xnew],[Yold,Ynew],'b-');
-                    subplot(252);
-                    dx(end+1) = Xnew-Xold;
-                    plot(dx,'b');
-                    subplot(253);
-                    dy(end+1) = Ynew-Yold;
-                    plot(dy,'b');
-                    subplot(254);
-                    dt(end+1) = sqrt(dx(end)^2+dy(end)^2)/Fnew*60;
-                    v = sqrt((dx./dt).^2+(dy./dt).^2);
-                    plot(v,'b');
-                    subplot(255);
-                    EE(end+1) = deltaE;
-                    plot(EE,'b');
-                    sign_for_dr(end+1) = checkSign(Xold,Yold,dx(end),dy(end));
+                    drawnow;
+                    set(current_point,'Visible','off');                    
                     
-                    dr = sign_for_dr.*sqrt(dx.^2+dy.^2);
+                    if(SECOND_MONITOR)
+                        figure(2);
+                        subplot(241);
+                        dx(end+1) = Xnew-Xold;
+                        plot(dx,'b');
+                        subplot(242);
+                        dy(end+1) = Ynew-Yold;
+                        plot(dy,'b');
+                        subplot(243);
+                        dt(end+1) = sqrt(dx(end)^2+dy(end)^2)/Fnew*60;
+                        v = sqrt((dx./dt).^2+(dy./dt).^2);
+                        plot(v,'b');
+                        subplot(244);
+                        EE(end+1) = deltaE;
+                        plot(EE,'b');
+                        sign_for_dr(end+1) = checkSign(Xold,Yold,dx(end),dy(end));
+                        
+                        dr = sign_for_dr.*sqrt(dx.^2+dy.^2);
+                        
+                        subplot(245);
+                        plot(dr,'b');
+                        
+                        XX(end+1) = Xnew;
+                        YY(end+1) = Ynew;
+                        r = sqrt(XX.^2+YY.^2);
+                        %                     r(end+1) = r(end) + dr(end);
+                        if(isempty(dtheta))
+                            dtheta(end+1) = atan2(dy(end),dx(end));
+                        else
+                            dtheta(end+1) = atan2(dy(end),dx(end))-atan2(dy(end-1),dx(end-1));
+                        end
+                        subplot(246);
+                        plot(dtheta,'b');
+                        subplot(247);
+                        v2 = sqrt((dr./dt).^2+(r.^2).*(dtheta./dt).^2);
+                        plot(v2,'b');
+                        
+                        subplot(248);
+                        plot(r,'b');                        
+                    end % end of second monitor
                     
-                    subplot(257);
-                    plot(dr,'b');
-                    
-                    XX(end+1) = Xnew;
-                    YY(end+1) = Ynew;
-                    r = sqrt(XX.^2+YY.^2);
-                    %                     r(end+1) = r(end) + dr(end);
-                    if(isempty(dtheta))
-                        dtheta(end+1) = atan2(dy(end),dx(end));
-                    else
-                        dtheta(end+1) = atan2(dy(end),dx(end))-atan2(dy(end-1),dx(end-1));
-                    end
-                    subplot(258);
-                    plot(dtheta,'b');
-                    subplot(259);
-                    v2 = sqrt((dr./dt).^2+(r.^2).*(dtheta./dt).^2);
-                    plot(v2,'b');
-                    
-                    subplot(2,5,10);
-                    plot(r,'b');
                     if(~REDUCE)
                         drawnow;
                         if(CAPTURE)
@@ -186,7 +213,7 @@ while ischar(tline)
         end
     end
     counter=counter+1;
-    if(counter>MAXLOOP)        
+    if(counter>MAXLOOP)
         if(SCREENSHOT)
             fig = gcf;
             fig.PaperUnits = 'inches';
