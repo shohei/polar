@@ -3,10 +3,10 @@ clear all;
 close all;
 % h2 as a parameter
 
-CAPTURE = true;
+CAPTURE = false;
 if(CAPTURE)
     writerObj = VideoWriter('newfile.avi');
-    open(writerObj);
+   inv open(writerObj);
 end
 
 
@@ -15,7 +15,7 @@ a3 = 5;
 h1 = 3;
 % h2 = 2;
 r = 1;
-circle1(l,h1,r);!
+circle1(l,h1,r);
 
 for h2=1.5:0.1:3.5
     b3 = ((l-a3)^2+h1^2-(h2-r)^2)/(2*(h1-h2+r));
