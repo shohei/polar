@@ -1,4 +1,4 @@
-function [v,t] = leib_ramp(totalsteps,a,F,v,v0)
+function [p,v,x,t] = leib_ramp(totalsteps,a,F,v,v0)
 
 format compact;
 
